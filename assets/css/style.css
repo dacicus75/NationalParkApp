@@ -1,7 +1,11 @@
  
 
 
-  
+  p{
+    height: auto;
+    border: 1px solid black;
+    background-color: aliceblue;
+  }
 
   html {
     height: 100%;
@@ -20,8 +24,15 @@
     color: white;
    
   }
+  #displayContent{
+  
+  }
 
   .appContent{
-
-    height: auto;
+      /* width: auto; */
+    width: 100%;
+    height: 12rem;
+    background-color: lightgrey;
+    border: 1px solid black;
+    
   }

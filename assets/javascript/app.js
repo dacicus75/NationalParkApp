@@ -24,6 +24,95 @@ function showPosition(position) {
 //app components
 
 //main page 
+//displays a description of that park
+function displayMainPage() {
+    $("button").on("click",  function () {
+        
+        var park = $(this).attr("data-park");
+        // example query
+       
+        var queryURL = "https://developer.nps.gov/api/v1/parks?parkCode=" +
+            park + "&api_key=OwgdUWK3Ipvp6hzFSLfmbugYLQWBDZhNPmGqyXRq";
+
+           
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        })
+        
+    
+            .then(function (response) {
+                console.log(queryURL);
+                console.log(response);
+                var results = response.data;
+                console.log(results);
+                    var parkDiv = $("<div>");
+                    var p = $("<p>").html("Park info: " + results[0].description + "<br>");
+                    // var topicImage = $("<img>");
+                    // parkDiv.attr({
+                    //     "src": results[i].images.fixed_height_still.url,
+                    //     "data-still": results[i].images.fixed_height_still.url,
+                    //     "data-animate": results[i].images.fixed_height.url,
+                    //     "data-state": 'still',
+                    //     "class": 'gif'
+                    // });
+                  
+                    
+                    parkDiv.prepend(p);
+                    $("#displayContent").prepend(parkDiv);
+                
+                
+            });
+            
+    });
+   
+}
+//when you click for directions it displays directions for that park
+//this is just an example of grabbing info from the API. The hard part will be to grab several parks from the API that are within a certain range of the user
+function displayMainPageDirections() {
+    $("button").on("click",  function () {
+        
+        var park = $(this).attr("data-directions");
+        // example query
+       
+        var queryURL = "https://developer.nps.gov/api/v1/parks?parkCode=" +
+            park + "&api_key=OwgdUWK3Ipvp6hzFSLfmbugYLQWBDZhNPmGqyXRq";
+
+           
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        })
+        
+    
+            .then(function (response) {
+                console.log(queryURL);
+                console.log(response);
+                var results = response.data;
+                console.log(results);
+                    var parkDiv = $("<div>");
+                    var p = $("<p>").html("Directions to the park: " + results[0].directionsInfo + "<br>");
+                    // var topicImage = $("<img>");
+                    // parkDiv.attr({
+                    //     "src": results[i].images.fixed_height_still.url,
+                    //     "data-still": results[i].images.fixed_height_still.url,
+                    //     "data-animate": results[i].images.fixed_height.url,
+                    //     "data-state": 'still',
+                    //     "class": 'gif'
+                    // });
+                  
+                    
+                    parkDiv.prepend(p);
+                    $("#displayContent").append(parkDiv);
+                
+                
+            });
+            
+    });
+   
+}
+displayMainPage();
+displayMainPageDirections();
 // Articles – NPS API (homepage limit 3 articles)
 // dropdown with the following
 // Find campsite/lodging/visitor center - NPS API

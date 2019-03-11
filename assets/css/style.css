@@ -40,7 +40,7 @@ body {
 
 #jumbotron {
   margin-bottom: 0;
-  background-image: url("park2.jpg");
+  background-image: url("../images/park2.jpg");
   background-size: cover;
   
 }
@@ -57,4 +57,9 @@ body {
 
 nav {
     background: #0D62E8;
+}
+
+#title-p {
+  background: none;
+  border:none;
 }

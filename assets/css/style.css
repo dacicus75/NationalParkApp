@@ -1,8 +1,10 @@
  
-
+/* td, tbody, tr{
+    height: auto;
+} */
 
   p{
-    height: auto;
+ 
     border: 1px solid black;
     background-color: aliceblue;
   }

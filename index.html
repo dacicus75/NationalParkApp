@@ -22,26 +22,51 @@
 
 </head>
 
-<body>
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-            <h1 class="display-4">Fluid jumbotron</h1>
-            <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-        </div>
-        <div class="btn-group">
-            <button type="button" data-park = "acad" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static"
-                aria-haspopup="true" aria-expanded="false">
-                Left-aligned but right aligned when large screen
-            </button>
-            <div class="dropdown-menu dropdown-menu-lg-right">
-                <button class="dropdown-item" data-park = "acad" type="button">Camp Sites, Lodging, and Visitor Center</button>
-                <button class="dropdown-item" type="button">Events</button>
-                <button class="dropdown-item" data-directions = "acad" type="button">Directions</button>
+<!--eventually i will add some opacity to the background to make it less vivid so the text stans our more-->
+<div id="jumbotron"> 
+        <div class="jumbotron jumbotron-fluid" >
+            <div class="container">
+                <h1 class="display-4 text-white text-center title-text">Get out of Town</h1>
+                
+                <p class="lead text-white title-text text-center">Find your Next Outdoor Adventure</p>
             </div>
+            
         </div>
-
-
-    </div>
+    
+        </div>
+        <!--nav bar I changed this to what I think looks better than what i first threw up there-->
+        
+        <div role="navigation">
+                <nav class="navbar navbar-expand-sm navbar-dark ">
+                    <a class="navbar-brand" href="#">Explore</a>
+                        
+                    <button class="navbar-toggler" type="button"  data-park ="acad" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                            <a class="nav-item nav-link" href="#">Events</a>
+                            <a class="nav-item nav-link" href="#" data-park ="acad">Visit</a>
+                            <a class="nav-item nav-link" href="#" data-directions = "acad">Directions</a>
+                            
+                        </div>
+                    </div>
+                </nav>
+    
+        </div>
+     <!-- <div class="btn-group">   left old nav button incase we need info or want to change back --- will delete once decided
+                <button type="button" data-park = "acad" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static"
+                    aria-haspopup="true" aria-expanded="false">
+                    Navigate
+                </button>
+                <div class="dropdown-menu dropdown-menu-lg-right">
+                    <button class="dropdown-item" data-park = "acad" type="button">Camp Sites, Lodging, and Visitor Center</button>
+                    <button class="dropdown-item" type="button">Events</button>
+                    <button class="dropdown-item" data-directions = "acad" type="button">Directions</button>
+                </div>
+        </div>-->  
 
     <div class="container-fluid text-center">
         <h1>App Content Area</h1>

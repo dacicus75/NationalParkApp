@@ -2,39 +2,59 @@
 /* td, tbody, tr{
     height: auto;
 } */
+p {
+  border: 1px solid black;
+  background-color: aliceblue;
+}
 
-  p{
- 
-    border: 1px solid black;
-    background-color: aliceblue;
-  }
+html {
+  height: 100%;
+}
 
-  html {
-    height: 100%;
-  }
-  body {
-    min-height: 100%;
-    display: grid;
-    grid-template-rows: 1fr auto;
-  }
-  .footer {
-  
-    text-align: center;
-    height: 4rem;
-    background-color: grey;
+body {
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
  
-    color: white;
+.footer {
+  text-align: center;
+  height: 4rem;
+  background-color: grey;
+  color: white;
    
-  }
-  #displayContent{
+}
+
+#displayContent{
   
   }
 
-  .appContent{
-      /* width: auto; */
-    width: 100%;
-    height: 12rem;
-    background-color: lightgrey;
-    border: 1px solid black;
-    
-  }
+.appContent{
+    /* width: auto; */
+  width: 100%;
+  height: 12rem;
+  background-color: lightgrey;
+  border: 1px solid black;
+  
+}
+
+#jumbotron {
+  margin-bottom: 0;
+  background-image: url("park2.jpg");
+  background-size: cover;
+  
+}
+
+.title-text{
+    font-weight: 400;
+}
+
+.jumbotron {
+    background:none;
+    z-index: 1;
+    margin-bottom: 0;
+}
+
+nav {
+    background: #0D62E8;
+}

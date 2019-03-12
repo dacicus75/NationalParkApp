@@ -8,7 +8,8 @@ p {
   margin: 1rem;
   color: white;
 }
-
+ 
+/*added this to push footer down */
 #main-container {
   min-height: 100%;
   margin-bottom: 1rem;
@@ -72,6 +73,8 @@ body {
   grid-template-rows: 1fr auto;
  
 }
+ 
+/* made because the background was creating white space when i was resizing the page*/
 #main-container {
   background-image: url("../images/park2.jpg");
   background-repeat: no-repeat;
@@ -113,6 +116,7 @@ nav {
   display: grid;
 }
 
+/*added this div with info so we could maybe have some pre loaded content*/
 .secondary-info {
   grid-gap: .5rem;
   grid-template-columns: 1fr 1fr;
@@ -148,7 +152,7 @@ nav {
   padding-top: 1rem;
    
 }
-
+/* added some media queries */
 @media (min-width: 575px){
 
   .grid-wrapper {

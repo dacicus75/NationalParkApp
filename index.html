@@ -14,107 +14,137 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-
+    <link rel="stylesheet" href="assets/css/shards.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
 
     <title>Get out of Town</title>
 
 </head>
+<body>
+    
+    <div id="main-container">
+    <!--eventually i will add some opacity to the background to make it less vivid so the text stans our more-->
+    <div id="jumbotron">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4 text-white text-center title-text">Get out of Town</h1>
 
-<!--eventually i will add some opacity to the background to make it less vivid so the text stans our more-->
-<div id="jumbotron">
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-            <h1 class="display-4 text-white text-center title-text">Get out of Town</h1>
-
-            <p id="title-p" class="lead text-white title-text text-center">Find your Next Outdoor Adventure</p>
-        </div>
-
-    </div>
-
-</div>
-<!--nav bar I changed this to what I think looks better than what i first threw up there-->
-
-<div role="navigation">
-    <nav class="navbar navbar-expand-sm navbar-dark ">
-        <a class="navbar-brand" href="#">Explore</a>
-
-        <button class="navbar-toggler" type="button" data-park="acad" data-toggle="collapse"
-            data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="#">Events</a>
-                <a class="nav-item nav-link" href="#"  data-park="OH">Visit</a>
-                <a class="nav-item nav-link" href="#" data-directions="acad">Directions</a>
-                
-                <!-- <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#myModal" data-park="acad">Visit</a>
-            </div> -->
-        </div>
-    </nav>
-
-</div>
-<!-- <div class="btn-group">   left old nav button incase we need info or want to change back --- will delete once decided
-                <button type="button" data-park = "acad" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static"
-                    aria-haspopup="true" aria-expanded="false">
-                    Navigate
-                </button>
-                <div class="dropdown-menu dropdown-menu-lg-right">
-                    <button class="dropdown-item" data-park = "acad" type="button">Camp Sites, Lodging, and Visitor Center</button>
-                    <button class="dropdown-item" type="button">Events</button>
-                    <button class="dropdown-item" data-directions = "acad" type="button">Directions</button>
-                </div>
-        </div>-->
-
-<div class="container">
-    <!-- <h2>Find a park near you</h2> -->
-    <!-- Trigger the modal with a button -->
-    <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Find a Park</button> -->
-
-    <!-- Modal -->
-    <!-- <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
-
-             Modal content
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Can we have your location?</h4>
-                </div>
-                <div class="modal-body">
-                    <p id="modalComment">Click yes so we can find a park nearest you.</p>
-                </div>
-                <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                        <button type="button" class="btn btn-primary" >Yes</button>
-                </div>
+                <p id="title-p" class="lead text-white title-text text-center">Find your Next Outdoor Adventure</p>
             </div>
 
         </div>
+
     </div>
+    <!--nav bar I changed this to what I think looks better than what i first threw up there-->
 
-</div> -->
+    <div role="navigation">
+        <nav class="navbar navbar-expand-sm navbar-dark ">
+            <a class="navbar-brand">Explore</a>
 
+            <button class="navbar-toggler" type="button" data-park="acad" data-toggle="collapse"
+                data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-<div class="container-fluid text-center">
-   <div id=contentHeader> <h1>App Content Area</h1></div>
-    <div class="row content ">
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link" href="#">Events</a>
+                    <a class="nav-item nav-link" href="#"  data-park="OH">Visit</a>
+                    <a class="nav-item nav-link" href="#" data-directions="acad">Directions</a>
+                    
+                    <!-- <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#myModal" data-park="acad">Visit</a>
+                </div> -->
+            </div>
+        </nav>
 
-        <div class="col-md-12 appContent">
+    </div>
+    <!-- <div class="btn-group">   left old nav button incase we need info or want to change back --- will delete once decided
+                    <button type="button" data-park = "acad" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static"
+                        aria-haspopup="true" aria-expanded="false">
+                        Navigate
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-lg-right">
+                        <button class="dropdown-item" data-park = "acad" type="button">Camp Sites, Lodging, and Visitor Center</button>
+                        <button class="dropdown-item" type="button">Events</button>
+                        <button class="dropdown-item" data-directions = "acad" type="button">Directions</button>
+                    </div>
+            </div>-->
+    <div class="grid-wrapper">        
+    <div class="container box-1">
+        <!-- <h2>Find a park near you</h2> -->
+        <!-- Trigger the modal with a button -->
+        <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Find a Park</button> -->
 
-            <div id="displayContent"></div>
-            <div class="display"></div>
+        <!-- Modal -->
+        <!-- <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
 
+                Modal content
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Can we have your location?</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p id="modalComment">Click yes so we can find a park nearest you.</p>
+                    </div>
+                    <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                            <button type="button" class="btn btn-primary" >Yes</button>
+                    </div>
+                </div>
+
+            </div>
         </div>
+
+    </div> -->
+
+
+        <div class="container-fluid text-center " id="media-q" >
+            <div id=contentHeader> <h1>App Content Area</h1></div>
+                <div class="row content ">
+
+                    <div class="col-md-12 appContent">
+
+                        <div id="displayContent"></div>
+                        <div class="display"></div>
+
+                    </div>
+              
+    
+
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="secondary-info grid container-fluid box-2">
+            <div id="location" class="grid">
+                <p>auto loaded content? possilbe turn on location service with map image</p>
+
+                <img src="" alt="">
+
+                <div class="custom-control custom-toggle">
+                    <input type="checkbox" id="customToggle1" name="customToggle1" class="custom-control-input" checked>
+                    <label class="custom-control-label text-white" for="customToggle1">Enable Location </label>
+                </div>
+            </div>
+            <div id="weather" class="grid">
+                    <p>weather or another auto loaded item?</p>
+                    <img src="" alt="">
+            </div>
+        </div>
+
     </div>
-</div>
-<footer class="footer">Get out of Town @2019</footer>
-<script src="assets/javascript/app.js"></script>
+
+    </div>
+    <footer class="footer">Get out of Town @2019</footer>
+    
+    <script src="assets/javascript/app.js"></script>
 </body>
 
 </html>

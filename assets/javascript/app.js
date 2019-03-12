@@ -139,14 +139,14 @@ function displayMainPageDirections() {
 
 //parks list page
  
-
+// if you click visit, this div is created and overwrites the content
     function displayParks() {
         $(".nav-item").on("click",  function () {
             // debugger
             var park = $(this).attr("data-park");
             // example query
             var queryURL = "https://developer.nps.gov/api/v1/parks?stateCode=" +
-            park + "&api_key=OwgdUWK3Ipvp6hzFSLfmbugYLQWBDZhNPmGqyXRq";
+            park + "&fields=images&api_key=OwgdUWK3Ipvp6hzFSLfmbugYLQWBDZhNPmGqyXRq";
                
             $.ajax({
                 url: queryURL,
@@ -156,10 +156,10 @@ function displayMainPageDirections() {
                     console.log(queryURL);
                     console.log(response);
                     var results = response.data;
-                    for (var i = 0; i < 5; i++) {
+                    for (var i = 0; i < results.length; i++) {
                         var parkDiv = $("<div>");
                         
-                        var p = $("<p>").html( results[i].name + "<br>");
+                        var p = $("<p>").html( results[i].fullName + "<br>");
                         // var p = $("<p>").html("Rating: " + results[i].rating + "<br>");
                     //     var parkImage = $("<img>");
                     //    parkImage.attr({
@@ -174,7 +174,19 @@ function displayMainPageDirections() {
                         $("#contentHeader").html("<h1> Parks near you </h1>");
                         
                         $("#displayContent").prepend(parkDiv);
-                   
+
+
+                        var displayImage = $("<div>");
+                        displayImage.attr({
+                            "class": 'displayImage',
+                            // "data-click": userClick,
+                            "id": 'displayPicture'
+                        })
+                        displayImage.css({
+                            "background-image": "url('" + results[i].images[i].url+ "')",
+                            "background-size": "cover"
+                        });
+                        $(".appContent").append(displayImage);
                     }
                     
                 });

@@ -145,10 +145,12 @@ function displayMainPageDirections() {
     function displayParks() {
         $(".nav-item").on("click",  function () {
             // debugger
-            var park = $(this).attr("data-park");
+            // var parameters = $(this).attr("data-park");
             // example query
-            var queryURL = "https://developer.nps.gov/api/v1/parks?stateCode=" +
-            park + "&fields=images&api_key=OwgdUWK3Ipvp6hzFSLfmbugYLQWBDZhNPmGqyXRq";
+           // https://www.hikingproject.com/data/get-trails?lat=40.0274&lon=-105.2519&maxDistance=10&key=YOUR_KEY_HERE
+            var queryURL = "https://www.hikingproject.com/data/get-trails?lat=" + lat +"&lon=" +lon +"&key=200430087-cc29846e97dd0dc3575ba8096977c1be"
+            // var queryURL = "https://developer.nps.gov/api/v1/parks?stateCode=" +
+            // park + "&fields=images&api_key=OwgdUWK3Ipvp6hzFSLfmbugYLQWBDZhNPmGqyXRq";
                
             $.ajax({
                 url: queryURL,

@@ -26,7 +26,7 @@ function showPosition(position) {
 //main page 
 //displays a description of that park
 function displayMainPage() {
-    $("button").on("click",  function () {
+    $(".nav-item").on("click",  function () {
         
         var park = $(this).attr("data-park");
         // example query
@@ -70,7 +70,7 @@ function displayMainPage() {
 //when you click for directions it displays directions for that park
 //this is just an example of grabbing info from the API. The hard part will be to grab several parks from the API that are within a certain range of the user
 function displayMainPageDirections() {
-    $("button").on("click",  function () {
+    $(".nav-item").on("click",  function () {
         
         var park = $(this).attr("data-directions");
         // example query

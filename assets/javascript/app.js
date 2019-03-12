@@ -1,5 +1,5 @@
 //  --------------------------------------------------------------------------------
-// var queryURL = "https://www.hikingproject.com/data/get-" + (parameters) +"&key=200430101-96593c2bdd2b43b8a48b4cfc559ebff6"
+// var queryURL = "https://www.hikingproject.com/data/get-" + (parameters) +"&key=200430087-cc29846e97dd0dc3575ba8096977c1be"
 // Obtain user location
 // We may want to use watchPosition() to keep track of user movements
 // Will need button to bind event 

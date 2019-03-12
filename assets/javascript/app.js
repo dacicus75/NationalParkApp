@@ -3,7 +3,8 @@
 // Obtain user location
 // We may want to use watchPosition() to keep track of user movements
 // Will need button to bind event 
-var currentLocation;
+var lat;
+var lon;
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
@@ -14,10 +15,10 @@ function getLocation() {
 function showPosition(position) {
     console.log("latitude: " + position.coords.latitude);
     console.log("longitude: " + position.coords.longitude);
-    currentLocation = position.coords.latitude + "," + position.coords.longitude;
+    lat = position.coords.latitude;
+    lon = position.coords.longitude;
 }
 
- 
 
 //  --------------------------------------------------------------------------------
   

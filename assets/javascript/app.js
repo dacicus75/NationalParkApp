@@ -15,6 +15,8 @@ function showPosition(position) {
     console.log("longitude: " + position.coords.longitude);
 }
 
+ 
+
 //  --------------------------------------------------------------------------------
   
 
@@ -31,7 +33,7 @@ function displayMainPage() {
         var park = $(this).attr("data-park");
         // example query
        
-        var queryURL = "https://developer.nps.gov/api/v1/parks?parkCode=" +
+        var queryURL = "https://developer.nps.gov/api/v1/parks?stateCode=" +
             park + "&api_key=OwgdUWK3Ipvp6hzFSLfmbugYLQWBDZhNPmGqyXRq";
 
            
@@ -111,8 +113,8 @@ function displayMainPageDirections() {
     });
    
 }
-displayMainPage();
-displayMainPageDirections();
+// displayMainPage();
+// displayMainPageDirections();
 // Articles – NPS API (homepage limit 3 articles)
 // dropdown with the following
 // Find campsite/lodging/visitor center - NPS API
@@ -139,12 +141,12 @@ displayMainPageDirections();
  
 
     function displayParks() {
-        $("#displayContent").on("click",  function () {
-            
+        $(".nav-item").on("click",  function () {
+            // debugger
             var park = $(this).attr("data-park");
             // example query
-            var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-                park + "&api_key=0s3GhZ60yFQgSvoDZ5rfXYPJB3urUXBN&limit=10&offset=0&rating=PG&lang=en";
+            var queryURL = "https://developer.nps.gov/api/v1/parks?stateCode=" +
+            park + "&api_key=OwgdUWK3Ipvp6hzFSLfmbugYLQWBDZhNPmGqyXRq";
                
             $.ajax({
                 url: queryURL,
@@ -154,28 +156,33 @@ displayMainPageDirections();
                     console.log(queryURL);
                     console.log(response);
                     var results = response.data;
-                    for (var i = 0; i < results.length; i++) {
+                    for (var i = 0; i < 5; i++) {
                         var parkDiv = $("<div>");
-                        var p = $("<p>").html("Rating: " + results[i].rating + "<br>");
-                        // var topicImage = $("<img>");
-                        topicImage.attr({
-                            "src": results[i].images.fixed_height_still.url,
-                            "data-still": results[i].images.fixed_height_still.url,
-                            "data-animate": results[i].images.fixed_height.url,
-                            "data-state": 'still',
-                            "class": 'gif'
-                        });
-                      
                         
+                        var p = $("<p>").html( results[i].name + "<br>");
+                        // var p = $("<p>").html("Rating: " + results[i].rating + "<br>");
+                    //     var parkImage = $("<img>");
+                    //    parkImage.attr({
+                    //         "src": results[i].images[i].url,
+                    //       "data_park": 'parkPic',
+                    //         "class": 'parkIMG'
+                    //     });
+                      
+                     
                         parkDiv.prepend(p);
-                        $("#gifs-appear-here").prepend(parkDiv);
+                        // $("#displayContent").prepend(parkImage);
+                        $("#contentHeader").html("<h1> Parks near you </h1>");
+                        
+                        $("#displayContent").prepend(parkDiv);
+                   
                     }
                     
                 });
-                
+               
         });
        
     }
+    displayParks();
 
 //indiviual park information
 // Directions -google maps api

@@ -1,8 +1,9 @@
 //  --------------------------------------------------------------------------------
-
+// var queryURL = "https://www.hikingproject.com/data/get-" + (parameters) +"&key=200430101-96593c2bdd2b43b8a48b4cfc559ebff6"
 // Obtain user location
 // We may want to use watchPosition() to keep track of user movements
 // Will need button to bind event 
+var currentLocation;
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
@@ -13,6 +14,7 @@ function getLocation() {
 function showPosition(position) {
     console.log("latitude: " + position.coords.latitude);
     console.log("longitude: " + position.coords.longitude);
+    currentLocation = position.coords.latitude + "," + position.coords.longitude;
 }
 
  

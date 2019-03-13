@@ -198,7 +198,7 @@ function displayMainPageDirections() {
                         
                         $("#displayContent").prepend(parkDiv);
 
-
+                    }
                         var displayImage = $("<div>");
                         displayImage.attr({
                             "class": 'displayImage',
@@ -212,7 +212,7 @@ function displayMainPageDirections() {
                         $(".appContent").append(displayImage);
                     }
                     
-                });
+                );
                
         // });
        

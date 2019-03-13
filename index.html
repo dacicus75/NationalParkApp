@@ -52,7 +52,7 @@
                 <div class="navbar-nav">
                     <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
                     <a class="nav-item nav-link" href="#">Events</a>
-                    <a class="nav-item nav-link" href="#"  data-park="OH">Visit</a>
+                    <a class="nav-item nav-link" href="#" onclick=getLocation(); data-park="OH">Visit</a>
                     <a class="nav-item nav-link" href="#" data-directions="acad">Directions</a>
                     
                     <!-- <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#myModal" data-park="acad">Visit</a>
@@ -126,17 +126,13 @@
             <div id="location" class="grid">
                 <p>auto loaded content? possilbe turn on location service with map image</p>
 
-                <img src="" alt="">
-
-                <div class="custom-control custom-toggle">
-                    <input type="checkbox" id="customToggle1" name="customToggle1" class="custom-control-input" checked>
-                    <label class="custom-control-label text-white" for="customToggle1">Enable Location </label>
-                </div>
             </div>
             <div id="weather" class="grid">
-                    <p>weather or another auto loaded item?</p>
-                    <img src="" alt="">
-            </div>
+                <div id="location-weather"></div><!--use api location get weather from that location from hiking data-->
+                <div>
+                    <button type="button" class="btn btn-info btn-sm ">Get Weather</button> <!--onclick to display weather in #location-weather-->
+                </div>
+        </div>
         </div>
 
     </div>

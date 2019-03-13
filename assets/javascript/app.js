@@ -18,6 +18,7 @@ function showPosition(position) {
     console.log("longitude: " + position.coords.longitude);
     lat = position.coords.latitude;
     lon = position.coords.longitude;
+ 
 }
 // Grab to do list from user account
 //function getToDos() {
@@ -161,11 +162,14 @@ function displayMainPageDirections() {
 // if you click visit, this div is created and overwrites the content
     function displayParks() {
         $(".nav-item").on("click",  function () {
+            
             // debugger
-            var park = $(this).attr("data-park");
+            // var parameters = $(this).attr("data-park");
             // example query
-            var queryURL = "https://developer.nps.gov/api/v1/parks?stateCode=" +
-            park + "&fields=images&api_key=OwgdUWK3Ipvp6hzFSLfmbugYLQWBDZhNPmGqyXRq";
+           // https://www.hikingproject.com/data/get-trails?lat=40.0274&lon=-105.2519&maxDistance=10&key=YOUR_KEY_HERE
+            var queryURL = "https://www.hikingproject.com/data/get-trails?lat=" + lat +"&lon=" +lon +"&key=200430087-cc29846e97dd0dc3575ba8096977c1be"
+            // var queryURL = "https://developer.nps.gov/api/v1/parks?stateCode=" +
+            // park + "&fields=images&api_key=OwgdUWK3Ipvp6hzFSLfmbugYLQWBDZhNPmGqyXRq";
                
             $.ajax({
                 url: queryURL,
@@ -178,7 +182,7 @@ function displayMainPageDirections() {
                     for (var i = 0; i < results.length; i++) {
                         var parkDiv = $("<div>");
                         
-                        var p = $("<p>").html( results[i].fullName + "<br>");
+                        var p = $("<p>").html( results[i].trails.name + "<br>");
                         // var p = $("<p>").html("Rating: " + results[i].rating + "<br>");
                     //     var parkImage = $("<img>");
                     //    parkImage.attr({
@@ -190,7 +194,7 @@ function displayMainPageDirections() {
                      
                         parkDiv.prepend(p);
                         // $("#displayContent").prepend(parkImage);
-                        $("#contentHeader").html("<h1> Parks near you </h1>");
+                        $("#contentHeader").html("<h1> Trails near you </h1>");
                         
                         $("#displayContent").prepend(parkDiv);
 
@@ -202,7 +206,7 @@ function displayMainPageDirections() {
                             "id": 'displayPicture'
                         })
                         displayImage.css({
-                            "background-image": "url('" + results[i].images[i].url+ "')",
+                            "background-image": "url('" + results[i].imgSmallMed.url+ "')",
                             "background-size": "cover"
                         });
                         $(".appContent").append(displayImage);
@@ -213,7 +217,9 @@ function displayMainPageDirections() {
         });
        
     }
-    displayParks();
+    setTimeout(displayParks, 10000);
+    // displayParks();
+  
 
 //indiviual park information
 // Directions -google maps api

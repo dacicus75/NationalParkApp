@@ -5,6 +5,7 @@
 // Will need button to bind event 
 var lat;
 var lon;
+var userEmail;
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
@@ -19,8 +20,23 @@ function showPosition(position) {
     lon = position.coords.longitude;
  
 }
+// Grab to do list from user account
+//function getToDos() {
+//    userEmail = $("#email").val().trim();
+//    var queryURL = "https://www.hikingproject.com/data/get-to-dos?email=" + userEmail +"&key=200430087-cc29846e97dd0dc3575ba8096977c1be";
 
+//    $.ajax({
+//        url: queryURL,
+//        method: 'get'
+//    }) .then(function(response){
+//        var toDos = response.toDos;
+//        for(var i = 0; i < response.toDos.length; i++){
+ //           form.append("<p>");
+//            $("p").text(toDos[i]);
+//        }
+//    })
 
+//}
 //  --------------------------------------------------------------------------------
   
 

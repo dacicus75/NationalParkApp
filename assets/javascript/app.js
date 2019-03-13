@@ -145,7 +145,7 @@ function displayMainPageDirections() {
  
 // if you click visit, this div is created and overwrites the content
     function displayParks() {
-        $(".nav-item").on("click",  function () {
+        // $(".nav-item").on("click",  function () {
             
             // debugger
             // var parameters = $(this).attr("data-park");
@@ -166,7 +166,7 @@ function displayMainPageDirections() {
                     for (var i = 0; i < results.length; i++) {
                         var parkDiv = $("<div>");
                         
-                        var p = $("<p>").html( results[i].trails.name + "<br>");
+                        var p = $("<p>").html( results[i].trails[i].name + "<br>");
                         // var p = $("<p>").html("Rating: " + results[i].rating + "<br>");
                     //     var parkImage = $("<img>");
                     //    parkImage.attr({
@@ -198,7 +198,7 @@ function displayMainPageDirections() {
                     
                 });
                
-        });
+        // });
        
     }
     setTimeout(displayParks, 10000);

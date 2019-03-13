@@ -182,7 +182,8 @@ function displayMainPageDirections() {
                     for (var i = 0; i < results.length; i++) {
                         var parkDiv = $("<div>");
                         
-                        var p = $("<p>").html( results[i].trails[i].name + "<br>");
+                        var p = $("<p>").html( results.trails[i].name + "<br>");
+                        console.log( results.trails[i].name);
                         // var p = $("<p>").html("Rating: " + results[i].rating + "<br>");
                     //     var parkImage = $("<img>");
                     //    parkImage.attr({
@@ -206,7 +207,7 @@ function displayMainPageDirections() {
                             "id": 'displayPicture'
                         })
                         displayImage.css({
-                            "background-image": "url('" + results[i].imgSmallMed.url+ "')",
+                            "background-image": "url('" + results.trails[i].imgSmallMed.url+ "')",
                             "background-size": "cover"
                         });
                         $(".appContent").append(displayImage);

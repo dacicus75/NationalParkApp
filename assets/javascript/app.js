@@ -17,6 +17,7 @@ function showPosition(position) {
     console.log("longitude: " + position.coords.longitude);
     lat = position.coords.latitude;
     lon = position.coords.longitude;
+ 
 }
 
 
@@ -165,7 +166,7 @@ function displayMainPageDirections() {
                     for (var i = 0; i < results.length; i++) {
                         var parkDiv = $("<div>");
                         
-                        var p = $("<p>").html( results[i].fullName + "<br>");
+                        var p = $("<p>").html( results[i].trails.name + "<br>");
                         // var p = $("<p>").html("Rating: " + results[i].rating + "<br>");
                     //     var parkImage = $("<img>");
                     //    parkImage.attr({
@@ -177,7 +178,7 @@ function displayMainPageDirections() {
                      
                         parkDiv.prepend(p);
                         // $("#displayContent").prepend(parkImage);
-                        $("#contentHeader").html("<h1> Parks near you </h1>");
+                        $("#contentHeader").html("<h1> Trails near you </h1>");
                         
                         $("#displayContent").prepend(parkDiv);
 
@@ -189,7 +190,7 @@ function displayMainPageDirections() {
                             "id": 'displayPicture'
                         })
                         displayImage.css({
-                            "background-image": "url('" + results[i].images[i].url+ "')",
+                            "background-image": "url('" + results[i].imgSmallMed.url+ "')",
                             "background-size": "cover"
                         });
                         $(".appContent").append(displayImage);
@@ -200,7 +201,9 @@ function displayMainPageDirections() {
         });
        
     }
-    displayParks();
+    setTimeout(displayParks, 10000);
+    // displayParks();
+  
 
 //indiviual park information
 // Directions -google maps api

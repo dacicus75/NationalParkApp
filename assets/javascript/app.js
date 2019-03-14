@@ -179,11 +179,10 @@ function displayMainPageDirections() {
                     console.log(queryURL);
                     console.log(response);
                     var results = response.data;
-                    for (var i = 0; i < results.length; i++) {
+                    for (var i = 0; i < response.trails.length; i++) {
                         var parkDiv = $("<div>");
                         
-                        var p = $("<p>").html( results.trails[i].name + "<br>");
-                        console.log( results.trails[i].name);
+                        var p = $("<p>").html(response.trails[i].name + "<br>");
                         // var p = $("<p>").html("Rating: " + results[i].rating + "<br>");
                     //     var parkImage = $("<img>");
                     //    parkImage.attr({
@@ -199,7 +198,7 @@ function displayMainPageDirections() {
                         
                         $("#displayContent").prepend(parkDiv);
 
-
+                    }
                         var displayImage = $("<div>");
                         displayImage.attr({
                             "class": 'displayImage',
@@ -213,7 +212,7 @@ function displayMainPageDirections() {
                         $(".appContent").append(displayImage);
                     }
                     
-                });
+                );
                
         // });
        

@@ -3,10 +3,12 @@
     height: auto;
 } */
 p {
-  /* border: 1px solid #01796F; */
-  /* background-color: aliceblue; */
+ 
   margin: 1rem;
   color: white;
+}
+p:hover { 
+  background-color: yellow;
 }
  
 /*added this to push footer down */

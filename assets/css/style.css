@@ -107,10 +107,12 @@ body {
   margin-bottom: 0;
   height:auto;
   
+  
 }
 
 .title-text{
     font-weight: 400;
+    font-family: 'Fugaz One', cursive;
 }
 
 .jumbotron {

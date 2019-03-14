@@ -186,35 +186,38 @@ function displayParks() {
                 // var p = $("<p>").html("Rating: " + results[i].rating + "<br>");
 
                 p.attr({
+                    // type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+                    "type": "button",
+                    "data-toggle":"modal",
+                    "data-target":"#exampleModal",
                     "data_summary": response.trails[i].summary,
-                    "data_park": 'parkPic',
-                    "class": 'parkIMG'
+                    "data_image": response.trails[i].imgSmall,
+                    "data_location": response.trails[i].location,
+                    "data_stars": response.trails[i].stars
                 });
-
-
                 parkDiv.prepend(p);
                 // $("#displayContent").prepend(parkImage);
                 $("#contentHeader").html("<h1> Trails near you </h1>");
-
                 $("#displayContent").prepend(parkDiv);
 
             }
-            var displayImage = $("<div>");
-            displayImage.attr({
-                "class": 'displayImage',
-                // "data-click": userClick,
-                "id": 'displayPicture'
-            })
-            displayImage.css({
-                "background-image": "url('" + results.trails[i].imgSmallMed.url + "')",
-                "background-size": "cover"
-            });
-            $(".appContent").append(displayImage);
+       
         }
 
         );
 
-    // });
+ 
+}
+function displayParkModal(){
+    $("p").on("click",  function () {
+//  var hikeSummary = $(this).attr("data_summary");
+//  var hikeImage = $(this).attr("data_image");
+//  var hikeLocation = $(this).attr("data_location");
+//  var hikeStars = $(this).attr("data_stars");
+
+
+    });
+
 
 }
 setTimeout(displayParks, 10000);

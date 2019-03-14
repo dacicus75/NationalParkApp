@@ -94,7 +94,8 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-
+  position: relative;
+  height: auto;
 }
 
 #displayContent{
@@ -165,7 +166,7 @@ nav {
   grid-auto-rows: minmax(100px, auto); 
   /*justify-items: stretch;   
   align-items: stretch; */
-  margin: .25rem auto;
+  margin: .25rem auto 1rem;
   padding:1rem;
 }
 
@@ -197,7 +198,9 @@ nav {
   background: black;
   color: white;
   padding-top: 1rem;
-   
+  margin-top: 2rem;
+  position:absolute;
+  bottom: 0; 
 }
 /* added some media queries */
 @media (min-width: 900px){

@@ -19,8 +19,7 @@ p:hover {
  
 /*added this to push footer down */
 #main-container {
-  min-height: 100%;
-  margin-bottom: 1rem;
+ /* min-height: 100%;*/
 }
 .pointer{ 
   cursor: pointer;
@@ -97,6 +96,7 @@ body {
   background-size: cover;
   position: relative;
   height: auto;
+  padding-bottom: 4rem;
 }
 
 #displayContent{
@@ -191,7 +191,9 @@ nav {
 
 
 
-
+footer::before {
+  clear:both;
+}
 .footer {
   width: 100%;
   text-align: center;

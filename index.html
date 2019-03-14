@@ -71,7 +71,7 @@
                     </div>
             </div>-->
     <div class="grid-wrapper">        
-    <div class="container box-1">
+        <div class="container box-1">
         <!-- <h2>Find a park near you</h2> -->
         <!-- Trigger the modal with a button -->
         <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Find a Park</button> -->
@@ -98,40 +98,70 @@
     </div> -->
 
 
-        <div class="container-fluid text-center " id="media-q" >
-            <div id=contentHeader> <h1>App Content Area</h1></div>
-                <div class="row content ">
+            <div class="container-fluid text-center " id="media-q" >
+                <div id=contentHeader> <h1>App Content Area</h1></div>
+                    <div class="row content ">
 
-                    <div class="col-md-12 appContent">
+                        <div class="col-md-12 appContent">
 
-                        <div id="displayContent"></div>
-                        <div class="display"></div>
+                            <div id="displayContent"></div>
+                            <div class="display"></div>
 
+                        </div>
                     </div>
-              
-    
-
-
+                
                 </div>
-            </div>
+
         </div>
 
 
         <div class="secondary-info grid container-fluid box-2">
-            <div id="location" class="grid">
+            <div id="location" >
                 <p>auto loaded content? possilbe turn on location service with map image</p>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d11952.937636228555!2d-81.6089871!3d41.499194800000005!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1552439943796"
-                 width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+            <!--  <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d11952.937636228555!2d-81.6089871!3d41.499194800000005!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1552439943796"
+                 width="auto" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>-->  
             </div>
-            <div id="weather" class="grid">
+
+            <div id="weather" >
                 <div id="location-weather"></div><!--use api location get weather from that location from hiking data-->
                 <div>
                     <button type="button" class="btn btn-info btn-sm ">Get Weather</button> <!--onclick to display weather in #location-weather-->
                 </div>
+            </div>
         </div>
-        </div>
-
     </div>
+    
+        <div class="grid box-3">
+
+            <div  id="trail-info">
+                <h5>Soemthing</h5>
+                <div id="add-trail-info"></div>
+            </div>
+        
+            <div id="login">
+                <h5>Sign-up</h5>
+                <form id="add-new">
+                        <label for="train-name">Name</label>
+                        <br>
+                        <input type="text" class="input" id="train-name" name="name" placeholder="Name">
+                        <br>
+                        <label for="destination">Email</label>
+                        <br>
+                        <input type="email" class="input" id="destination" name="place" placeholder="example@eamil.com">
+                        <br><br>
+                        <button type="submit" value="add train" id="submit-user">Submit</button>
+                    </form>
+                    <div id="to-do">
+                        <ul id="to-do-info">
+                        
+                        </ul>
+
+                    </div>
+            
+            </div>
+
+
+        </div>
 
     </div>
 

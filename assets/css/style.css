@@ -3,7 +3,7 @@
     height: auto;
 } */
 p {
-  /* border: 1px solid black; */
+  /* border: 1px solid #01796F; */
   /* background-color: aliceblue; */
   margin: 1rem;
   color: white;
@@ -77,10 +77,12 @@ body {
  
 /* made because the background was creating white space when i was resizing the page*/
 #main-container {
-  background-image: url("../images/park2.jpg");
-  background-repeat: no-repeat;
+ 
+   background: url("../images/park2.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
-  background-position: center;
 
 }
 

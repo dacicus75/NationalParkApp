@@ -180,7 +180,7 @@ nav {
   padding:.5rem;
 }
 
-#login {
+#login, #sign-in {
   
   background:#f2f2f2;
   grid-row: 1/3;

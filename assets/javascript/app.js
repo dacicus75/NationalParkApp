@@ -1,4 +1,17 @@
 //  --------------------------------------------------------------------------------
+
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCZuRbpdVP2raZyzf4Uj75WqD4A02Qex9c",
+    authDomain: "nationalparksapp.firebaseapp.com",
+    databaseURL: "https://nationalparksapp.firebaseio.com",
+    projectId: "nationalparksapp",
+    storageBucket: "nationalparksapp.appspot.com",
+    messagingSenderId: "1051240529835"
+  };
+  firebase.initializeApp(config);
+
+  var database = firebase.database();
 // var queryURL = "https://www.hikingproject.com/data/get-" + (parameters) +"&key=200430087-cc29846e97dd0dc3575ba8096977c1be"
 // Obtain user location
 // We may want to use watchPosition() to keep track of user movements
@@ -37,6 +50,55 @@ function showPosition(position) {
 //    })
 
 //}
+
+$("#submit-user").on("click", function() {
+    event.preventDefault();
+    var name = $("#user-name").val().trim();
+    var email = $("#user-email").val().trim();
+    var password = $("#user-password").val().trim();
+    var newUser = {
+        name: name,
+        email: email,
+        password: password
+    };
+    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log(errorCode + "," + errorMessage);
+        console.log("welcome " + name);
+      });
+    database.ref().push(newUser);
+    $("#user-name").val("");
+    $("#user-email").val("");
+    $("#user-password").val("");
+})
+
+$("#user-signin").on("click", function() {
+    event.preventDefault();
+    var email = $("#signin-email").val().trim();
+    var password = $("#signin-password").val().trim();
+    var userSignIn = {
+        email: email, 
+        password: password
+    };
+    console.log(userSignIn);
+    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        $("#signin-email").val(email);
+        console.log(errorCode + "," + errorMessage);
+
+    });
+    $("#signin-email").val("");
+    $("#signin-password").val("");
+});
+
+// User Sign Out
+//firebase.auth().signOut().then(function() {
+    // Sign-out successful.
+//  })
+
 //  --------------------------------------------------------------------------------
 
 

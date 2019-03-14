@@ -3,10 +3,17 @@
     height: auto;
 } */
 p {
-  /* border: 1px solid #01796F; */
-  /* background-color: aliceblue; */
-  margin: 1rem;
+  cursor: pointer;
+  margin: 1.5rem;
   color: white;
+}
+
+/* .custom {
+  cursor: url(images/my-cursor.png), auto;
+} */
+p:hover { 
+  background-color: lightgray;
+  color: black;
 }
  
 /*added this to push footer down */
@@ -14,7 +21,11 @@ p {
   min-height: 100%;
   margin-bottom: 1rem;
 }
+.pointer{ 
+  cursor: pointer;
+ } 
 
+ 
 
 h1, h2{
     color:#ffffff;

@@ -232,6 +232,7 @@ function displayMainPageDirections() {
 
 // if you click visit, this div is created and overwrites the content
 function displayParks() {
+    $("p").remove();
     // $(".nav-item").on("click",  function () {
 
     // debugger

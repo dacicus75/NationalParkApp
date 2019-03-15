@@ -232,7 +232,7 @@ function displayMainPageDirections() {
 
 // if you click visit, this div is created and overwrites the content
 function displayParks() {
-    $("p").remove();
+    $("p" ).remove();
     // $(".nav-item").on("click",  function () {
 
     // debugger
@@ -264,7 +264,7 @@ function displayParks() {
                     "data-toggle": "modal",
                     "data-target": "#exampleModal",
                     "data_summary": response.trails[i].summary,
-                    "data_image": response.trails[i].imgSmall,
+                    "data_image": response.trails[i].imgMedium,
                     "data_location": response.trails[i].location,
                     "data_stars": response.trails[i].stars,
                     "class": "test"
@@ -278,15 +278,15 @@ function displayParks() {
             }
             $(".test").on('click', function () {
                 var hikeName = $(this).attr("data_name");
-                console.log(hikeName);
+             
                 var hikeSummary = $(this).attr("data_summary");
-                console.log(hikeSummary);
+            
                 var hikeImage = $(this).attr("data_image");
-                console.log(hikeImage);
+              
                 var hikeLocation = $(this).attr("data_location");
-                console.log(hikeLocation)
+               
                 var hikeStars = $(this).attr("data_stars");
-                console.log(hikeStars);
+                
                 var parkImage = $("<img>")
                 parkImage.attr("src", hikeImage);
                 $("#ModalLabel").html(hikeName);
@@ -300,8 +300,8 @@ function displayParks() {
                 // topicImage.prepend(".modal-image");
                 $(".modal-image").prepend(topicImage);
                 $(".modal-body").html(hikeSummary);
-                $(".modal-location").html("<img src= "+ "'" +hikeImage +"'" + " >");
-                $(".modal-stars").html(hikeStars);
+                $(".modal-location").html("Location: " + hikeLocation);
+                $(".modal-stars").html("Trail rating: "+hikeStars+ " stars");
 
             })
         }

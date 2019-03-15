@@ -81,11 +81,19 @@ $("#user-signin").on("click", function() {
         email: email, 
         password: password
     };
+
     console.log(userSignIn);
+    $("#user-name-display").text(userSignIn.email);
+    $("#user-name-display").show();
+    $("#your-trails").show();
     firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
         // Handle Errors here.
+        
         var errorCode = error.code;
         var errorMessage = error.message;
+        if (email || password === false) {
+            console.log("not a user")
+        } 
         $("#signin-email").val(email);
         console.log(errorCode + "," + errorMessage);
 
@@ -263,10 +271,9 @@ function displayParks() {
                 parkDiv.prepend(p);
                 // $("#displayContent").prepend(parkImage);
                 $("#contentHeader").html("<h1> Trails near you </h1>");
-                $("#displayContent").prepend(parkDiv);
-
-
-
+                $("#displayContent").append(parkDiv);  
+                
+                
             }
             $(".test").on('click', function () {
                 var hikeName = $(this).attr("data_name");
@@ -300,6 +307,13 @@ function displayParks() {
 
         );
     }
+
+    $("#trail-info").hide();
+    $(".user-display").hide();
+    
+    $("#your-trails").on("click", function(){
+        $("#trail-info").show();
+    })
     //test
 
 

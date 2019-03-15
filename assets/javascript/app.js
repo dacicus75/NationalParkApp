@@ -281,7 +281,7 @@ function displayParks() {
                 $("#ModalLabel").html(hikeName);
                 $(".modal-image").html(hikeImage);
                 $(".modal-body").html(hikeSummary);
-                $(".modal-location").html(hikeLocation);
+                $(".modal-location").html("<img src= "+ "'" +hikeLocation +"'" + " >");
                 $(".modal-stars").html(hikeStars);
 
             })

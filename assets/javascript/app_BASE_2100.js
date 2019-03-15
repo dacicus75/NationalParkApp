@@ -31,7 +31,7 @@ function showPosition(position) {
     console.log("longitude: " + position.coords.longitude);
     lat = position.coords.latitude;
     lon = position.coords.longitude;
-    displayParks();
+
 }
 // Grab to do list from user account
 //function getToDos() {
@@ -93,7 +93,6 @@ $("#user-signin").on("click", function() {
     $("#signin-email").val("");
     $("#signin-password").val("");
 });
-
 
 // User Sign Out
 //firebase.auth().signOut().then(function() {
@@ -241,7 +240,7 @@ function displayParks() {
         .then(function (response) {
             console.log(queryURL);
             console.log(response);
-            // var results = response.data;
+            var results = response.data;
             for (var i = 0; i < response.trails.length; i++) {
                 var parkDiv = $("<div>");
 
@@ -251,85 +250,39 @@ function displayParks() {
                 p.attr({
                     // type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
                     "type": "button",
-                    "data_name": response.trails[i].name,
-                    "data-toggle": "modal",
-                    "data-target": "#exampleModal",
+                    "data-toggle":"modal",
+                    "data-target":"#exampleModal",
                     "data_summary": response.trails[i].summary,
                     "data_image": response.trails[i].imgSmall,
                     "data_location": response.trails[i].location,
-                    "data_stars": response.trails[i].stars,
-                    "class": "test"
+                    "data_stars": response.trails[i].stars
                 });
                 parkDiv.prepend(p);
                 // $("#displayContent").prepend(parkImage);
                 $("#contentHeader").html("<h1> Trails near you </h1>");
                 $("#displayContent").prepend(parkDiv);
 
-
-
             }
-            $(".test").on('click', function () {
-                var hikeName = $(this).attr("data_name");
-                console.log(hikeName);
-                var hikeSummary = $(this).attr("data_summary");
-                console.log(hikeSummary);
-                var hikeImage = $(this).attr("data_image");
-                console.log(hikeImage);
-                var hikeLocation = $(this).attr("data_location");
-                console.log(hikeLocation)
-                var hikeStars = $(this).attr("data_stars");
-                console.log(hikeStars);
-                var parkImage = $("<img>")
-                parkImage.attr("src", hikeImage);
-                $("#ModalLabel").html(hikeName);
-                // $(".modal-image").html(hikeImage);
-                var topicImage = $("<img>");
-                topicImage.attr({
-                    "src": hikeImage,
-                    "class": 'hikePic'
-                });
-                $("img").remove();
-                // topicImage.prepend(".modal-image");
-                $(".modal-image").prepend(topicImage);
-                $(".modal-body").html(hikeSummary);
-                $(".modal-location").html("<img src= "+ "'" +hikeImage +"'" + " >");
-                $(".modal-stars").html(hikeStars);
-
-            })
+       
         }
 
         );
-    }
-    //test
+
+ 
+}
+function displayParkModal(){
+    $("p").on("click",  function () {
+//  var hikeSummary = $(this).attr("data_summary");
+//  var hikeImage = $(this).attr("data_image");
+//  var hikeLocation = $(this).attr("data_location");
+//  var hikeStars = $(this).attr("data_stars");
 
 
-
-    //test
-    // }
-    // function displayParkModal() {
-    //     $("p").on("click", function () {
-    //         var hikeName = $(this).attr("data_name");
-    //         console.loge(hikeName);
-    //         var hikeSummary = $(this).attr("data_summary");
-    //         console.loge(hikeSummary);
-    //         var hikeImage = $(this).attr("data_image");
-    //         console.loge(hikeImage);
-    //         var hikeLocation = $(this).attr("data_location");
-    //         console.loge(hikeLocation)
-    //         var hikeStars = $(this).attr("data_stars");
-    //         console.loge(hikeStars);
-    //         $("#ModalLabel").html(hikeName);
-    //         $(".modal-image").html(hikeImage);
-    //         $(".modal-body").html(hikeSummary);
-    //         $(".modal-location").html(hikeLocation);
-    //         $(".modal-stars").html(hikeStars);
-
-    //     });
+    });
 
 
-    // }
-
-    // setTimeout(displayParks, 10000);
+}
+setTimeout(displayParks, 10000);
     // displayParks();
 
 

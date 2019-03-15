@@ -100,7 +100,7 @@ body {
   padding-bottom: 4rem;
 }
 
-#contentHeader {
+#contentHeader h1{
   font-family: 'Fugaz One', cursive;
 }
 

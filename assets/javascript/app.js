@@ -278,13 +278,9 @@ function displayParks() {
             }
             $(".test").on('click', function () {
                 var hikeName = $(this).attr("data_name");
-             
                 var hikeSummary = $(this).attr("data_summary");
-            
                 var hikeImage = $(this).attr("data_image");
-              
                 var hikeLocation = $(this).attr("data_location");
-               
                 var hikeStars = $(this).attr("data_stars");
                 
                 var parkImage = $("<img>")

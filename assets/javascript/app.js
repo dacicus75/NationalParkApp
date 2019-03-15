@@ -278,6 +278,8 @@ function displayParks() {
                 console.log(hikeLocation)
                 var hikeStars = $(this).attr("data_stars");
                 console.log(hikeStars);
+                var parkImage = $("<img>")
+                parkImage.attr("src", hikeImage);
                 $("#ModalLabel").html(hikeName);
                 // $(".modal-image").html(hikeImage);
                 var topicImage = $("<img>");

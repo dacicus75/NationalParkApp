@@ -63,8 +63,6 @@ div{
 /* height: auto; */
 background-color: black;
 opacity: 0.8;
-display: grid;
-grid-template-columns: 1fr;
 border-radius: .15rem;
 }
 

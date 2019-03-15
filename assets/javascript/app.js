@@ -232,6 +232,7 @@ function displayMainPageDirections() {
 
 // if you click visit, this div is created and overwrites the content
 function displayParks() {
+    location.reload(true);
     $("p" ).remove();
     // $(".nav-item").on("click",  function () {
 
@@ -267,7 +268,7 @@ function displayParks() {
                     "data_image": response.trails[i].imgMedium,
                     "data_location": response.trails[i].location,
                     "data_stars": response.trails[i].stars,
-                    "class": "test"
+                    "class": "trails"
                 });
                 parkDiv.prepend(p);
                 // $("#displayContent").prepend(parkImage);
@@ -276,7 +277,7 @@ function displayParks() {
                 
                 
             }
-            $(".test").on('click', function () {
+            $(".trails").on('click', function () {
                 var hikeName = $(this).attr("data_name");
                 var hikeSummary = $(this).attr("data_summary");
                 var hikeImage = $(this).attr("data_image");
@@ -304,6 +305,9 @@ function displayParks() {
 
         );
     }
+    $(".test").on('click', function () {
+    
+    })
 
     $("#trail-info").hide();
     $(".user-display").hide();

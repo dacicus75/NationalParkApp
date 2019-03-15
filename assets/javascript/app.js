@@ -20,7 +20,7 @@ var lat;
 var lon;
 var userEmail;
 function getLocation() {
- 
+    // location.reload(true);
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
     } else {
@@ -233,7 +233,7 @@ function displayMainPageDirections() {
 
 // if you click visit, this div is created and overwrites the content
 function displayParks() {
-    location.reload(true);
+  
     $("p" ).remove();
     // $(".nav-item").on("click",  function () {
 

@@ -247,6 +247,7 @@ footer::before {
     grid-row: auto;
   }
   .box-2{
+    margin-top:.75rem;
     grid-row: auto;
     grid-template-columns: 1fr;
   }

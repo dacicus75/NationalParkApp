@@ -279,9 +279,17 @@ function displayParks() {
                 var hikeStars = $(this).attr("data_stars");
                 console.log(hikeStars);
                 $("#ModalLabel").html(hikeName);
-                $(".modal-image").html(hikeImage);
+                // $(".modal-image").html(hikeImage);
+                var topicImage = $("<img>");
+                topicImage.attr({
+                    "src": hikeImage,
+                    "class": 'hikePic'
+                });
+                $("img").remove();
+                // topicImage.prepend(".modal-image");
+                $(".modal-image").prepend(topicImage);
                 $(".modal-body").html(hikeSummary);
-                $(".modal-location").html("<img src= "+ "'" +hikeLocation +"'" + " >");
+                $(".modal-location").html("<img src= "+ "'" +hikeImage +"'" + " >");
                 $(".modal-stars").html(hikeStars);
 
             })

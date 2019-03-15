@@ -6,6 +6,10 @@ p {
   margin: 1.5rem;
   color: white;
 }
+img{
+ 
+   margin-left: 100px; 
+}
 
 /* .custom {
   cursor: url(../images/compass_cursor), auto;

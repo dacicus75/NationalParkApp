@@ -235,6 +235,7 @@ function displayMainPageDirections() {
 function displayParks() {
   
     $("p" ).remove();
+   
     // $(".nav-item").on("click",  function () {
 
     // debugger
@@ -279,6 +280,7 @@ function displayParks() {
                 
             }
             $(".trails").on('click', function () {
+                
                 var hikeName = $(this).attr("data_name");
                 var hikeSummary = $(this).attr("data_summary");
                 var hikeImage = $(this).attr("data_image");
@@ -295,6 +297,7 @@ function displayParks() {
                     "class": 'hikePic'
                 });
                 $("img").remove();
+               
                 // topicImage.prepend(".modal-image");
                 $(".modal-image").prepend(topicImage);
                 $(".modal-body").html(hikeSummary);
@@ -306,8 +309,42 @@ function displayParks() {
 
         );
     }
-    $(".test").on('click', function () {
-    
+
+    $("close").on('click', function () {
+        // $(".modal-message").remove();
+
+    })
+    $("#directions").on('click', function () {
+        alert("Directions coming soon");
+
+    })
+    $("#favorite").on('click', function () {
+        $(".modal-message").html("Added to Favorites");
+        setTimeout(function(){ $(".modal-message" ).hide(); }, 3000);
+        // setTimeout($(".modal-message" ).remove(), 3000);
+        // $('#exampleModal').modal("show");
+      
+        event.preventDefault();
+        //grabs the trail information from the favorite
+        var trailName = $("#ModalLabel").val().trim();
+        var trailImage = $(".modal-image").val().trim();
+        var trailSummary = $(".modal-body").val().trim();
+        var trailLocation = $(".modal-location").val().trim();
+        var trailStars = $(".modal-stars").val().trim();
+       
+        //add a new document key for each line of data added and pushes that line to a set of data
+        //doesnt overwrite the data that is there
+        database.ref().push({
+            name: trailName,
+            image:trailImage,
+            summary:trailSummary,
+            location: trailLocation,
+            rating: trailStars
+        });
+        // $('#favorite').click(function(){
+        //     $("#message").html("You Clicked on Click here Button");
+        //       $('#exampleModal').modal("show");
+        //     });
     })
 
     $("#trail-info").hide();

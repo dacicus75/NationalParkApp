@@ -25,7 +25,7 @@ p:hover {
 #main-container {
  /* min-height: 100%;*/
 }
-.modal-stars, .modal-location{
+.modal-stars, .modal-location, .modal-message{
   text-align: center;
 }
 

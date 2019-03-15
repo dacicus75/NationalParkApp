@@ -107,10 +107,12 @@ body {
   margin-bottom: 0;
   height:auto;
   
+  
 }
 
 .title-text{
     font-weight: 400;
+    font-family: 'Fugaz One', cursive;
 }
 
 .jumbotron {
@@ -178,7 +180,7 @@ nav {
   padding:.5rem;
 }
 
-#login {
+#login, #sign-in {
   
   background:#f2f2f2;
   grid-row: 1/3;

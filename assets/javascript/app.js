@@ -297,7 +297,7 @@ function displayParks() {
                     "class": 'hikePic'
                 });
                 $("img").remove();
-               
+                $(".modal-message").hide();
                 // topicImage.prepend(".modal-image");
                 $(".modal-image").prepend(topicImage);
                 $(".modal-body").html(hikeSummary);
@@ -311,7 +311,7 @@ function displayParks() {
     }
 
     $("close").on('click', function () {
-        // $(".modal-message").remove();
+        $(".modal-message").hide();
 
     })
     $("#directions").on('click', function () {
@@ -319,8 +319,9 @@ function displayParks() {
 
     })
     $("#favorite").on('click', function () {
-        $(".modal-message").html("Added to Favorites");
-        setTimeout(function(){ $(".modal-message" ).hide(); }, 3000);
+         $(".modal-message").html("Added to Favorites");
+         $(".modal-message").show();
+        
         // setTimeout($(".modal-message" ).remove(), 3000);
         // $('#exampleModal').modal("show");
       

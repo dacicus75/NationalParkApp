@@ -110,115 +110,7 @@ $("#user-signin").on("click", function () {
 //  })
 
 //  --------------------------------------------------------------------------------
-
-
-
-
-//create content with dynamic divs
-//app components
-
-//main page 
-//displays a description of that park
-function displayMainPage() {
-    $(".nav-item").on("click", function () {
-
-        var park = $(this).attr("data-park");
-        // example query
-
-        var queryURL = "https://developer.nps.gov/api/v1/parks?stateCode=" +
-            park + "&api_key=OwgdUWK3Ipvp6hzFSLfmbugYLQWBDZhNPmGqyXRq";
-
-
-        $.ajax({
-            url: queryURL,
-            method: "GET"
-        })
-
-
-            .then(function (response) {
-                console.log(queryURL);
-                console.log(response);
-                var results = response.data;
-                console.log(results);
-                var parkDiv = $("<div>");
-                var p = $("<p>").html("Park info: " + results[0].description + "<br>"); 
-                parkDiv.prepend(p);
-                $("#displayContent").prepend(parkDiv);
-            });
-
-    });
-
-}
-//when you click for directions it displays directions for that park
-//this is just an example of grabbing info from the API. The hard part will be to grab several parks from the API that are within a certain range of the user
-function displayMainPageDirections() {
-    $(".nav-item").on("click", function () {
-
-        var park = $(this).attr("data-directions");
-        // example query
-
-        var queryURL = "https://developer.nps.gov/api/v1/parks?parkCode=" +
-            park + "&api_key=OwgdUWK3Ipvp6hzFSLfmbugYLQWBDZhNPmGqyXRq";
-
-
-        $.ajax({
-            url: queryURL,
-            method: "GET"
-        })
-
-
-            .then(function (response) {
-                console.log(queryURL);
-                console.log(response);
-                var results = response.data;
-                console.log(results);
-                var parkDiv = $("<div>");
-                var p = $("<p>").html("Directions to the park: " + results[0].directionsInfo + "<br>");
-                // var topicImage = $("<img>");
-                // parkDiv.attr({
-                //     "src": results[i].images.fixed_height_still.url,
-                //     "data-still": results[i].images.fixed_height_still.url,
-                //     "data-animate": results[i].images.fixed_height.url,
-                //     "data-state": 'still',
-                //     "class": 'gif'
-                // });
-
-
-                parkDiv.prepend(p);
-                $("#displayContent").append(parkDiv);
-
-
-            });
-
-    });
-
-}
-// displayMainPage();
-// displayMainPageDirections();
-// Articles – NPS API (homepage limit 3 articles)
-// dropdown with the following
-// Find campsite/lodging/visitor center - NPS API
-// button to initiate the search for National Park services
-// Search for nearest parks - NPS API (limit 3)
-
-
-
-//individual campsite
-// Directions -google maps api
-
-
-//individual lodging
-// Directions -google maps api
-
-
-
-//individual visitor centers
-// Directions -google maps api
-
-
-
-
-
+ 
 
 // if you click visit, this div is created and overwrites the content
 function displayParks() {
@@ -240,16 +132,16 @@ function displayParks() {
 
                 var p = $("<p>").html(response.trails[i].name + "<br>");
                 // var p = $("<p>").html("Rating: " + results[i].rating + "<br>");
-                var trailLat = response.trails[i].latitude;
-                var trailLon = response.trails[i].longitude;
+                // var trailLat = response.trails[i].latitude;
+                // var trailLon = response.trails[i].longitude;
+              
+                // var directions = "https://www.google.com/maps?q=" + trailLat + "," + trailLon
 
-                var directions = "https://www.google.com/maps?q=" + trailLat + "," + trailLon
-
-                $("#location").html(directions)
+                // $("#location").html(directions)
                 p.attr({
                     // type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
                     "type": "button",
-
+                    
                     "data-lat": response.trails[i].latitude,
                     "data-lon": response.trails[i].longitude,
                     "data_name": response.trails[i].name,
@@ -296,17 +188,29 @@ function displayParks() {
             })
 
             // $("#directions").on('click', function () {
-            //     $("#location").html()
-            //     var directionsDiv = $("<div>");
-            //     directionsDiv.attr({
-            //         "src": "https://www.google.com/maps?q=" + trailLat + "," + trailLon,
-            //     })
-            //     $("#location").html(directionsDiv);
+            //     $('#iframe').attr('src', 'https://www.google.com/maps?q='+ trailLat + "," + trailLon);
+            //     // $("#location").html("<iframe src=https://www.google.com/maps?q=" + trailLat + "," + trailLon"></iframe>");
+            //     // var directionsDiv = $("<div>");
+            //     // directionsDiv.attr({
+            //     //     "src": "https://www.google.com/maps?q=" + trailLat + "," + trailLon,
+            //     // })
+            //     // $("#location").html(directionsDiv);
             // })
         }
 
         );
 }
+//opens google maps to get directions to the hiking trail
+ 
+    $("#directions").on('click', function () {
+    var trailLat = $(this).attr("data-lat");
+    console.log(trailLat);
+  
+    var trailLon = $(this).attr("data-lon");
+    console.log(trailLon);
+    window.open("https://www.google.com/maps?q=" + trailLat + "," + trailLon);
+
+    })
 // function getDirections(){
 //     var queryURL = "https://www.hikingproject.com/data/get-trails?lat=" + lat + 
 //     "&lon=" + lon + "&key=200430087-cc29846e97dd0dc3575ba8096977c1be"
@@ -336,15 +240,7 @@ $("close").on('click', function () {
 })
 
 
-
-// $("#directions").on('click', function () {
-//     $("#location").html()
-//     var directionsDiv = $("<iframe>");
-//     directionsDiv.attr({
-//         "src": "https://www.google.com/maps?q=" + trailLat + "," + trailLon,
-//     })
-//     $("#location").html(directionsDiv);
-// })
+ 
 
 $("#favorite").on('click', function () {
     $(".modal-message").html("Added to Favorites");

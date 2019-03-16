@@ -51,8 +51,6 @@
 
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <!-- <a class="nav-item nav-link active user-display" href="#" id="user-name-display"></a> -->
-                        <!-- <a class="nav-item nav-link user-display" href="#" id="your-trails">Your Trails</a> -->
                         <a class="nav-item nav-link" href="#" onclick=getLocation(); data-park="OH">Find Trails</a>
                         <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#sign-in-modal">Sign
                             In</a>
@@ -66,17 +64,7 @@
             </nav>
 
         </div>
-        <!-- <div class="btn-group">   left old nav button incase we need info or want to change back --- will delete once decided
-                    <button type="button" data-park = "acad" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" data-display="static"
-                        aria-haspopup="true" aria-expanded="false">
-                        Navigate
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-lg-right">
-                        <button class="dropdown-item" data-park = "acad" type="button">Camp Sites, Lodging, and Visitor Center</button>
-                        <button class="dropdown-item" type="button">Events</button>
-                        <button class="dropdown-item" data-directions = "acad" type="button">Directions</button>
-                    </div>
-            </div> -->
+     
         <div class="grid-wrapper">
             <div class="container box-1">
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
@@ -191,7 +179,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form id="add-new">
+                        <form id="sign-in-form">
                             <label for="email">Email</label>
                             <br>
                             <input type="email" class="input" id="signin-email" name="email"
@@ -226,7 +214,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form id="add-new">
+                        <form id="sign-up-form">
                             <label for="user-name">Name</label>
                             <br>
                             <input type="text" class="input" id="user-name" name="name" placeholder="Name">
@@ -259,32 +247,6 @@
                 <div id="add-trail-info"></div>
             </div>
 
-            <!-- <div id="login">
-                <h5 class="small-title">Sign-up</h5>
-                <form id="add-new">
-                        <label for="user-name">Name</label>
-                        <br>
-                        <input type="text" class="input" id="user-name" name="name" placeholder="Name">
-                        <br>
-                        <label for="email">Email</label>
-                        <br>
-                        <input type="email" class="input" id="user-email" name="place" placeholder="example@email.com">
-                        <br>
-                        <label for="password">Password</label>
-                        <br>
-                        <input type="password" class="input" id="user-password" name="password">
-                        <br><br>
-                        <button type="submit" value="submit" id="submit-user">Submit</button>
-                    </form>
-                    <div id="to-do">
-                        <ul id="to-do-info">
-                        
-                        </ul>
-
-                    </div> 
-             
-            </div> -->
-
             <div id="sign-in">
                 <h5 class="small-title">Your Profile</h5>
 
@@ -292,17 +254,6 @@
 
                 <h6 class="user-display" id="your-trails">Your Trails</h6>
 
-                <!-- <form id="add-new">
-                        <label for="email">Email</label>
-                        <br>
-                        <input type="email" class="input" id="signin-email" name="email" placeholder="example@email.com">
-                        <br>
-                        <label for="password">Password</label>
-                        <br>
-                        <input type="password" class="input" id="signin-password" name="password">
-                        <br><br>
-                        <button type="submit" value="submit" id="user-signin">Sign-In</button>
-                </form> -->
             </div>
 
         </div>

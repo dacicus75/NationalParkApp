@@ -229,22 +229,15 @@ function displayMainPageDirections() {
 
 
 
-//parks list page
+
+
 
 // if you click visit, this div is created and overwrites the content
 function displayParks() {
   
     $("p" ).remove();
-   
-    // $(".nav-item").on("click",  function () {
-
-    // debugger
-    // var parameters = $(this).attr("data-park");
-    // example query
-    // https://www.hikingproject.com/data/get-trails?lat=40.0274&lon=-105.2519&maxDistance=10&key=YOUR_KEY_HERE
     var queryURL = "https://www.hikingproject.com/data/get-trails?lat=" + lat + "&lon=" + lon + "&key=200430087-cc29846e97dd0dc3575ba8096977c1be"
-    // var queryURL = "https://developer.nps.gov/api/v1/parks?stateCode=" +
-    // park + "&fields=images&api_key=OwgdUWK3Ipvp6hzFSLfmbugYLQWBDZhNPmGqyXRq";
+  
 
     $.ajax({
         url: queryURL,
@@ -259,10 +252,18 @@ function displayParks() {
 
                 var p = $("<p>").html(response.trails[i].name + "<br>");
                 // var p = $("<p>").html("Rating: " + results[i].rating + "<br>");
-
+                var trailLat = response.trails[i].latitude;
+                var trailLon =response.trails[i].longitude;
+        
+                var directions = "https://www.google.com/maps?q="+trailLat+","+trailLon
+                
+                 $("#location").html(directions)
                 p.attr({
                     // type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
                     "type": "button",
+
+                    "data-lat":response.trails[i].latitude,
+                    "data-lon":response.trails[i].longitude,
                     "data_name": response.trails[i].name,
                     "data-toggle": "modal",
                     "data-target": "#exampleModal",
@@ -287,8 +288,8 @@ function displayParks() {
                 var hikeLocation = $(this).attr("data_location");
                 var hikeStars = $(this).attr("data_stars");
                 
-                var parkImage = $("<img>")
-                parkImage.attr("src", hikeImage);
+                // var parkImage = $("<img>")
+                // parkImage.attr("src", hikeImage);
                 $("#ModalLabel").html(hikeName);
                 // $(".modal-image").html(hikeImage);
                 var topicImage = $("<img>");
@@ -309,15 +310,47 @@ function displayParks() {
 
         );
     }
+    // function getDirections(){
+    //     var queryURL = "https://www.hikingproject.com/data/get-trails?lat=" + lat + 
+    //     "&lon=" + lon + "&key=200430087-cc29846e97dd0dc3575ba8096977c1be"
+  
+
+    // $.ajax({
+    //     url: queryURL,
+    //     method: "GET"
+    // })
+    // .then(function (response) {
+    //     var trailLat = response.trails[i].latitude;
+    //     var trailLon =response.trails[i].longitude;
+
+    //     var directions = "https://www.google.com/maps?q="+trailLat+","+trailLon
+        
+    //      $("#location").html(directions)
+         
+        
+        
+    //     }
+    // }
+    //     getDirections();
 
     $("close").on('click', function () {
         $(".modal-message").hide();
 
     })
+   
     $("#directions").on('click', function () {
-        alert("Directions coming soon");
+        var displayDirections =$("#directions")
+        displayDirections.attr({
+            // type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+            "type": "button",
+            "data-toggle": "modal",
+            "data-target": "#exampleModal",
+            "class": "directions"
+        });
+        // alert("Directions coming soon");
 
     })
+
     $("#favorite").on('click', function () {
          $(".modal-message").html("Added to Favorites");
          $(".modal-message").show();

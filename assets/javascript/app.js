@@ -10,6 +10,8 @@ var config = {
     messagingSenderId: "1051240529835"
 };
 firebase.initializeApp(config);
+const storageService = firebase.storage();
+const storageRef = storageService.ref();
 
 var database = firebase.database();
 // var queryURL = "https://www.hikingproject.com/data/get-" + (parameters) +"&key=200430087-cc29846e97dd0dc3575ba8096977c1be"
@@ -82,14 +84,11 @@ $("#user-signin").on("click", function () {
         email: email,
         password: password
     };
-
     console.log(userSignIn);
     $("#user-name-display").text(userSignIn.email);
     $("#user-name-display").show();
     $("#your-trails").show();
     firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
-        // Handle Errors here.
-
         var errorCode = error.code;
         var errorMessage = error.message;
         if (email || password === false) {
@@ -103,11 +102,23 @@ $("#user-signin").on("click", function () {
     $("#signin-password").val("");
 });
 
+// Keep user signed in
+
+firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+  .then(function() {
+      console.log("signed in");
+    return firebase.auth().signInWithEmailAndPassword(email, password);
+  })
+  .catch(function(error) {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+  });
 
 // User Sign Out
 //firebase.auth().signOut().then(function() {
 // Sign-out successful.
 //  })
+
 
 //  --------------------------------------------------------------------------------
  
@@ -262,6 +273,15 @@ $("close").on('click', function () {
  
 
 $("#favorite").on('click', function () {
+    var selectedTrail;
+    selectedTrail = {
+        trail: trailName,
+        image: trailImage,
+        summary: trailSummary,
+        location: trailLocation,
+        rating: trailStars
+        };
+        console.log(selectedTrail);
     $(".modal-message").html("Added to Favorites");
     $(".modal-message").show();
 

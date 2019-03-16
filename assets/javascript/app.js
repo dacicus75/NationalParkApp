@@ -185,6 +185,14 @@ function displayParks() {
                     "data_lon": longitude,
                     "class": 'btn btn-primary directions'
                 });
+                var favoritesClick = $(".favorite");
+                favoritesClick.attr({
+                    "data_name": hikeFavoriteName,
+                    "data_location": hikeFavoriteLocation,
+                    "data_summary": hikeFavoriteSummary,
+                    "data_image": hikeFavoriteImage,
+                    "class": 'btn btn-primary favorite'
+                });
 
                 $("img").remove();
                 $(".modal-message").hide();

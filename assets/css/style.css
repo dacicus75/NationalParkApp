@@ -184,25 +184,29 @@ nav {
  }
 
 .box-3 {
-  grid-gap: .5rem;
+  /* grid-gap: .5rem; */
    grid-template-columns: 1fr /*1fr*/;
   grid-auto-rows: minmax(100px, auto); 
-  margin: .25rem auto 1rem;
+  margin: .25rem 1rem 1rem;
   padding:1rem;
+  background: #f2f2f2;
+  border-radius: .15rem;
 }
-
+.user-display {
+  font-size: .75rem;
+}
 .small-title {
   text-align: center;
   font-weight:500;
 }
 
- #your-profile { 
+ /* #your-profile { 
   
   background:#f2f2f2;
   /* grid-row: 1/3; */
-  padding:.5rem;
+  /* padding:.5rem;
   border-radius: .15rem;
-}
+} */ 
 
 #pageQuotes p{
   pointer-events: none;
@@ -215,6 +219,7 @@ footer::before {
 }
 .footer {
   width: 100%;
+  opacity: .8;
   text-align: center;
   height: 4rem;
   background: black;

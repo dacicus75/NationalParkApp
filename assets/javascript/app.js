@@ -352,31 +352,36 @@ function createFavoritesButtons() {
         var trailLat = document.val().latitude;
         var trailStars = document.val().rating;
 
-        $("#ModalLabel").html(hikeName);
+        var trailFavoriteDiv = $("<div>");
+
+        var p = $("<p>").html(trailName + "<br>");
+      
+        $("#ModalLabel").html(trailName);
         // $(".modal-image").html(hikeImage);
         var topicImage = $("<img>");
         topicImage.attr({
-            "src": hikeImage,
+            "src": trailImage,
             "class": 'hikePic'
         });
         var directionsClick = $(".directions");
         directionsClick.attr({
-            "data_lat": latitude,
-            "data_lon": longitude,
+            "data_lat": trailLon,
+            "data_lon": trailLat,
             "class": 'btn btn-primary directions'
         });
         var favoritesClick = $("#favorite");
         favoritesClick.attr({
-            "data_lat": latitude,
-            "data_lon": longitude,
-            "data_name": hikeName,
-            "data_location": hikeLocation,
-            "data_summary": hikeSummary,
-            "data_image": hikeImage
-
+            "data_lat": trailLat,
+            "data_lon": trailLon,
+            "data_name": TrailName,
+            "data_location": trailLocation,
+            "data_summary": trailSummary,
+            "data_image": trailImage,
+            "data_stars": trailStars
         });
 
-
+        trailFavoriteDiv.prepend(p);
+        $("#your-profile").append(trailFavoriteDiv);
     });
 }
 

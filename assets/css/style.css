@@ -210,6 +210,8 @@ nav {
 
 footer::before {
   clear:both;
+  display: table;
+  content: "";
 }
 .footer {
   width: 100%;

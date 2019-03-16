@@ -185,13 +185,13 @@ function displayParks() {
                     "data_lon": longitude,
                     "class": 'btn btn-primary directions'
                 });
-                var favoritesClick = $(".favorite");
+                var favoritesClick = $("#favorite");
                 favoritesClick.attr({
                     "data_name": hikeName,
                     "data_location": hikeLocation,
                     "data_summary": hikeSummary,
-                    "data_image": hikeImage,
-                    "class": 'btn btn-primary favorite'
+                    "data_image": hikeImage
+                    // "class": 'btn btn-primary favorite'
                 });
 
                 $("img").remove();
@@ -270,12 +270,17 @@ $("#favorite").on('click', function () {
 
     event.preventDefault();
     //grabs the trail information from the favorite
-    var trailName = $("#ModalLabel").val().trim();
-    var trailImage = $(".modal-image").val().trim();
-    var trailSummary = $(".modal-body").val().trim();
-    var trailLocation = $(".modal-location").val().trim();
-    var trailStars = $(".modal-stars").val().trim();
-
+    // "data_name": hikeName,
+    // "data_location": hikeLocation,
+    // "data_summary": hikeSummary,
+    // "data_image": hikeImage
+    var trailName =$(this).attr("data_name");
+    var trailImage = $(this).attr("data_image");
+    var trailSummary = $(this).attr("data_summary");
+    var trailLocation = $(this).attr("data_location");
+ 
+    // var data = $(this).attr("#favorite");
+    console.log(trailImage);
     //add a new document key for each line of data added and pushes that line to a set of data
     //doesnt overwrite the data that is there
     database.ref().push({
@@ -283,8 +288,9 @@ $("#favorite").on('click', function () {
         image: trailImage,
         summary: trailSummary,
         location: trailLocation,
-        rating: trailStars
+       
     });
+   
     // $('#favorite').click(function(){
     //     $("#message").html("You Clicked on Click here Button");
     //       $('#exampleModal').modal("show");

@@ -190,7 +190,7 @@ function displayParks() {
                 $(".modal-message").hide();
                 // topicImage.prepend(".modal-image");
                 $(".modal-image").prepend(topicImage);
-                $(".modal-body").html(hikeSummary);
+                $("#hikeSummary").html(hikeSummary);
                 $(".modal-location").html("Location: " + hikeLocation);
                 $(".modal-stars").html("Trail rating: " + hikeStars + " stars");
 

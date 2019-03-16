@@ -124,6 +124,8 @@ firebase.auth().onAuthStateChanged(function (user) {
         console.log('no user info');
     }
 });
+<<<<<<< HEAD
+=======
 
   $('body').on('click', '[data-target="#sign-out-modal"]', function(){
     firebase.auth().signOut().then(function() {
@@ -135,6 +137,7 @@ firebase.auth().onAuthStateChanged(function (user) {
       $('.navbar-nav').append('<a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#sign-in-modal">Sign In</a>');
       $('.navbar-nav').append('<a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#sign-up-modal">Sign Up</a>');
   })
+>>>>>>> 93cae92ba5c7b8f9bb29ec0221fad9146a7f0cba
 
 // User Sign Out
 //firebase.auth().signOut().then(function() {
@@ -216,8 +219,13 @@ function displayParks() {
                     "data_name": hikeName,
                     "data_location": hikeLocation,
                     "data_summary": hikeSummary,
+<<<<<<< HEAD
+                    "data_image": hikeImage
+
+=======
                     "data_image": hikeImage,
                     "data_stars": hikeStars
+>>>>>>> 93cae92ba5c7b8f9bb29ec0221fad9146a7f0cba
                 });
 
                 $(".hikePic").remove();
@@ -249,6 +257,17 @@ $("close").on('click', function () {
 
 })
 $("#favorite").on('click', function () {
+<<<<<<< HEAD
+    var selectedTrail;
+    selectedTrail = {
+        trail: trailName,
+        image: trailImage,
+        summary: trailSummary,
+        location: trailLocation,
+        rating: trailStars
+    };
+    console.log(selectedTrail);
+=======
     // var selectedTrail;
     // selectedTrail = {
     //     trail: trailName,
@@ -258,6 +277,7 @@ $("#favorite").on('click', function () {
     //     rating: trailStars
     // };
     // console.log(selectedTrail);
+>>>>>>> 93cae92ba5c7b8f9bb29ec0221fad9146a7f0cba
     $(".modal-message").html("Added to Favorites");
     $(".modal-message").show();
     event.preventDefault();
@@ -342,7 +362,11 @@ function getLatLong() {
 function createFavoritesButtons() {
 
     database.ref().on("child_added", function (document) {
+<<<<<<< HEAD
+        recordCount += 1;
+=======
        
+>>>>>>> 93cae92ba5c7b8f9bb29ec0221fad9146a7f0cba
 
         var trailName = document.val().name;
         var trailImage = document.val().image;
@@ -419,4 +443,3 @@ function createFavoritesButtons() {
     //     location.reload();
     // }
 //  --------------------------------------------------------------------------------
-

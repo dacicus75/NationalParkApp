@@ -343,7 +343,7 @@ function getLatLong() {
     });
 }
 
-$("#your-profile").hide();
+// $("#your-profile").hide();
     //test
 
 

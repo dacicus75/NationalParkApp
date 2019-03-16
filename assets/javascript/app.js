@@ -185,12 +185,20 @@ function displayParks() {
                     "data_lon": longitude,
                     "class": 'btn btn-primary directions'
                 });
+                var favoritesClick = $(".favorite");
+                favoritesClick.attr({
+                    "data_name": hikeName,
+                    "data_location": hikeLocation,
+                    "data_summary": hikeSummary,
+                    "data_image": hikeImage,
+                    "class": 'btn btn-primary favorite'
+                });
 
                 $("img").remove();
                 $(".modal-message").hide();
                 // topicImage.prepend(".modal-image");
                 $(".modal-image").prepend(topicImage);
-                $(".modal-body").html(hikeSummary);
+                $("#hikeSummary").html(hikeSummary);
                 $(".modal-location").html("Location: " + hikeLocation);
                 $(".modal-stars").html("Trail rating: " + hikeStars + " stars");
 

@@ -193,8 +193,9 @@ nav {
   grid-auto-rows: minmax(100px, auto); 
   margin: .25rem 1rem 1rem;
   padding:1rem;
-  background: #f2f2f2;
+  background: #098535;
   border-radius: .15rem;
+  opacity: 0.8;
 }
 .user-display {
   font-size: .75rem;

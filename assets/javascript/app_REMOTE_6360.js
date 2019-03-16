@@ -106,35 +106,23 @@ $("#user-signin").on("click", function () {
 // Keep user signed in
 
 firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
-    .then(function () {
-        return firebase.auth().signInWithEmailAndPassword(email, password);
-    })
-    .catch(function (error) {
-        var errorCode = error.code;
-        var errorMessage = error.message;
-    })
+  .then(function() {
+    return firebase.auth().signInWithEmailAndPassword(email, password);
+  })
+  .catch(function(error) {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+  })
 
-firebase.auth().onAuthStateChanged(function (user) {
+  firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         $('[data-target="#sign-in-modal"]').remove();
         $('[data-target="#sign-up-modal"]').remove();
-        $('.navbar-nav').append("<a class='nav-item nav-link' href='#' data-toggle='modal' data-target='#sign-out-modal'>Sign Out</a>")
         console.log("user signed in");
     } else {
         console.log('no user info');
     }
-});
-
-  $('body').on('click', '[data-target="#sign-out-modal"]', function(){
-    firebase.auth().signOut().then(function() {
-        console.log("sign out successful");
-      }).catch(function(error) {
-          console.log(error);
-      });
-      $('[data-target="#sign-out-modal"]').remove();
-      $('.navbar-nav').append('<a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#sign-in-modal">Sign In</a>');
-      $('.navbar-nav').append('<a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#sign-up-modal">Sign Up</a>');
-  })
+  });
 
 // User Sign Out
 //firebase.auth().signOut().then(function() {
@@ -143,7 +131,7 @@ firebase.auth().onAuthStateChanged(function (user) {
 
 
 //  --------------------------------------------------------------------------------
-
+ 
 
 // if you click visit, this div is created and overwrites the content
 function displayParks() {
@@ -186,8 +174,8 @@ function displayParks() {
 
             }
             $(".trails").on('click', function () {
-                var latitude = $(this).attr("data-lat");
-                var longitude = $(this).attr("data-lon");
+                var latitude =$(this).attr("data-lat");
+                var longitude =$(this).attr("data-lon");
                 var hikeName = $(this).attr("data_name");
                 var hikeSummary = $(this).attr("data_summary");
                 var hikeImage = $(this).attr("data_image");
@@ -216,8 +204,8 @@ function displayParks() {
                     "data_name": hikeName,
                     "data_location": hikeLocation,
                     "data_summary": hikeSummary,
-                    "data_image": hikeImage,
-                    "data_stars": hikeStars
+                    "data_image": hikeImage
+                   
                 });
 
                 $(".hikePic").remove();
@@ -234,41 +222,41 @@ function displayParks() {
         );
 }
 
-$(".directions").on('click', function () {
+    $(".directions").on('click', function () {
     var trailLat = $(this).attr("data_lat");
     console.log(this);
     console.log(trailLat);
-
+  
     var trailLon = $(this).attr("data_lon");
     console.log(trailLon);
     window.open("https://www.google.com/maps?q=" + trailLat + "," + trailLon);
 
-})
+    })
 $("close").on('click', function () {
     $(".modal-message").hide();
 
 })
 $("#favorite").on('click', function () {
-    // var selectedTrail;
-    // selectedTrail = {
-    //     trail: trailName,
-    //     image: trailImage,
-    //     summary: trailSummary,
-    //     location: trailLocation,
-    //     rating: trailStars
-    // };
-    // console.log(selectedTrail);
+    var selectedTrail;
+    selectedTrail = {
+        trail: trailName,
+        image: trailImage,
+        summary: trailSummary,
+        location: trailLocation,
+        rating: trailStars
+        };
+        console.log(selectedTrail);
     $(".modal-message").html("Added to Favorites");
     $(".modal-message").show();
     event.preventDefault();
     var trailLon = $(this).attr("data_lon");
     var trailLat = $(this).attr("data_lat");
-    var trailName = $(this).attr("data_name");
+    var trailName =$(this).attr("data_name");
     var trailImage = $(this).attr("data_image");
     var trailSummary = $(this).attr("data_summary");
     var trailLocation = $(this).attr("data_location");
     var trailStars = $(this).attr("data_stars");
-
+ 
     // var data = $(this).attr("#favorite");
     console.log(trailImage);
     //add a new document key for each line of data added and pushes that line to a set of data
@@ -279,7 +267,7 @@ $("#favorite").on('click', function () {
         summary: trailSummary,
         location: trailLocation,
         longitude: trailLon,
-        latitude: trailLat,
+        latitude: trailLat,  
         rating: trailStars
     });
 })
@@ -337,48 +325,9 @@ function getLatLong() {
 }
 
 // $("#your-profile").hide();
-//test
-
-function createFavoritesButtons() {
-
-    database.ref().on("child_added", function (document) {
-       
-
-        var trailName = document.val().name;
-        var trailImage = document.val().image;
-        var trailSummary = document.val().summary;
-        var trailLocation = document.val().location;
-        var trailLon = document.val().longitude;
-        var trailLat = document.val().latitude;
-        var trailStars = document.val().rating;
-
-        $("#ModalLabel").html(hikeName);
-        // $(".modal-image").html(hikeImage);
-        var topicImage = $("<img>");
-        topicImage.attr({
-            "src": hikeImage,
-            "class": 'hikePic'
-        });
-        var directionsClick = $(".directions");
-        directionsClick.attr({
-            "data_lat": latitude,
-            "data_lon": longitude,
-            "class": 'btn btn-primary directions'
-        });
-        var favoritesClick = $("#favorite");
-        favoritesClick.attr({
-            "data_lat": latitude,
-            "data_lon": longitude,
-            "data_name": hikeName,
-            "data_location": hikeLocation,
-            "data_summary": hikeSummary,
-            "data_image": hikeImage
-
-        });
+    //test
 
 
-    });
-}
 
     //test
     // }

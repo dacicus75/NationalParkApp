@@ -360,7 +360,7 @@ function createFavoritesButtons() {
             // type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
             "type": "button",
             "data-toggle": "modal",
-            "data-target": "#exampleModal", 
+            "data-target": "#favoritesModal", 
             "data_lat": trailLat,
             "data_lon": trailLon,
             "data_name": trailName,
@@ -368,7 +368,7 @@ function createFavoritesButtons() {
             "data_summary": trailSummary,
             "data_image": trailImage,
             "data_stars": trailStars,
-            "class": "favoritetrails"
+            "class": "favoriteTrails"
         });
       
         $("#ModalLabel").html(trailName);
@@ -380,21 +380,21 @@ function createFavoritesButtons() {
         });
         var directionsClick = $(".directions");
         directionsClick.attr({
-            "data_lat": trailLon,
-            "data_lon": trailLat,
+            "data_lat": trailLat,
+            "data_lon":trailLon,
             "class": 'btn btn-primary directions'
         });
-        // var favoritesClick = $("#favorite");
-        // favoritesClick.attr({
+        var favoritesClick = $("#favorite");
+        favoritesClick.attr({
 
-        //     "data_lat": trailLat,
-        //     "data_lon": trailLon,
-        //     "data_name": trailName,
-        //     "data_location": trailLocation,
-        //     "data_summary": trailSummary,
-        //     "data_image": trailImage,
-        //     "data_stars": trailStars
-        // });
+            "data_lat": trailLat,
+            "data_lon": trailLon,
+            "data_name": trailName,
+            "data_location": trailLocation,
+            "data_summary": trailSummary,
+            "data_image": trailImage,
+            "data_stars": trailStars
+        });
 
         trailFavoriteDiv.prepend(p);
         $("#your-profile").append(trailFavoriteDiv);

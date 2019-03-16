@@ -29,7 +29,7 @@
         <div id="jumbotron">
             <div class="jumbotron jumbotron-fluid">
                 <div class="container" id="title-box">
-                    <h1 class="display-4 text-white text-center title-text">Hit the Trails</h1>
+                    <h1 class="display-4 text-white text-center title-text">Hit the Trails  <img id="hikerImageHeader" src="assets/images/hiker2.png" alt=""></h1>
 
                     <h3 id="title-p" class="lead text-white title-text text-center">Explore new Hiking Trails</h3>
                 </div>
@@ -60,7 +60,7 @@
             </nav>
 
         </div>
-     
+
         <div class="grid-wrapper">
             <div class="container box-1">
                 <div class="modal fade hike" id="exampleModal" tabindex="-1" role="dialog"
@@ -89,189 +89,238 @@
                             <div class="modal-message"></div>
                             <div class="modal-footer">
                                 <div>
-                                        <!-- onclick=getDirections(); -->
+                                    <!-- onclick=getDirections(); -->
                                 </div>
-                                <button type="button"  class="btn btn-primary directions"
+                                <button type="button" class="btn btn-primary directions"
                                     id="directions">Directions</button>
 
-                                <button type="button" class="btn btn-primary favorite"  id="favorite">Favorite</button>
+                                <button type="button" class="btn btn-primary favorite" id="favorite">Favorite</button>
                                 <!-- onclick=createFavoritesButtons(); -->
-                              
+
                                 <button type="button" class="btn btn-secondary" id="close"
                                     data-dismiss="modal">Close</button>
                             </div>
                         </div>
                     </div>
+
                 </div>
 
 
-                <div class="container-fluid text-center " id="media-q">
-                    <div id=contentHeader>
-                        <h1>
-                            <!---->
-                        </h1>
-                    </div>
-                    <div class="row content">
+                <div class="container box-1 favorites">
+                    <div class="modal fade favorites" id="favoritesModal" tabindex="-1" role="dialog"
+                        aria-labelledby="favoritesModalLabel" aria-hidden="true">
+                        <div class="modal-dialog favorites" role="document">
+                            <div class="modal-content favorites">
+                                <div class="modal-header favorites">
+                                    <h5 class="modal-title hike" id="ModalLabel">Are you sure?</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-image">
+                                    <!-- dynamic images porepend here -->
+                                </div>
+                                <div class="modal-body" id="favoritesSummary">
+                                    Favorites Api connection is broken
+                                </div>
+                                <div class="modal-stars">
+                                    Favorites Api connection is broken
+                                </div>
+                                <div class="modal-location">
+                                    Favorites Api connection is broken
+                                </div>
 
-                        <div class="col-md-12 appContent">
+                                <div class="modal-message"></div>
+                                <div class="modal-footer">
+                                    <div>
+                                        <!-- onclick=getDirections(); -->
+                                    </div>
+                                    <button type="button" class="btn btn-primary directions"
+                                        id="directions">Directions</button>
 
-                            <div id="displayContent"></div>
-                            <div id="pageQuotes">
-                                <p class="page-quotes"><q>In the presence of nature, a wild delight runs through the
-                                        man, in spite of real sorrows. </q> –Ralph Waldo Emerson</p>
-                                <p class="page-quotes"><q>Look deep into nature, and then you will understand everything
-                                        better. </q> –Albert Einstein</p>
-                                <p class="page-quotes"><q>It is not so much for its beauty that the forest makes a claim
-                                        upon men’s hearts, as for that subtle something, that quality of air that
-                                        emanation
-                                        from old trees, that so wonderfully changes and renews a weary spirit.
-                                    </q>–Robert Louis Stevenson</p>
-                                <p class="page-quotes"><q>Earth and sky, woods and fields, lakes and rivers, the
-                                        mountain and the sea, are excellent schoolmasters, and teach of us more than we
-                                        can ever learn from books.</q> –John Lubbock</p>
-                                <p class="page-quotes"><q>The beauty and charm of the wilderness are his for the asking,
-                                        for the edges of the wilderness lie close beside the beaten roads of the present
-                                        travel.</q> -Theodore Roosevelt</p>
+                                    <button type="button" class="btn btn-secondary" id="close"
+                                        data-dismiss="modal">Close</button>
+                                </div>
                             </div>
-                            <div class="display"></div>
-
                         </div>
                     </div>
 
+
+                    <div class="container-fluid text-center " id="media-q">
+                        <div id=contentHeader>
+                            <h1>
+                                <!---->
+                            </h1>
+                        </div>
+                        <div class="row content">
+
+                            <div class="col-md-12 appContent">
+
+                                <div id="displayContent"></div>
+                                <div id="pageQuotes">
+                                    <p class="page-quotes"><q>In the presence of nature, a wild delight runs through the
+                                            man, in spite of real sorrows. </q> –Ralph Waldo Emerson</p>
+                                    <p class="page-quotes"><q>Look deep into nature, and then you will understand
+                                            everything
+                                            better. </q> –Albert Einstein</p>
+                                    <p class="page-quotes"><q>It is not so much for its beauty that the forest makes a
+                                            claim
+                                            upon men’s hearts, as for that subtle something, that quality of air that
+                                            emanation
+                                            from old trees, that so wonderfully changes and renews a weary spirit.
+                                        </q>–Robert Louis Stevenson</p>
+                                    <p class="page-quotes"><q>Earth and sky, woods and fields, lakes and rivers, the
+                                            mountain and the sea, are excellent schoolmasters, and teach of us more than
+                                            we
+                                            can ever learn from books.</q> –John Lubbock</p>
+                                    <p class="page-quotes"><q>The beauty and charm of the wilderness are his for the
+                                            asking,
+                                            for the edges of the wilderness lie close beside the beaten roads of the
+                                            present
+                                            travel.</q> -Theodore Roosevelt</p>
+                                </div>
+                                <div class="display"></div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div>
 
-            </div>
+
+                <div class="secondary-info container-fluid grid box-2">
 
 
-            <div class="secondary-info container-fluid grid box-2">
-               
-               
-               <!--  -->
-               
-               
-                <div id="location">
-                    <h6>auto loaded content? possilbe turn on location service with map image</h6>
-                  
-                </div>
+                    <!--  -->
 
-                <!-- <div class="container"> -->
+
+                    <div id="location">
+                        <h6>auto loaded content? possilbe turn on location service with map image</h6>
+
+                    </div>
+
+                    <!-- <div class="container"> -->
                     <!-- <div id="heading">
                       
                     </div> -->
                     <!-- <div class="row"> -->
-                        <!-- <div class="col-md-6 col-xs-8 col-xs-push-2 col-md-push-3"> -->
-                <div class="weather ">
-                            
-                    <h4 id="weather-text"><span class="city"></span>, <span class="country"></span></h4>
-                    
-                    <h4 class="temp"></h4>
+                    <!-- <div class="col-md-6 col-xs-8 col-xs-push-2 col-md-push-3"> -->
+                    <div class="weather ">
 
-                    <div class="iconpic" >
-                        <img id=" weatherImage" src=""> <!--<class='img img-responsive center-block'-->
+                        <h4 id="weather-text"><span class="city"></span>, <span class="country"></span></h4>
+
+                        <h4 class="temp"></h4>
+
+                        <div class="iconpic">
+                            <img id=" weatherImage" src="">
+                            <!--<class='img img-responsive center-block'-->
+                        </div>
+
+                        <h4 class="weatherDetail"></h4>
                     </div>
-                    
-                    <h4 class="weatherDetail"></h4>
-                </div>
                     <!-- </div>weather -->
-            </div>
-                    <!-- </div>row -->
-                    
+                </div>
+                <!-- </div>row -->
 
 
-        <!-- creating sign in modal -->
 
-        <div class="modal fade" id="sign-in-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Sign In</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                <!-- creating sign in modal -->
+
+                <div class="modal fade" id="sign-in-modal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Sign In</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="sign-in-form">
+                                    <label for="email">Email</label>
+                                    <br>
+                                    <input type="email" class="input" id="signin-email" name="email"
+                                        placeholder="example@email.com">
+                                    <br>
+                                    <label for="password">Password</label>
+                                    <br>
+                                    <input type="password" class="input" id="signin-password" name="password">
+                                    <br><br>
+                                    <!-- <button type="submit" value="submit" Sign-In</button> -->
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">No Thanks</button>
+                                <button type="button" class="btn btn-primary" id="user-signin" data-dismiss="modal">Sign
+                                    In</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        <form id="sign-in-form">
-                            <label for="email">Email</label>
-                            <br>
-                            <input type="email" class="input" id="signin-email" name="email"
-                                placeholder="example@email.com">
-                            <br>
-                            <label for="password">Password</label>
-                            <br>
-                            <input type="password" class="input" id="signin-password" name="password">
-                            <br><br>
-                            <!-- <button type="submit" value="submit" Sign-In</button> -->
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No Thanks</button>
-                        <button type="button" class="btn btn-primary" id="user-signin" data-dismiss="modal">Sign
-                            In</button>
+                </div>
+
+                <!-- sign up modal -->
+
+                <div class="modal fade" id="sign-up-modal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="sign-up-form">
+                                    <label for="user-name">Name</label>
+                                    <br>
+                                    <input type="text" class="input" id="user-name" name="name" placeholder="Name">
+                                    <br>
+                                    <label for="email">Email</label>
+                                    <br>
+                                    <input type="email" class="input" id="user-email" name="place"
+                                        placeholder="example@email.com">
+                                    <br>
+                                    <label for="password">Password</label>
+                                    <br>
+                                    <input type="password" class="input" id="user-password" name="password">
+                                    <br><br>
+                                    <!-- <button type="submit" value="submit" id="submit-user">Submit</button> -->
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">No Thanks</button>
+                                <button type="button" class="btn btn-primary" id="submit-user" data-dismiss="modal">Sign
+                                    up</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+            <!--grid wrapper-->
 
-        <!-- sign up modal -->
+            <div class=" box-3" id="your-profile">
+                <h5 class="small-title">Your Profile</h5>
+                <div class="grid" id="profile-info">
+                    <div id="signed-in">
+                        <h6 class="user-display">User : <span id="user-name-display"></span></h6>
+                        <img id="hikerImage" src="assets/images/hiker2.png" alt="">
+                    </div>
+                    <div id="profile-trails">
+                       
 
-        <div class="modal fade" id="sign-up-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form id="sign-up-form">
-                            <label for="user-name">Name</label>
-                            <br>
-                            <input type="text" class="input" id="user-name" name="name" placeholder="Name">
-                            <br>
-                            <label for="email">Email</label>
-                            <br>
-                            <input type="email" class="input" id="user-email" name="place"
-                                placeholder="example@email.com">
-                            <br>
-                            <label for="password">Password</label>
-                            <br>
-                            <input type="password" class="input" id="user-password" name="password">
-                            <br><br>
-                            <!-- <button type="submit" value="submit" id="submit-user">Submit</button> -->
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No Thanks</button>
-                        <button type="button" class="btn btn-primary" id="submit-user" data-dismiss="modal">Sign
-                            up</button>
                     </div>
                 </div>
+                <h6 class="user-display" id="your-trails">Your Trails :</h6>
             </div>
-        </div>
-    </div> <!--grid wrapper-->
-        
-    <div class=" box-3"id="your-profile">
-            <h5 class="small-title">Your Profile</h5>
-            <div class="grid" id="profile-info">
-                <div id="signed-in">
-                    <h6 class="user-display">User : <span  id="user-name-display"></span></h6>
-                        <img id="hikerImage" src="assets/images/hiker.png" alt="">
-                </div>
-                <div id="profile-trails">
-                    <h6 class="user-display" id="your-trails">Your Trails :</h6>
-                        
-                </div>
-            </div>
-    </div>
 
 
 
-        <footer class="footer">Hit the Trails &copy2019</footer>
-    
-    <script src="assets/javascript/app.js"></script>
+            <footer class="footer">Hit the Trails &copy2019</footer>
+
+            <script src="assets/javascript/app.js"></script>
 </body>
 
 </html>

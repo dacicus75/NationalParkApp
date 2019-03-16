@@ -187,10 +187,10 @@ function displayParks() {
                 });
                 var favoritesClick = $(".favorite");
                 favoritesClick.attr({
-                    "data_name": hikeFavoriteName,
-                    "data_location": hikeFavoriteLocation,
-                    "data_summary": hikeFavoriteSummary,
-                    "data_image": hikeFavoriteImage,
+                    "data_name": hikeName,
+                    "data_location": hikeLocation,
+                    "data_summary": hikeSummary,
+                    "data_image": hikeImage,
                     "class": 'btn btn-primary favorite'
                 });
 

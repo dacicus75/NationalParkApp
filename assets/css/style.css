@@ -11,6 +11,10 @@ img{
  height: auto;
    /* margin-left: 100px;  */
 }
+.hikePic{
+  width:100%;
+  height: auto;
+}
 
 /* .custom {
   cursor: url(../images/compass_cursor), auto;

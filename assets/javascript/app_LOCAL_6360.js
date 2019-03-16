@@ -336,7 +336,7 @@ function getLatLong() {
     });
 }
 
-// $("#your-profile").hide();
+$("#your-profile").hide();
     //test
 
 
@@ -363,8 +363,6 @@ function getLatLong() {
 
     //     });
 
-// }
-// });
 
 // -------------------------------------------------------------------------------------------
 // to delete hike favorite

@@ -118,23 +118,11 @@ firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
     if (user) {
         $('[data-target="#sign-in-modal"]').remove();
         $('[data-target="#sign-up-modal"]').remove();
-        $('.navbar-nav').append("<a class='nav-item nav-link' href='#' data-toggle='modal' data-target='#sign-out-modal'>Sign Out</a>")
         console.log("user signed in");
     } else {
         console.log('no user info');
     }
   });
-
-  $('body').on('click', '[data-target="#sign-out-modal"]', function(){
-    firebase.auth().signOut().then(function() {
-        console.log("sign out successful");
-      }).catch(function(error) {
-          console.log(error);
-      });
-      $('[data-target="#sign-out-modal"]').remove();
-      $('.navbar-nav').append('<a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#sign-in-modal">Sign In</a>');
-      $('.navbar-nav').append('<a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#sign-up-modal">Sign Up</a>');
-  })
 
 // User Sign Out
 //firebase.auth().signOut().then(function() {
@@ -336,7 +324,7 @@ function getLatLong() {
     });
 }
 
-// $("#your-profile").hide();
+$("#your-profile").hide();
     //test
 
 
@@ -363,8 +351,8 @@ function getLatLong() {
 
     //     });
 
-// }
-// });
+}
+});
 
 // -------------------------------------------------------------------------------------------
 // to delete hike favorite

@@ -189,15 +189,27 @@ nav {
 
 .box-3 {
   /* grid-gap: .5rem; */
-   grid-template-columns: 1fr /*1fr*/;
+   grid-template-columns: 1fr ;
   grid-auto-rows: minmax(100px, auto); 
   margin: .25rem 1rem 1rem;
   padding:1rem;
-  background: #f2f2f2;
+  background: #098535;
   border-radius: .15rem;
+  opacity: 0.8;
 }
 .user-display {
   font-size: .75rem;
+}
+#profile-info {
+  grid-template-columns: 1fr 1fr;
+}
+
+#signed-in {
+  grid-template-columns: 1fr;
+}
+
+#profile-trails {
+  grid-template-columns: 1fr;
 }
 .small-title {
   text-align: center;
@@ -252,6 +264,12 @@ footer::before {
   max-width: 150px;
   max-height: 150px;
 } 
+
+#hikerImage {
+  margin-left: 1rem;
+  max-height: 100px;
+  max-width: 100px;
+}
 /* added some media queries */
 @media (min-width: 900px){
 
@@ -283,4 +301,10 @@ footer::before {
     max-width: 250px;
     max-height: 250px;
   } 
+
+  #hikerImage {
+    margin-left: 4rem;
+    max-height: 100px;
+    max-width: 100px;
+  }
 }

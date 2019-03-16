@@ -100,18 +100,28 @@ $("#user-signin").on("click", function () {
     });
     $("#signin-email").val("");
     $("#signin-password").val("");
-});
+
+})
 
 // Keep user signed in
 
 firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
   .then(function() {
-      console.log("signed in");
     return firebase.auth().signInWithEmailAndPassword(email, password);
   })
   .catch(function(error) {
     var errorCode = error.code;
     var errorMessage = error.message;
+  })
+
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+        $('[data-target="#sign-in-modal"]').remove();
+        $('[data-target="#sign-up-modal"]').remove();
+        console.log("user signed in");
+    } else {
+        console.log('no user info');
+    }
   });
 
 // User Sign Out
@@ -314,7 +324,7 @@ function getLatLong() {
     });
 }
 
-$("#your-profile").hide();
+// $("#your-profile").hide();
     //test
 
 

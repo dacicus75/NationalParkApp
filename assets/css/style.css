@@ -31,11 +31,9 @@ p:hover {
 
 .pointer{ 
   cursor: pointer;
- } 
+ }  
 
- 
-
-h1, h2{
+h1, h2, h3, h4 {
     color:#ffffff;
 }
 #modalComment{
@@ -45,37 +43,34 @@ html {
   height: 100%;
 }
 .btn{
-    margin: 1rem;
-    background: black;
-    /* background-color: grey !important; */
-    border: 1px solid black;  
+  margin: 1rem;
+  background: black;
+  /* background-color: grey !important; */
+  border: 1px solid black;  
 
 }
 div{
-    height: auto;
+  height: auto;
 }
 
 .btn:hover, .btn-primary:visited, .btn-primary:focus, .btn-primary:active {
-    background-color: grey !important;
-    border: 1px solid black; 
- 
+  background-color: grey !important;
+  border: 1px solid black; 
+
 }
 
-.appContent{
-  /* width: auto; */
-/* width: 100%; */
-/* height: auto; */
+.appContent {
 background-color: black;
 opacity: 0.8;
 border-radius: .15rem;
 }
 
 .displayImage{
-    height: 200px;
-    width: 200px;
-    border: 1px solid yellow; 
-    float: left;
-    margin: 1rem .5rem;
+  height: 200px;
+  width: 200px;
+  border: 1px solid yellow; 
+  float: left;
+  margin: 1rem .5rem;
 }
 
 .displayImage::after {
@@ -155,7 +150,7 @@ nav {
 /*added this div with info so we could maybe have some pre loaded content*/
 .secondary-info {
   grid-gap: .5rem;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr ;
   grid-auto-rows: minmax(100px, auto); 
   margin: .5rem auto .25rem;
 
@@ -164,8 +159,9 @@ nav {
 #location {
   background:black;
   opacity: 0.8;
-  grid-column: 1/2;
-  grid-row: 1/3;
+  /* grid-column: 1/2; */
+  /* grid-row: 1/3; */
+  grid-template-columns: 1fr;
   padding:.5rem;
   border-radius: .15rem;
 }
@@ -175,11 +171,17 @@ nav {
 
  .weather { 
    background: black; 
+   grid-template-columns: 1fr;
    opacity: 0.8; 
-   grid-row: 1/3; 
+   grid-row: auto; 
    padding: .5rem; 
    border-radius: .15rem; 
  } 
+
+ .box-2 {
+   grid-gap: .5rem;
+  
+ }
 
 .box-3 {
   grid-gap: .5rem;
@@ -194,30 +196,17 @@ nav {
   font-weight:500;
 }
 
-#trail-info {
-  background:#f2f2f2;
-  grid-column: 1/2;
-  grid-row: 1/3;
-  padding:.5rem;
-  border-radius: .15rem;
-}
-
-/* #login,*/ #sign-in { 
+ #your-profile { 
   
   background:#f2f2f2;
-  grid-row: 1/3;
+  /* grid-row: 1/3; */
   padding:.5rem;
   border-radius: .15rem;
-}
-
-#login form {
-  display: block;
 }
 
 #pageQuotes p{
   pointer-events: none;
 }
-
 
 footer::before {
   clear:both;
@@ -249,9 +238,9 @@ footer::before {
 }
 
 .weather .iconpic img {
-  min-width: 150px;
-  min-height: 150px;
-}
+  max-width: 150px;
+  max-height: 150px;
+} 
 /* added some media queries */
 @media (min-width: 900px){
 
@@ -279,4 +268,8 @@ footer::before {
     grid-area: 4/3/span 3/1;
   
   }
+  .weather .iconpic img {
+    max-width: 250px;
+    max-height: 250px;
+  } 
 }

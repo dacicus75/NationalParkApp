@@ -283,12 +283,12 @@ $("#favorite").on('click', function () {
     //     });
 })
 
-$("#trail-info").hide();
-$(".user-display").hide();
 
-$("#your-trails").on("click", function () {
-    $("#trail-info").show();
-})
+// $(".user-display").hide();
+
+// $("#your-trails").on("click", function () {
+//     $("#trail-info").show();
+// })
 // weather app
 var fahrenheit, celsius;
 var weatherApiUrl = "https://api.openweathermap.org/data/2.5/weather";
@@ -324,7 +324,7 @@ function getLatLong() {
             var lat = data.latitude;
             var long = data.longitude;
             $('.city').html(data.city);
-            $('.country').html(data.country_name);
+            $('.country').html(data.state);
             weatherApiUrl += "?lat=" + lat + "&lon=" + long + "&APPID=" + apiKey + "&units=imperial";
             getWeatherData();
         },
@@ -334,6 +334,8 @@ function getLatLong() {
         }
     });
 }
+
+$("#your-profile").hide();
     //test
 
 

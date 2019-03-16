@@ -138,6 +138,7 @@ function displayParks() {
                 // var directions = "https://www.google.com/maps?q=" + trailLat + "," + trailLon
 
                 // $("#location").html(directions)
+               
                 p.attr({
                     // type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
                     "type": "button",
@@ -161,13 +162,14 @@ function displayParks() {
 
             }
             $(".trails").on('click', function () {
-
+                var latitude =$(this).attr("data-lat");
+                var longitude =$(this).attr("data-lon");
                 var hikeName = $(this).attr("data_name");
                 var hikeSummary = $(this).attr("data_summary");
                 var hikeImage = $(this).attr("data_image");
                 var hikeLocation = $(this).attr("data_location");
                 var hikeStars = $(this).attr("data_stars");
-
+                console.log(longitude);
                 // var parkImage = $("<img>")
                 // parkImage.attr("src", hikeImage);
                 $("#ModalLabel").html(hikeName);
@@ -177,6 +179,13 @@ function displayParks() {
                     "src": hikeImage,
                     "class": 'hikePic'
                 });
+                var directionsClick = $(".directions");
+                directionsClick.attr({
+                    "data_lat": latitude,
+                    "data_lon": longitude,
+                    "class": 'btn btn-primary directions'
+                });
+
                 $("img").remove();
                 $(".modal-message").hide();
                 // topicImage.prepend(".modal-image");
@@ -184,6 +193,7 @@ function displayParks() {
                 $(".modal-body").html(hikeSummary);
                 $(".modal-location").html("Location: " + hikeLocation);
                 $(".modal-stars").html("Trail rating: " + hikeStars + " stars");
+
 
             })
 
@@ -202,11 +212,12 @@ function displayParks() {
 }
 //opens google maps to get directions to the hiking trail
  
-    $("#directions").on('click', function () {
-    var trailLat = $(this).attr("data-lat");
+    $(".directions").on('click', function () {
+    var trailLat = $(this).attr("data_lat");
+    console.log(this);
     console.log(trailLat);
   
-    var trailLon = $(this).attr("data-lon");
+    var trailLon = $(this).attr("data_lon");
     console.log(trailLon);
     window.open("https://www.google.com/maps?q=" + trailLat + "," + trailLon);
 

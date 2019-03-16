@@ -216,8 +216,8 @@ function displayParks() {
                     "data_name": hikeName,
                     "data_location": hikeLocation,
                     "data_summary": hikeSummary,
-                    "data_image": hikeImage
-
+                    "data_image": hikeImage,
+                    "data_stars": hikeStars
                 });
 
                 $(".hikePic").remove();
@@ -249,15 +249,15 @@ $("close").on('click', function () {
 
 })
 $("#favorite").on('click', function () {
-    var selectedTrail;
-    selectedTrail = {
-        trail: trailName,
-        image: trailImage,
-        summary: trailSummary,
-        location: trailLocation,
-        rating: trailStars
-    };
-    console.log(selectedTrail);
+    // var selectedTrail;
+    // selectedTrail = {
+    //     trail: trailName,
+    //     image: trailImage,
+    //     summary: trailSummary,
+    //     location: trailLocation,
+    //     rating: trailStars
+    // };
+    // console.log(selectedTrail);
     $(".modal-message").html("Added to Favorites");
     $(".modal-message").show();
     event.preventDefault();
@@ -342,7 +342,7 @@ function getLatLong() {
 function createFavoritesButtons() {
 
     database.ref().on("child_added", function (document) {
-        recordCount += 1;
+       
 
         var trailName = document.val().name;
         var trailImage = document.val().image;

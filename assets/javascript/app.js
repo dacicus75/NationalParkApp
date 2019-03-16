@@ -1,17 +1,17 @@
 //  --------------------------------------------------------------------------------
 
-  // Initialize Firebase
-  var config = {
+// Initialize Firebase
+var config = {
     apiKey: "AIzaSyCZuRbpdVP2raZyzf4Uj75WqD4A02Qex9c",
     authDomain: "nationalparksapp.firebaseapp.com",
     databaseURL: "https://nationalparksapp.firebaseio.com",
     projectId: "nationalparksapp",
     storageBucket: "nationalparksapp.appspot.com",
     messagingSenderId: "1051240529835"
-  };
-  firebase.initializeApp(config);
+};
+firebase.initializeApp(config);
 
-  var database = firebase.database();
+var database = firebase.database();
 // var queryURL = "https://www.hikingproject.com/data/get-" + (parameters) +"&key=200430087-cc29846e97dd0dc3575ba8096977c1be"
 // Obtain user location
 // We may want to use watchPosition() to keep track of user movements
@@ -20,7 +20,7 @@ var lat;
 var lon;
 var userEmail;
 function getLocation() {
-     
+
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
     } else {
@@ -52,7 +52,7 @@ function showPosition(position) {
 
 //}
 
-$("#submit-user").on("click", function() {
+$("#submit-user").on("click", function () {
     event.preventDefault();
     var name = $("#user-name").val().trim();
     var email = $("#user-email").val().trim();
@@ -62,24 +62,24 @@ $("#submit-user").on("click", function() {
         email: email,
         password: password
     };
-    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
+    firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
         var errorCode = error.code;
         var errorMessage = error.message;
         console.log(errorCode + "," + errorMessage);
         console.log("welcome " + name);
-      });
+    });
     database.ref().push(newUser);
     $("#user-name").val("");
     $("#user-email").val("");
     $("#user-password").val("");
 })
 
-$("#user-signin").on("click", function() {
+$("#user-signin").on("click", function () {
     event.preventDefault();
     var email = $("#signin-email").val().trim();
     var password = $("#signin-password").val().trim();
     var userSignIn = {
-        email: email, 
+        email: email,
         password: password
     };
 
@@ -87,14 +87,14 @@ $("#user-signin").on("click", function() {
     $("#user-name-display").text(userSignIn.email);
     $("#user-name-display").show();
     $("#your-trails").show();
-    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+    firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
         // Handle Errors here.
-        
+
         var errorCode = error.code;
         var errorMessage = error.message;
         if (email || password === false) {
             console.log("not a user")
-        } 
+        }
         $("#signin-email").val(email);
         console.log(errorCode + "," + errorMessage);
 
@@ -106,7 +106,7 @@ $("#user-signin").on("click", function() {
 
 // User Sign Out
 //firebase.auth().signOut().then(function() {
-    // Sign-out successful.
+// Sign-out successful.
 //  })
 
 //  --------------------------------------------------------------------------------
@@ -141,21 +141,9 @@ function displayMainPage() {
                 var results = response.data;
                 console.log(results);
                 var parkDiv = $("<div>");
-                var p = $("<p>").html("Park info: " + results[0].description + "<br>");
-                // var topicImage = $("<img>");
-                // parkDiv.attr({
-                //     "src": results[i].images.fixed_height_still.url,
-                //     "data-still": results[i].images.fixed_height_still.url,
-                //     "data-animate": results[i].images.fixed_height.url,
-                //     "data-state": 'still',
-                //     "class": 'gif'
-                // });
-
-
+                var p = $("<p>").html("Park info: " + results[0].description + "<br>"); 
                 parkDiv.prepend(p);
                 $("#displayContent").prepend(parkDiv);
-
-
             });
 
     });
@@ -234,10 +222,10 @@ function displayMainPageDirections() {
 
 // if you click visit, this div is created and overwrites the content
 function displayParks() {
-  
-    $("p" ).remove();
+
+    $("p").remove();
     var queryURL = "https://www.hikingproject.com/data/get-trails?lat=" + lat + "&lon=" + lon + "&key=200430087-cc29846e97dd0dc3575ba8096977c1be"
-  
+
 
     $.ajax({
         url: queryURL,
@@ -253,17 +241,17 @@ function displayParks() {
                 var p = $("<p>").html(response.trails[i].name + "<br>");
                 // var p = $("<p>").html("Rating: " + results[i].rating + "<br>");
                 var trailLat = response.trails[i].latitude;
-                var trailLon =response.trails[i].longitude;
-        
-                var directions = "https://www.google.com/maps?q="+trailLat+","+trailLon
-                
-                 $("#location").html(directions)
+                var trailLon = response.trails[i].longitude;
+
+                var directions = "https://www.google.com/maps?q=" + trailLat + "," + trailLon
+
+                $("#location").html(directions)
                 p.attr({
                     // type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
                     "type": "button",
 
-                    "data-lat":response.trails[i].latitude,
-                    "data-lon":response.trails[i].longitude,
+                    "data-lat": response.trails[i].latitude,
+                    "data-lon": response.trails[i].longitude,
                     "data_name": response.trails[i].name,
                     "data-toggle": "modal",
                     "data-target": "#exampleModal",
@@ -276,18 +264,18 @@ function displayParks() {
                 parkDiv.prepend(p);
                 // $("#displayContent").prepend(parkImage);
                 $("#contentHeader").html("<h1> Trails near you </h1>");
-                $("#displayContent").append(parkDiv);  
-                
-                
+                $("#displayContent").append(parkDiv);
+
+
             }
             $(".trails").on('click', function () {
-                
+
                 var hikeName = $(this).attr("data_name");
                 var hikeSummary = $(this).attr("data_summary");
                 var hikeImage = $(this).attr("data_image");
                 var hikeLocation = $(this).attr("data_location");
                 var hikeStars = $(this).attr("data_stars");
-                
+
                 // var parkImage = $("<img>")
                 // parkImage.attr("src", hikeImage);
                 $("#ModalLabel").html(hikeName);
@@ -303,135 +291,142 @@ function displayParks() {
                 $(".modal-image").prepend(topicImage);
                 $(".modal-body").html(hikeSummary);
                 $(".modal-location").html("Location: " + hikeLocation);
-                $(".modal-stars").html("Trail rating: "+hikeStars+ " stars");
+                $(".modal-stars").html("Trail rating: " + hikeStars + " stars");
 
             })
+
+            // $("#directions").on('click', function () {
+            //     $("#location").html()
+            //     var directionsDiv = $("<div>");
+            //     directionsDiv.attr({
+            //         "src": "https://www.google.com/maps?q=" + trailLat + "," + trailLon,
+            //     })
+            //     $("#location").html(directionsDiv);
+            // })
         }
 
         );
-    }
-    // function getDirections(){
-    //     var queryURL = "https://www.hikingproject.com/data/get-trails?lat=" + lat + 
-    //     "&lon=" + lon + "&key=200430087-cc29846e97dd0dc3575ba8096977c1be"
-  
+}
+// function getDirections(){
+//     var queryURL = "https://www.hikingproject.com/data/get-trails?lat=" + lat + 
+//     "&lon=" + lon + "&key=200430087-cc29846e97dd0dc3575ba8096977c1be"
 
-    // $.ajax({
-    //     url: queryURL,
-    //     method: "GET"
-    // })
-    // .then(function (response) {
-    //     var trailLat = response.trails[i].latitude;
-    //     var trailLon =response.trails[i].longitude;
 
-    //     var directions = "https://www.google.com/maps?q="+trailLat+","+trailLon
-        
-    //      $("#location").html(directions)
-         
-        
-        
-    //     }
-    // }
-    //     getDirections();
+// $.ajax({
+//     url: queryURL,
+//     method: "GET"
+// })
+// .then(function (response) {
+//     var trailLat = response.trails[i].latitude;
+//     var trailLon =response.trails[i].longitude;
 
-    $("close").on('click', function () {
-        $(".modal-message").hide();
+//     var directions = "https://www.google.com/maps?q="+trailLat+","+trailLon
 
-    })
-   
-    $("#directions").on('click', function () {
-        var displayDirections =$("#directions")
-        displayDirections.attr({
-            // type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
-            "type": "button",
-            "data-toggle": "modal",
-            "data-target": "#exampleModal",
-            "class": "directions"
-        });
-        // alert("Directions coming soon");
+//      $("#location").html(directions)
 
-    })
 
-    $("#favorite").on('click', function () {
-         $(".modal-message").html("Added to Favorites");
-         $(".modal-message").show();
-        
-        // setTimeout($(".modal-message" ).remove(), 3000);
-        // $('#exampleModal').modal("show");
-      
-        event.preventDefault();
-        //grabs the trail information from the favorite
-        var trailName = $("#ModalLabel").val().trim();
-        var trailImage = $(".modal-image").val().trim();
-        var trailSummary = $(".modal-body").val().trim();
-        var trailLocation = $(".modal-location").val().trim();
-        var trailStars = $(".modal-stars").val().trim();
-       
-        //add a new document key for each line of data added and pushes that line to a set of data
-        //doesnt overwrite the data that is there
-        database.ref().push({
-            name: trailName,
-            image:trailImage,
-            summary:trailSummary,
-            location: trailLocation,
-            rating: trailStars
-        });
-        // $('#favorite').click(function(){
-        //     $("#message").html("You Clicked on Click here Button");
-        //       $('#exampleModal').modal("show");
-        //     });
-    })
 
-    $("#trail-info").hide();
-    $(".user-display").hide();
-    
-    $("#your-trails").on("click", function(){
-        $("#trail-info").show();
-    })
-    // weather app
-    var fahrenheit, celsius;
-	var weatherApiUrl="https://api.openweathermap.org/data/2.5/weather";
-  var apiKey = "16dd6985df4229356a7e622ae5dace0a"; 
-	getLatLong();
-	function getWeatherData(){
-		$.ajax({
-			url: weatherApiUrl,
-			type: 'GET',
-      dataType: 'json',
-      success: function(data) {
-				var temperature=data.main.temp;
-				celsius=temperature;
-				fahrenheit=celsius*1.8+32;
-				var icon=data.weather[0].icon;
-				var weatherDetail=data.weather[0].main+", "+data.weather[0].description;
-				$('.weatherDetail').html(weatherDetail);
-				$('.iconpic>img').attr('src','http://openweathermap.org/img/w/'+icon+'.png');
-				$('.temp').html(parseInt(temperature)+"&#8457;");
-			},
-			error: function(err) {
-				alert('Something went wrong, Please try again.');
-				console.log(err);
-			}
-		});
-	}
-	function getLatLong(){
-		$.ajax({
-			url: "https://geoip-db.com/json/",
-			type: 'GET',
-      dataType: 'json',
-			success: function(data){
-        var lat = data.latitude;
-        var long = data.longitude;
-        $('.city').html(data.city);
-				$('.country').html(data.country_name);
-        weatherApiUrl += "?lat="+lat+"&lon="+long+"&APPID="+apiKey+"&units=imperial";
-        getWeatherData();
-      },
-			error: function(err) {
-				alert('Something went wrong, Please try again.');
-				console.log(err);
-			}
-		});
-    }
+//     }
+// }
+//     getDirections();
+
+$("close").on('click', function () {
+    $(".modal-message").hide();
+
+})
+
+
+
+// $("#directions").on('click', function () {
+//     $("#location").html()
+//     var directionsDiv = $("<iframe>");
+//     directionsDiv.attr({
+//         "src": "https://www.google.com/maps?q=" + trailLat + "," + trailLon,
+//     })
+//     $("#location").html(directionsDiv);
+// })
+
+$("#favorite").on('click', function () {
+    $(".modal-message").html("Added to Favorites");
+    $(".modal-message").show();
+
+    // setTimeout($(".modal-message" ).remove(), 3000);
+    // $('#exampleModal').modal("show");
+
+    event.preventDefault();
+    //grabs the trail information from the favorite
+    var trailName = $("#ModalLabel").val().trim();
+    var trailImage = $(".modal-image").val().trim();
+    var trailSummary = $(".modal-body").val().trim();
+    var trailLocation = $(".modal-location").val().trim();
+    var trailStars = $(".modal-stars").val().trim();
+
+    //add a new document key for each line of data added and pushes that line to a set of data
+    //doesnt overwrite the data that is there
+    database.ref().push({
+        name: trailName,
+        image: trailImage,
+        summary: trailSummary,
+        location: trailLocation,
+        rating: trailStars
+    });
+    // $('#favorite').click(function(){
+    //     $("#message").html("You Clicked on Click here Button");
+    //       $('#exampleModal').modal("show");
+    //     });
+})
+
+$("#trail-info").hide();
+$(".user-display").hide();
+
+$("#your-trails").on("click", function () {
+    $("#trail-info").show();
+})
+// weather app
+var fahrenheit, celsius;
+var weatherApiUrl = "https://api.openweathermap.org/data/2.5/weather";
+var apiKey = "16dd6985df4229356a7e622ae5dace0a";
+getLatLong();
+function getWeatherData() {
+    $.ajax({
+        url: weatherApiUrl,
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            var temperature = data.main.temp;
+            celsius = temperature;
+            fahrenheit = celsius * 1.8 + 32;
+            var icon = data.weather[0].icon;
+            var weatherDetail = data.weather[0].main + ", " + data.weather[0].description;
+            $('.weatherDetail').html(weatherDetail);
+            $('.iconpic>img').attr('src', 'http://openweathermap.org/img/w/' + icon + '.png');
+            $('.temp').html(parseInt(temperature) + "&#8457;");
+        },
+        error: function (err) {
+            alert('Something went wrong, Please try again.');
+            console.log(err);
+        }
+    });
+}
+function getLatLong() {
+    $.ajax({
+        url: "https://geoip-db.com/json/",
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            var lat = data.latitude;
+            var long = data.longitude;
+            $('.city').html(data.city);
+            $('.country').html(data.country_name);
+            weatherApiUrl += "?lat=" + lat + "&lon=" + long + "&APPID=" + apiKey + "&units=imperial";
+            getWeatherData();
+        },
+        error: function (err) {
+            alert('Something went wrong, Please try again.');
+            console.log(err);
+        }
+    });
+}
     //test
 
 

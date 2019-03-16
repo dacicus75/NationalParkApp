@@ -327,7 +327,27 @@ function getLatLong() {
 // $("#your-profile").hide();
     //test
 
+    function createFavoritesButtons(){
 
+        database.ref().on("child_added", function (document) {
+            recordCount += 1;
+        
+            name: trailName,
+            image: trailImage,
+            summary: trailSummary,
+            location: trailLocation,
+            longitude: trailLon,
+            latitude: trailLat,  
+            rating: trailStars
+        
+            var trailName = document.val().name;
+            var trailImage= document.val().image;
+            var trailSummary = document.val().destination;
+            var trailLocation = document.val().frequency;
+            var trailLon = document.val().frequency;
+            var trailLat = document.val().frequency;
+            var rating = document.val().firstTrain;
+    }
 
     //test
     // }

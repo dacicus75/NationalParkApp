@@ -387,6 +387,51 @@ function displayParks() {
     $("#your-trails").on("click", function(){
         $("#trail-info").show();
     })
+    // weather app
+    var fahrenheit, celsius;
+	var weatherApiUrl="https://api.openweathermap.org/data/2.5/weather";
+  var apiKey = "16dd6985df4229356a7e622ae5dace0a"; 
+	getLatLong();
+	function getWeatherData(){
+		$.ajax({
+			url: weatherApiUrl,
+			type: 'GET',
+      dataType: 'json',
+      success: function(data) {
+				var temperature=data.main.temp;
+				celsius=temperature;
+				fahrenheit=celsius*1.8+32;
+				var icon=data.weather[0].icon;
+				var weatherDetail=data.weather[0].main+", "+data.weather[0].description;
+				$('.weatherDetail').html(weatherDetail);
+				$('.iconpic>img').attr('src','http://openweathermap.org/img/w/'+icon+'.png');
+				$('.temp').html(parseInt(temperature)+"&#8457;");
+			},
+			error: function(err) {
+				alert('Something went wrong, Please try again.');
+				console.log(err);
+			}
+		});
+	}
+	function getLatLong(){
+		$.ajax({
+			url: "https://geoip-db.com/json/",
+			type: 'GET',
+      dataType: 'json',
+			success: function(data){
+        var lat = data.latitude;
+        var long = data.longitude;
+        $('.city').html(data.city);
+				$('.country').html(data.country_name);
+        weatherApiUrl += "?lat="+lat+"&lon="+long+"&APPID="+apiKey+"&units=imperial";
+        getWeatherData();
+      },
+			error: function(err) {
+				alert('Something went wrong, Please try again.');
+				console.log(err);
+			}
+		});
+    }
     //test
 
 

@@ -151,7 +151,7 @@ $('body').on('click', '[data-target="#sign-out-modal"]', function () {
 // if you click visit, this div is created and overwrites the content
 function displayParks() {
 
-    $("p").remove();
+    $(".page-quotes").remove();
     var queryURL = "https://www.hikingproject.com/data/get-trails?lat=" + lat + "&lon=" +
         lon + "&key=200430087-cc29846e97dd0dc3575ba8096977c1be"
 

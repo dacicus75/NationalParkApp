@@ -250,7 +250,7 @@ $("close").on('click', function () {
 
 })
 $("#favorite").on('click', function () {
-    createFavoritesButtons();
+   
     // var selectedTrail;
     // selectedTrail = {
     //     trail: trailName,
@@ -276,7 +276,7 @@ $("#favorite").on('click', function () {
     //add a new document key for each line of data added and pushes that line to a set of data
     //doesnt overwrite the data that is there
     database.ref().push({
-        name: trailName,
+        trailName: trailName,
         image: trailImage,
         summary: trailSummary,
         location: trailLocation,
@@ -284,6 +284,7 @@ $("#favorite").on('click', function () {
         latitude: trailLat,
         rating: trailStars
     });
+    createFavoritesButtons();
 })
 
 
@@ -342,10 +343,10 @@ function getLatLong() {
 //test
 
 function createFavoritesButtons() {
-
+    $(".favoriteTrails").remove();
     database.ref().on("child_added", function (document) {
-    
-        var trailName = document.val().name;
+        
+        var trailName = document.val().trailName;
         var trailImage = document.val().image;
         var trailSummary = document.val().summary;
         var trailLocation = document.val().location;
@@ -356,6 +357,7 @@ function createFavoritesButtons() {
         var trailFavoriteDiv = $("<div>");
 
         var p = $("<p>").html(trailName + "<br>");
+       
         p.attr({
             // type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
             "type": "button",
@@ -371,7 +373,7 @@ function createFavoritesButtons() {
             "class": "favoriteTrails"
         });
       
-        $("#ModalLabel").html(trailName);
+     
         // $(".modal-image").html(hikeImage);
         var topicImage = $("<img>");
         topicImage.attr({
@@ -395,8 +397,10 @@ function createFavoritesButtons() {
             "data_image": trailImage,
             "data_stars": trailStars
         });
-
+        
         trailFavoriteDiv.prepend(p);
+        $(".modal-title").html(trailName);
+        $("#favoritesSummary").html(trailSummary);
         $("#your-profile").append(trailFavoriteDiv);
     });
 }

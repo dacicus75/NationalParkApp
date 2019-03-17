@@ -121,6 +121,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         $('.navbar-nav').append("<a class='nav-item nav-link' href='#' data-toggle='modal' data-target='#sign-out-modal'>Sign Out</a>")
         console.log("user signed in");
         $("#user-name-display").text(user.email);
+        $("#your-profile").show();
     } else {
         console.log('no user info');
     }
@@ -135,6 +136,7 @@ $('body').on('click', '[data-target="#sign-out-modal"]', function () {
     $('[data-target="#sign-out-modal"]').remove();
     $('.navbar-nav').append('<a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#sign-in-modal">Sign In</a>');
     $('.navbar-nav').append('<a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#sign-up-modal">Sign Up</a>');
+    $("#your-profile").hide();
 })
 
 // User Sign Out
@@ -326,7 +328,7 @@ function getLatLong() {
         }
     });
 }
-// $("#your-profile").hide();
+ $("#your-profile").hide();
 //test
 function createFavoritesButtons() {
     $(".favoriteTrails").remove();

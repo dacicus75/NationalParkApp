@@ -267,7 +267,8 @@ footer::before {
   max-width: 75px;
 }
 #hikerImage {
-  margin-left: 1rem;
+  display:block;
+  margin: 0  auto;
   max-height: 100px;
   max-width: 100px;
 }
@@ -296,7 +297,8 @@ footer::before {
   }  */
 
   #hikerImage {
-    margin: 1rem 5rem 5rem;
+    display:block;
+    margin: 1rem auto 5rem;
     max-height: 100px;
     max-width: 100px;
   }

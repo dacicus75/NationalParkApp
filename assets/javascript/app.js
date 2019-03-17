@@ -85,7 +85,7 @@ $("#user-signin").on("click", function () {
         password: password
     };
     console.log(userSignIn);
-    $("#user-name-display").text(userSignIn.email);
+    $("#user-name-display").text(userSignIn.name);
     $("#user-name-display").show();
     $("#your-trails").show();
     firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
@@ -120,6 +120,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         $('[data-target="#sign-up-modal"]').remove();
         $('.navbar-nav').append("<a class='nav-item nav-link' href='#' data-toggle='modal' data-target='#sign-out-modal'>Sign Out</a>")
         console.log("user signed in");
+        $("#user-name-display").text(user.email);
     } else {
         console.log('no user info');
     }

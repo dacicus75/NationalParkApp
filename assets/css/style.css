@@ -296,7 +296,7 @@ footer::before {
   }  */
 
   #hikerImage {
-    margin: 5rem;
+    margin: 1rem 5rem 5rem;
     max-height: 100px;
     max-width: 100px;
   }

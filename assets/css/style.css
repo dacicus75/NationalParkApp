@@ -188,15 +188,21 @@ nav {
   grid-auto-rows: minmax(100px, auto); 
   margin: .25rem 1rem 1rem;
   padding:1rem;
-  background: #098535;
+  background:black;
+  /* background:#004d00; */
+  /* background: #098535; */
   border-radius: .15rem;
   opacity: 0.8;
 }
 .user-display {
+  margin: 5%;
   font-size: .75rem;
+  color: white;
+  text-align: center;
 }
 #profile-info {
   grid-template-columns: 1fr 1fr;
+  
 }
 
 #signed-in {
@@ -205,10 +211,12 @@ nav {
 
 #profile-trails {
   grid-template-columns: 1fr;
+  color: gray;
 }
 .small-title {
   text-align: center;
   font-weight:500;
+  color: white;
 }
 
  /* #your-profile { 
@@ -259,7 +267,11 @@ footer::before {
   max-width: 150px;
   max-height: 150px;
 } 
-
+#hikerImageHeader{
+  
+  max-height: 75px;
+  max-width: 75px;
+}
 #hikerImage {
   margin-left: 1rem;
   max-height: 100px;

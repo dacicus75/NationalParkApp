@@ -355,37 +355,48 @@ function createFavoritesButtons() {
             "data_stars": trailStars,
             "class": "favoriteTrails"
         });
-
-
-        // $(".modal-image").html(hikeImage);
-        var topicImage = $("<img>");
-        topicImage.attr({
-            "src": trailImage,
-            "class": 'hikePic'
-        });
-        var directionsClick = $(".directions");
-        directionsClick.attr({
-            "data_lat": trailLat,
-            "data_lon": trailLon,
-            "class": 'btn btn-primary directions'
-        });
-        var favoritesClick = $("#favorite");
-        favoritesClick.attr({
-
-            "data_lat": trailLat,
-            "data_lon": trailLon,
-            "data_name": trailName,
-            "data_location": trailLocation,
-            "data_summary": trailSummary,
-            "data_image": trailImage,
-            "data_stars": trailStars
-        });
-
-        trailFavoriteDiv.prepend(p);
-        $(".modal-title").html(trailName);
-        $("#favoritesSummary").html(trailSummary);
-        $("#your-profile").append(trailFavoriteDiv);
+     
+        // var trailLon = $(this).attr("data_lon");
+        // var trailLat = $(this).attr("data_lat");
+        // var trailName = $(this).attr("data_name");
+        // var trailImage = $(this).attr("data_image");
+        // var trailSummary = $(this).attr("data_summary");
+        // var trailLocation = $(this).attr("data_location");
+        // var trailStars = $(this).attr("data_stars");
+          // $(".modal-image").html(hikeImage);
+          var topicImage = $("<img>");
+          topicImage.attr({
+              "src": trailImage,
+              "class": 'hikePic'
+          });
+          var directionsClick = $(".directions");
+          directionsClick.attr({
+              "data_lat": trailLat,
+              "data_lon": trailLon,
+              "class": 'btn btn-primary directions'
+          });
+          var favoritesClick = $("#favorite");
+          favoritesClick.attr({
+  
+              "data_lat": trailLat,
+              "data_lon": trailLon,
+              "data_name": trailName,
+              "data_location": trailLocation,
+              "data_summary": trailSummary,
+              "data_image": trailImage,
+              "data_stars": trailStars
+          });
+  
+          trailFavoriteDiv.prepend(p);
+          $(".modal-title").html(trailName);
+          $("#favoritesSummary").html(trailSummary);
+          $("#your-profile").append(trailFavoriteDiv);
+        
     });
+
+
+      
+
 }
 
     //test

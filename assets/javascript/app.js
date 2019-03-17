@@ -400,6 +400,7 @@ function createFavoritesButtons() {
 
 }
 
+$(document).on("touchstart", "#findTrail", getLocation);//trying to get apple products to work
     //test
     // }
     // function displayParkModal() {

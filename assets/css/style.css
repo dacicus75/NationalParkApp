@@ -120,8 +120,7 @@ body {
 }
 
 #title-box {
-  background: black;
-  opacity:0.8;
+  background: rgba(0, 0, 0, 0.8);
   padding: .25rem;
   border-radius: .15rem;
 }
@@ -132,8 +131,7 @@ body {
 }
 
 nav {
-    background: black;
-    opacity: .8;
+  background: rgba(0, 0, 0, 0.8);
 }
 
 #title-p {
@@ -155,10 +153,7 @@ nav {
 }
 
 #location {
-  background:black;
-  opacity: 0.8;
-  /* grid-column: 1/2; */
-  /* grid-row: 1/3; */
+  background: rgba(0, 0, 0, 0.8);
   grid-template-columns: 1fr;
   padding:.5rem;
   border-radius: .15rem;
@@ -168,9 +163,8 @@ nav {
 }
 
  .weather { 
-   background: black; 
+  background: rgba(0, 0, 0, 0.8);
    grid-template-columns: 1fr;
-   opacity: 0.8; 
    grid-row: auto; 
    padding: .5rem; 
    border-radius: .15rem; 
@@ -183,16 +177,14 @@ nav {
  }
 
 .box-3 {
-  /* grid-gap: .5rem; */
-   grid-template-columns: 1fr ;
+  grid-gap: .5rem;
+  grid-template-columns: 1fr ;
   grid-auto-rows: minmax(100px, auto); 
   margin: .25rem 1rem 1rem;
   padding:1rem;
-  background:black;
-  /* background:#004d00; */
-  /* background: #098535; */
+  background: rgba(0, 0, 0, 0.8);
   border-radius: .15rem;
-  opacity: 0.8;
+  
 }
 .user-display {
   margin: 5%;
@@ -207,11 +199,13 @@ nav {
 
 #signed-in {
   grid-template-columns: 1fr;
+
 }
 
 #profile-trails {
   grid-template-columns: 1fr;
-  color: gray;
+  /* color: gray; */
+  text-align: center;
 }
 .small-title {
   text-align: center;
@@ -219,13 +213,10 @@ nav {
   color: white;
 }
 
- /* #your-profile { 
-  
-  background:#f2f2f2;
-  /* grid-row: 1/3; */
-  /* padding:.5rem;
-  border-radius: .15rem;
-} */ 
+#your-profile h5 {
+  padding-bottom: .5rem;
+  border-bottom: 1px solid white;
+}
 
 #pageQuotes p{
   pointer-events: none;
@@ -251,6 +242,9 @@ footer::before {
 /* weather css */
 #heading {
   font-family: 'Fugaz One', cursive;
+}
+#view-fav-btn {
+  background: white;
 }
 
 /* .weather { */
@@ -302,11 +296,15 @@ footer::before {
   }  */
 
   #hikerImage {
-    margin-left: 4rem;
+    margin: 5rem;
     max-height: 100px;
     max-width: 100px;
   }
   #your-profile {
     margin-top: 15rem;
+  }
+  #profile-info {
+    grid-template-columns: 1fr;
+    
   }
 }

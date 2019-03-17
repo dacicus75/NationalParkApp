@@ -302,18 +302,26 @@
             <!--grid wrapper-->
 
             <div class=" box-3" id="your-profile">
-                <h5 class="small-title">Your Profile</h5>
+                <h5 class="small-title ">Your Profile</h5>
                 <div class="grid" id="profile-info">
                     <div id="signed-in">
-                        <h6 class="user-display">User : <span id="user-name-display"></span></h6>
+                        <h6 class="user-display"><span id="user-name-display"></span></h6>
                         <img id="hikerImage" src="assets/images/hiker2.png" alt="">
                     </div>
                     <div id="profile-trails">
-                       
+                       <!-- <h6 class="user-display" id="your-trails">Favorites :</h6> -->
+
+                       <button class="btn " id="view-fav-btn" type="button" data-toggle="collapse" data-target="#favorites-added" aria-expanded="false" aria-controls="collapseExample">
+                        View Favorites
+                      </button>
+
+                       <div id="favorites-added">
+
+                       </div>
 
                     </div>
-                </div>
-                <h6 class="user-display" id="your-trails">Your Trails :</h6>
+            </div>
+
             </div>
 
 

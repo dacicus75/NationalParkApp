@@ -125,16 +125,16 @@ firebase.auth().onAuthStateChanged(function (user) {
     }
 });
 
-  $('body').on('click', '[data-target="#sign-out-modal"]', function(){
-    firebase.auth().signOut().then(function() {
+$('body').on('click', '[data-target="#sign-out-modal"]', function () {
+    firebase.auth().signOut().then(function () {
         console.log("sign out successful");
-      }).catch(function(error) {
-          console.log(error);
-      });
-      $('[data-target="#sign-out-modal"]').remove();
-      $('.navbar-nav').append('<a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#sign-in-modal">Sign In</a>');
-      $('.navbar-nav').append('<a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#sign-up-modal">Sign Up</a>');
-  })
+    }).catch(function (error) {
+        console.log(error);
+    });
+    $('[data-target="#sign-out-modal"]').remove();
+    $('.navbar-nav').append('<a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#sign-in-modal">Sign In</a>');
+    $('.navbar-nav').append('<a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#sign-up-modal">Sign Up</a>');
+})
 
 // User Sign Out
 //firebase.auth().signOut().then(function() {
@@ -149,8 +149,8 @@ firebase.auth().onAuthStateChanged(function (user) {
 function displayParks() {
 
     $("p").remove();
-    var queryURL = "https://www.hikingproject.com/data/get-trails?lat=" + lat + "&lon=" + lon + "&key=200430087-cc29846e97dd0dc3575ba8096977c1be"
-
+    var queryURL = "https://www.hikingproject.com/data/get-trails?lat=" + lat + "&lon=" +
+        lon + "&key=200430087-cc29846e97dd0dc3575ba8096977c1be"
 
     $.ajax({
         url: queryURL,
@@ -162,7 +162,6 @@ function displayParks() {
             // var results = response.data;
             for (var i = 0; i < response.trails.length; i++) {
                 var parkDiv = $("<div>");
-
                 var p = $("<p>").html(response.trails[i].name + "<br>");
                 p.attr({
                     // type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
@@ -182,8 +181,6 @@ function displayParks() {
                 // $("#displayContent").prepend(parkImage);
                 $("#contentHeader").html("<h1> Trails near you </h1>");
                 $("#displayContent").append(parkDiv);
-
-
             }
             $(".trails").on('click', function () {
                 var latitude = $(this).attr("data-lat");
@@ -227,30 +224,23 @@ function displayParks() {
                 $("#hikeSummary").html(hikeSummary);
                 $(".modal-location").html("Location: " + hikeLocation);
                 $(".modal-stars").html("Trail rating: " + hikeStars + " stars");
-
-
             })
         }
-
         );
 }
-
 $(".directions").on('click', function () {
     var trailLat = $(this).attr("data_lat");
     console.log(this);
     console.log(trailLat);
-
     var trailLon = $(this).attr("data_lon");
     console.log(trailLon);
     window.open("https://www.google.com/maps?q=" + trailLat + "," + trailLon);
-
 })
 $("close").on('click', function () {
     $(".modal-message").hide();
-
 })
 $("#favorite").on('click', function () {
-   
+    //commented this out, its causing an error
     // var selectedTrail;
     // selectedTrail = {
     //     trail: trailName,
@@ -270,7 +260,6 @@ $("#favorite").on('click', function () {
     var trailSummary = $(this).attr("data_summary");
     var trailLocation = $(this).attr("data_location");
     var trailStars = $(this).attr("data_stars");
-
     // var data = $(this).attr("#favorite");
     console.log(trailImage);
     //add a new document key for each line of data added and pushes that line to a set of data
@@ -286,8 +275,6 @@ $("#favorite").on('click', function () {
     });
     createFavoritesButtons();
 })
-
-
 // $(".user-display").hide();
 
 // $("#your-trails").on("click", function () {
@@ -338,14 +325,11 @@ function getLatLong() {
         }
     });
 }
-
 // $("#your-profile").hide();
 //test
-
 function createFavoritesButtons() {
     $(".favoriteTrails").remove();
     database.ref().on("child_added", function (document) {
-        
         var trailName = document.val().trailName;
         var trailImage = document.val().image;
         var trailSummary = document.val().summary;
@@ -353,16 +337,15 @@ function createFavoritesButtons() {
         var trailLon = document.val().longitude;
         var trailLat = document.val().latitude;
         var trailStars = document.val().rating;
-
         var trailFavoriteDiv = $("<div>");
 
         var p = $("<p>").html(trailName + "<br>");
-       
+
         p.attr({
             // type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
             "type": "button",
             "data-toggle": "modal",
-            "data-target": "#favoritesModal", 
+            "data-target": "#favoritesModal",
             "data_lat": trailLat,
             "data_lon": trailLon,
             "data_name": trailName,
@@ -372,8 +355,8 @@ function createFavoritesButtons() {
             "data_stars": trailStars,
             "class": "favoriteTrails"
         });
-      
-     
+
+
         // $(".modal-image").html(hikeImage);
         var topicImage = $("<img>");
         topicImage.attr({
@@ -383,7 +366,7 @@ function createFavoritesButtons() {
         var directionsClick = $(".directions");
         directionsClick.attr({
             "data_lat": trailLat,
-            "data_lon":trailLon,
+            "data_lon": trailLon,
             "class": 'btn btn-primary directions'
         });
         var favoritesClick = $("#favorite");
@@ -397,7 +380,7 @@ function createFavoritesButtons() {
             "data_image": trailImage,
             "data_stars": trailStars
         });
-        
+
         trailFavoriteDiv.prepend(p);
         $(".modal-title").html(trailName);
         $("#favoritesSummary").html(trailSummary);

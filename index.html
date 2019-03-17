@@ -62,6 +62,9 @@
         </div>
 
         <div class="grid-wrapper">
+
+            <!-- modal for trail info -->
+
             <div class="container box-1 ">
                 <div class="modal fade hike" id="exampleModal" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -154,7 +157,9 @@
                         </div>
                         <div class="row content">
 
-                            <div class="col-md-12 appContent">
+                            <!-- app content display and home page quotes -->
+
+                            <div class="col-md-12 appContent"> 
 
                                 <div id="displayContent"></div>
                                 <div id="pageQuotes">
@@ -192,15 +197,15 @@
                 <div class="secondary-info container-fluid grid box-2">
 
 
-                    <!--  -->
-
+                    <!-- box for map or we can remove -->
 
                     <div id="location">
                         <h6>auto loaded content? possilbe turn on location service with map image</h6>
 
                     </div>
 
-                   
+                   <!-- weather box -->
+
                     <div class="weather ">
 
                         <h4 id="weather-text"><span class="city"></span>, <span class="country"></span></h4>
@@ -214,9 +219,7 @@
 
                         <h4 class="weatherDetail"></h4>
                     </div>
-                    <!-- </div>weather -->
                 </div>
-                <!-- </div>row -->
 
 
 
@@ -294,8 +297,9 @@
                     </div>
                 </div>
             
-            <!--grid wrapper-->
-            </div>
+           
+            </div> <!--grid wrapper end-->
+
             <div class=" box-3" id="your-profile">
                 <h5 class="small-title ">Your Profile</h5>
                 <div class="grid" id="profile-info">
@@ -304,14 +308,13 @@
                         <img id="hikerImage" src="assets/images/hiker2.png" alt="">
                     </div>
                     <div id="profile-trails">
-                       <!-- <h6 class="user-display" id="your-trails">Favorites :</h6> -->
-
-                       <button class="btn " id="view-fav-btn" type="button" data-toggle="collapse" data-target="#favorites-added" aria-expanded="false" aria-controls="collapseExample">
+                        <button class="btn " id="view-fav-btn" type="button" data-toggle="collapse" data-target="#favorites-added" aria-expanded="false" aria-controls="collapseExample">
                         View Favorites
-                      </button>
+                        </button>
 
                        <div id="favorites-added">
-
+                        <!-- add favorites to this section using app.js 
+                            then the #view-fav-btn targets this section to collapse or expand it prebuilt with bootstrap-->
                        </div>
 
                     </div>

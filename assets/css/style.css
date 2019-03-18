@@ -298,3 +298,6 @@ footer::before {
     grid-column: 1fr;
   }
 }
+#location {
+	height: 100%;
+}

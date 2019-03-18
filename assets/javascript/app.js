@@ -243,7 +243,7 @@ $("close").on('click', function () {
     $(".modal-message").hide();
 })
 $("#favorite").on('click', function () {
-    //commented this out, its causing an error
+    //commented this out, its causing an error --Chris 
     // var selectedTrail;
     // selectedTrail = {
     //     trail: trailName,
@@ -269,12 +269,12 @@ $("#favorite").on('click', function () {
     //doesnt overwrite the data that is there
     database.ref().push({
         trailName: trailName,
-        image: trailImage,
-        summary: trailSummary,
-        location: trailLocation,
-        longitude: trailLon,
-        latitude: trailLat,
-        rating: trailStars
+        trailImage: trailImage,
+        trailSummary: trailSummary,
+        trailLocation: trailLocation,
+        trailLon: trailLon,
+        trailLat: trailLat,
+        trailStars: trailStars
     });
     createFavoritesButtons();
 })
@@ -330,78 +330,6 @@ function getLatLong() {
 }
  $("#your-profile").hide();
 //test
-function createFavoritesButtons() {
-    $(".favoriteTrails").remove();
-    database.ref().on("child_added", function (document) {
-        var trailName = document.val().trailName;
-        var trailImage = document.val().image;
-        var trailSummary = document.val().summary;
-        var trailLocation = document.val().location;
-        var trailLon = document.val().longitude;
-        var trailLat = document.val().latitude;
-        var trailStars = document.val().rating;
-        var trailFavoriteDiv = $("<div>");
-
-        var p = $("<p>").html(trailName + "<br>");
-
-        p.attr({
-            // type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
-            "type": "button",
-            "data-toggle": "modal",
-            "data-target": "#favoritesModal",
-            "data_lat": trailLat,
-            "data_lon": trailLon,
-            "data_name": trailName,
-            "data_location": trailLocation,
-            "data_summary": trailSummary,
-            "data_image": trailImage,
-            "data_stars": trailStars,
-            "class": "favoriteTrails"
-        });
-     
-        // var trailLon = $(this).attr("data_lon");
-        // var trailLat = $(this).attr("data_lat");
-        // var trailName = $(this).attr("data_name");
-        // var trailImage = $(this).attr("data_image");
-        // var trailSummary = $(this).attr("data_summary");
-        // var trailLocation = $(this).attr("data_location");
-        // var trailStars = $(this).attr("data_stars");
-          // $(".modal-image").html(hikeImage);
-          var topicImage = $("<img>");
-          topicImage.attr({
-              "src": trailImage,
-              "class": 'hikePic'
-          });
-          var directionsClick = $(".directions");
-          directionsClick.attr({
-              "data_lat": trailLat,
-              "data_lon": trailLon,
-              "class": 'btn btn-primary directions'
-          });
-          var favoritesClick = $("#favorite");
-          favoritesClick.attr({
-  
-              "data_lat": trailLat,
-              "data_lon": trailLon,
-              "data_name": trailName,
-              "data_location": trailLocation,
-              "data_summary": trailSummary,
-              "data_image": trailImage,
-              "data_stars": trailStars
-          });
-  
-          trailFavoriteDiv.prepend(p);
-          $(".modal-title").html(trailName);
-          $("#favoritesSummary").html(trailSummary);
-          $("#your-profile").append(trailFavoriteDiv);
-        
-    });
-
-
-      
-
-}
-
 $(document).on("touchstart", "#findTrail", getLocation);//trying to get apple products to work
     //test
     // }

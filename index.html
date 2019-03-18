@@ -29,7 +29,8 @@
         <div id="jumbotron">
             <div class="jumbotron jumbotron-fluid">
                 <div class="container" id="title-box">
-                    <h1 class="display-4 text-white text-center title-text">Hit the Trails  <img id="hikerImageHeader" src="assets/images/hiker2.png" alt=""></h1>
+                    <h1 class="display-4 text-white text-center title-text">Hit the Trails <img id="hikerImageHeader"
+                            src="assets/images/hiker2.png" alt=""></h1>
 
                     <h3 id="title-p" class="lead text-white title-text text-center">Explore new Hiking Trails</h3>
                 </div>
@@ -51,7 +52,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
-                        <a class="nav-item nav-link" href="#" id="findTrail" onclick=getLocation(); data-park="OH">Find Trails</a>
+                        <a class="nav-item nav-link" href="#" id="findTrail" onclick=getLocation();>Find Trails</a>
                         <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#sign-in-modal">Sign
                             In</a>
                         <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#sign-up-modal">Sign
@@ -108,14 +109,15 @@
 
                 </div>
 
-
-                <div class="container  favorites"> <!--box-1-->
+                <!-- favorites modal -->
+                <div class="container  favorites">
+                    <!--box-1-->
                     <div class="modal fade favorites" id="favoritesModal" tabindex="-1" role="dialog"
                         aria-labelledby="favoritesModalLabel" aria-hidden="true">
                         <div class="modal-dialog favorites" role="document">
                             <div class="modal-content favorites">
                                 <div class="modal-header favorites">
-                                    <h5 class="modal-title hike" id="ModalLabel">Are you sure?</h5>
+                                    <h5 class="modal-title favorites" id="ModalLabel">Are you sure?</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -159,7 +161,7 @@
 
                             <!-- app content display and home page quotes -->
 
-                            <div class="col-md-12 appContent"> 
+                            <div class="col-md-12 appContent">
 
                                 <div id="displayContent"></div>
                                 <div id="pageQuotes">
@@ -194,139 +196,141 @@
                 </div>
 
             </div>
-                <div class="secondary-info container-fluid grid box-2">
+            <div class="secondary-info container-fluid grid box-2">
 
 
-                    <!-- box for map or we can remove -->
+                <!-- box for map or we can remove -->
 
-                    <div id="location">
-                        <h6>auto loaded content? possilbe turn on location service with map image</h6>
+                <div id="location">
+                    <h6>auto loaded content? possilbe turn on location service with map image</h6>
 
-                    </div>
-
-                   <!-- weather box -->
-
-                    <div class="weather ">
-
-                        <h4 id="weather-text"><span class="city"></span>, <span class="country"></span></h4>
-
-                        <h4 class="temp"></h4>
-
-                        <div class="iconpic">
-                            <img id=" weatherImage" src="">
-                            
-                        </div>
-
-                        <h4 class="weatherDetail"></h4>
-                    </div>
                 </div>
 
+                <!-- weather box -->
 
+                <div class="weather ">
 
-                <!-- creating sign in modal -->
+                    <h4 id="weather-text"><span class="city"></span>, <span class="country"></span></h4>
 
-                <div class="modal fade" id="sign-in-modal" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Sign In</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form id="sign-in-form">
-                                    <label for="email">Email</label>
-                                    <br>
-                                    <input type="email" class="input" id="signin-email" name="email"
-                                        placeholder="example@email.com">
-                                    <br>
-                                    <label for="password">Password</label>
-                                    <br>
-                                    <input type="password" class="input" id="signin-password" name="password">
-                                    <br><br>
-                                    <!-- <button type="submit" value="submit" Sign-In</button> -->
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">No Thanks</button>
-                                <button type="button" class="btn btn-primary" id="user-signin" data-dismiss="modal">Sign
-                                    In</button>
-                            </div>
-                        </div>
+                    <h4 class="temp"></h4>
+
+                    <div class="iconpic">
+                        <img id=" weatherImage" src="">
+
                     </div>
+
+                    <h4 class="weatherDetail"></h4>
                 </div>
+            </div>
 
-                <!-- sign up modal -->
 
-                <div class="modal fade" id="sign-up-modal" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form id="sign-up-form">
-                                    <label for="user-name">Name</label>
-                                    <br>
-                                    <input type="text" class="input" id="user-name" name="name" placeholder="Name">
-                                    <br>
-                                    <label for="email">Email</label>
-                                    <br>
-                                    <input type="email" class="input" id="user-email" name="place"
-                                        placeholder="example@email.com">
-                                    <br>
-                                    <label for="password">Password</label>
-                                    <br>
-                                    <input type="password" class="input" id="user-password" name="password">
-                                    <br><br>
-                                    <!-- <button type="submit" value="submit" id="submit-user">Submit</button> -->
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">No Thanks</button>
-                                <button type="button" class="btn btn-primary" id="submit-user" data-dismiss="modal">Sign
-                                    up</button>
-                            </div>
+
+            <!-- creating sign in modal -->
+
+            <div class="modal fade" id="sign-in-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Sign In</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="sign-in-form">
+                                <label for="email">Email</label>
+                                <br>
+                                <input type="email" class="input" id="signin-email" name="email"
+                                    placeholder="example@email.com">
+                                <br>
+                                <label for="password">Password</label>
+                                <br>
+                                <input type="password" class="input" id="signin-password" name="password">
+                                <br><br>
+                                <!-- <button type="submit" value="submit" Sign-In</button> -->
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No Thanks</button>
+                            <button type="button" class="btn btn-primary" id="user-signin" data-dismiss="modal">Sign
+                                In</button>
                         </div>
                     </div>
                 </div>
-            
-           
-            </div> <!--grid wrapper end-->
+            </div>
 
-            <div class=" box-3" id="your-profile">
-                <h5 class="small-title ">Your Profile</h5>
-                <div class="grid" id="profile-info">
-                    <div id="signed-in">
-                        <h6 class="user-display"><span id="user-name-display"></span></h6>
-                        <img id="hikerImage" src="assets/images/hiker2.png" alt="">
+            <!-- sign up modal -->
+
+            <div class="modal fade" id="sign-up-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="sign-up-form">
+                                <label for="user-name">Name</label>
+                                <br>
+                                <input type="text" class="input" id="user-name" name="name" placeholder="Name">
+                                <br>
+                                <label for="email">Email</label>
+                                <br>
+                                <input type="email" class="input" id="user-email" name="place"
+                                    placeholder="example@email.com">
+                                <br>
+                                <label for="password">Password</label>
+                                <br>
+                                <input type="password" class="input" id="user-password" name="password">
+                                <br><br>
+                                <!-- <button type="submit" value="submit" id="submit-user">Submit</button> -->
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">No Thanks</button>
+                            <button type="button" class="btn btn-primary" id="submit-user" data-dismiss="modal">Sign
+                                up</button>
+                        </div>
                     </div>
-                    <div id="profile-trails">
-                        <button class="btn " id="view-fav-btn" type="button" data-toggle="collapse" data-target="#favorites-added" aria-expanded="false" aria-controls="collapseExample">
+                </div>
+            </div>
+
+
+        </div>
+        <!--grid wrapper end-->
+
+        <div class=" box-3" id="your-profile">
+            <h5 class="small-title ">Your Profile</h5>
+            <div class="grid" id="profile-info">
+                <div id="signed-in">
+                    <h6 class="user-display"><span id="user-name-display"></span></h6>
+                    <img id="hikerImage" src="assets/images/hiker2.png" alt="">
+                </div>
+                <div id="profile-trails">
+                    <button class="btn " id="view-fav-btn" type="button" data-toggle="collapse"
+                        data-target="#favorites-added" aria-expanded="false" aria-controls="collapseExample">
                         View Favorites
-                        </button>
+                    </button>
 
-                       <div id="favorites-added">
+                    <div id="favorites-added">
                         <!-- add favorites to this section using app.js 
                             then the #view-fav-btn targets this section to collapse or expand it prebuilt with bootstrap-->
-                       </div>
-
                     </div>
+
                 </div>
+            </div>
 
-            </div> 
+        </div>
 
 
 
-            <footer class="footer">Hit the Trails &copy2019</footer>
+        <footer class="footer">Hit the Trails &copy2019</footer>
 
-            <script src="assets/javascript/app.js"></script>
+        <script src="assets/javascript/app.js"></script>
 </body>
 
 </html>

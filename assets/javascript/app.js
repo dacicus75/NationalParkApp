@@ -279,7 +279,7 @@ $("#favoriteClick").on('click', function () {
     });
     createFavoritesButtons();
 })
-$(".user-display").hide();
+//$(".user-display").hide();
 
 $("#your-trails").on("click", function () {
     $("#trail-info").show();
@@ -329,7 +329,7 @@ function getLatLong() {
         }
     });
 }
-//  $("#your-profile").hide();
+ $("#your-profile").hide();
 
 function createFavoritesButtons() {
     $(".favoriteTrails").remove();

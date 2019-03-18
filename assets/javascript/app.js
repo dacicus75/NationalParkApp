@@ -152,6 +152,7 @@ $('body').on('click', '[data-target="#sign-out-modal"]', function () {
 function displayParks() {
 
     $(".page-quotes").remove();
+    $(".trails").remove();
     var queryURL = "https://www.hikingproject.com/data/get-trails?lat=" + lat + "&lon=" +
         lon + "&key=200430087-cc29846e97dd0dc3575ba8096977c1be"
 
@@ -209,7 +210,7 @@ function displayParks() {
                     "data_lon": longitude,
                     "class": 'btn btn-primary directions'
                 });
-                var favoritesClick = $("#favorite");
+                var favoritesClick = $("#favoriteClick");
                 favoritesClick.attr({
                     "data_lat": latitude,
                     "data_lon": longitude,
@@ -242,7 +243,7 @@ $(".directions").on('click', function () {
 $("close").on('click', function () {
     $(".modal-message").hide();
 })
-$("#favorite").on('click', function () {
+$("#favoriteClick").on('click', function () {
     //commented this out, its causing an error --Chris 
     // var selectedTrail;
     // selectedTrail = {
@@ -328,7 +329,91 @@ function getLatLong() {
         }
     });
 }
- $("#your-profile").hide();
+//  $("#your-profile").hide();
+
+function createFavoritesButtons() {
+    $(".favoriteTrails").remove();
+    database.ref().on("child_added", function (document) {
+        // getting the correct info from firebase
+        //but the modal that is created has the wrong info in it
+        //not sure why
+        var trailName = document.val().trailName;
+        var trailImage = document.val().trailImage;
+        var trailSummary = document.val().trailSummary;
+        var trailLocation = document.val().trailLocation;
+        var trailLon = document.val().trailLon;
+        var trailLat = document.val().trailLat;
+        var trailStars = document.val().trailStars;
+
+
+        var trailFavoriteDiv = $("<div>");
+        var p = $("<p>").html(trailName + "<br>");
+   
+        // var p = $("<p>").html(trailLocation + "<br>");
+        p.attr({
+            // type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+            "type": "button",
+            "data-toggle": "modal",
+            "data-target": "#favoritesModal",
+            "data_lat": trailLat,
+            "data_lon": trailLon,
+            "data_name": trailName,
+            "data_location": trailLocation,
+            "data_summary": trailSummary,
+            "data_image": trailImage,
+            "data_stars": trailStars,
+            "class": "favoriteTrails"
+        });
+        trailFavoriteDiv.append(p);
+        $("#favorites-added").append(trailFavoriteDiv);
+        //   $("#favoritesModalLabel").html(trailName);
+        //   $("#favoritesSummary").html(trailSummary);
+        //   $(".modal-image").prepend(trailImage);
+        //   $(".modal-location").html("Location: " + hikeLocation);
+        //   $(".modal-stars").html("Trail rating: " + hikeStars + " stars");
+
+        //   $(".hikePic").remove();
+        //   $(".modal-message").hide();
+
+
+        $(".favoriteTrails").on('click', function () {
+            var trailLon = $(this).attr("data_lon");
+            var trailLat = $(this).attr("data_lat");
+            var trailName = $(this).attr("data_name");
+            var trailImage = $(this).attr("data_image");
+            var trailSummary = $(this).attr("data_summary");
+            var trailLocation = $(this).attr("data_location");
+            var trailStars = $(this).attr("data_stars");
+
+            // $("#favoritesImage").html(trailImage);
+            var favoriteImage = $("<img>");
+            favoriteImage.attr({
+                "src": trailImage,
+                 "class": 'favHikePic'
+            });
+            var directionsClick = $(".directions");
+            directionsClick.attr({
+                "data_lat": trailLat,
+                "data_lon": trailLon,
+                "class": 'btn btn-primary directions'
+            });
+
+
+            $("#favoritesModalLabel").html(trailName);
+            // $("#favoritesSummary").html(trailSummary);
+            $(".favHikePic").remove();
+            // $(".trailImage").remove();
+            // $("#favoritesImage").prepend(favoriteImage);
+            $(".modal-message").hide();
+            $("#favoritesImage").html(favoriteImage);
+            $("#favoritesSummary").html(trailSummary);
+            $("#favoritesLocation").html("Location: " + trailLocation);
+            $("#favoritesStars").html("Trail rating: " + trailStars + " stars");
+          
+        })
+    });
+
+}
 //test
 $(document).on("touchstart", "#findTrail", getLocation);//trying to get apple products to work
     //test

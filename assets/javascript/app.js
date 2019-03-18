@@ -279,11 +279,11 @@ $("#favoriteClick").on('click', function () {
     });
     createFavoritesButtons();
 })
-// $(".user-display").hide();
+$(".user-display").hide();
 
-// $("#your-trails").on("click", function () {
-//     $("#trail-info").show();
-// })
+$("#your-trails").on("click", function () {
+    $("#trail-info").show();
+})
 // weather app
 var fahrenheit, celsius;
 var weatherApiUrl = "https://api.openweathermap.org/data/2.5/weather";

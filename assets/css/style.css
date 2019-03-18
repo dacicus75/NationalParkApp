@@ -153,6 +153,7 @@ nav {
 #location {
   background: rgba(0, 0, 0, 0.8);
   grid-template-columns: 1fr;
+  grid-row: 1/4;
   padding:.5rem;
   border-radius: .15rem;
 }

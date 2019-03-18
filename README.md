@@ -26,3 +26,5 @@
 * David Lawrence - [@davidlawrence1985](https://github.com/davidlawrence1985)
 * Christopher Lee Paul - [@cpaul319](https://github.com/cpaul319)
 * Daniel Ardelean - [@dacicus75](https://github.com/dacicus75)
+
+This site was built using [GitHub Pages](https://khemsoth.github.io/NationalParkApp/

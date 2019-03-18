@@ -492,7 +492,7 @@ function initMap() {
     ];
 
 	var map = new google.maps.Map(document.getElementById('location'), {
-		zoom: 13,
+		zoom: 8,
 		center: new google.maps.LatLng(41.5043, -81.6084),
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	});

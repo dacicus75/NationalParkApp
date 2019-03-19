@@ -278,34 +278,24 @@ $("#favoriteClick").on('click', function () {
     var trailLocation = $(this).attr("data_location");
     var trailStars = $(this).attr("data_stars");
     // var data = $(this).attr("#favorite");
-    // console.log(trailImage);
-    // var selectedTrail;
-    // selectedTrail = {
-    //     trail: trailName,
-    //     image: trailImage,
-    //     summary: trailSummary,
-    //     location: trailLocation,
-    //     rating: trailStars
-    // };
-    // database.ref().push({
-    //     selectedTrail: selectedTrail
-    // });
-    // console.log(selectedTrail);
-    //add a new document key for each line of data added and pushes that line to a set of data
-    //doesnt overwrite the data that is there
-    database.ref().push({
-        trailName: trailName,
-        trailImage: trailImage,
-        trailSummary: trailSummary,//========maybe this could be anobject to hold the data in?? ============================================
-        trailLocation: trailLocation,
+    console.log(trailImage);
+    var selectedTrail;
+    selectedTrail = {
+        trail: trailName,
+        image: trailImage,
+        summary: trailSummary,
+        location: trailLocation,
+        rating: trailStars,
         trailLon: trailLon,
-        trailLat: trailLat,
-        trailStars: trailStars
+        trailLat: trailLat
+    };
+    database.ref().push({
+        selectedTrail: selectedTrail
     });
-    createFavoritesButtons();
+  
  
 })
-
+createFavoritesButtons();
 
 $(".user-display").hide();
 
@@ -367,13 +357,13 @@ function createFavoritesButtons() {
     $(".favoriteTrails").remove();
     database.ref().on("child_added", function (document) {
         
-        var trailName = document.val().trailName;
-        var trailImage = document.val().trailImage;
-        var trailSummary = document.val().trailSummary;
-        var trailLocation = document.val().trailLocation;
-        var trailLon = document.val().trailLon;
-        var trailLat = document.val().trailLat;
-        var trailStars = document.val().trailStars;
+        var trailName = document.val().selectedTrail.trail;
+        var trailImage = document.val().selectedTrail.image;
+        var trailSummary = document.val().selectedTrail.summary;
+        var trailLocation = document.val().selectedTrail.location;
+        var trailLon = document.val().selectedTrail.trailLon;
+        var trailLat = document.val().selectedTrail.trailLat;
+        var trailStars = document.val().selectedTrail.rating;
 
 
         var trailFavoriteDiv = $("<div>");
@@ -396,16 +386,7 @@ function createFavoritesButtons() {
         });
         trailFavoriteDiv.append(p);
         $("#favorites-added").append(trailFavoriteDiv);
-        //   $("#favoritesModalLabel").html(trailName);
-        //   $("#favoritesSummary").html(trailSummary);
-        //   $(".modal-image").prepend(trailImage);
-        //   $(".modal-location").html("Location: " + hikeLocation);
-        //   $(".modal-stars").html("Trail rating: " + hikeStars + " stars");
-
-        //   $(".hikePic").remove();
-        //   $(".modal-message").hide();
-
-
+        
         $(".favoriteTrails").on('click', function () {
             var trailLon = $(this).attr("data_lon");
             var trailLat = $(this).attr("data_lat");
@@ -415,7 +396,7 @@ function createFavoritesButtons() {
             var trailLocation = $(this).attr("data_location");
             var trailStars = $(this).attr("data_stars");
 
-            // $("#favoritesImage").html(trailImage);
+    
             var favoriteImage = $("<img>");
             favoriteImage.attr({
                 "src": trailImage,
@@ -430,10 +411,9 @@ function createFavoritesButtons() {
 
 
             $("#favoritesModalLabel").html(trailName);
-            // $("#favoritesSummary").html(trailSummary);
+           
             $(".favHikePic").remove();
-            // $(".trailImage").remove();
-            // $("#favoritesImage").prepend(favoriteImage);
+            
             $(".modal-message").hide();
             $("#favoritesImage").html(favoriteImage);
             $("#favoritesSummary").html(trailSummary);
@@ -446,15 +426,7 @@ function createFavoritesButtons() {
 }
 //test
 $(document).on("click", "#findTrail", getLocation);//trying to get apple products to work
-// -------------------------------------------------------------------------------------------
-// to delete hike favorite
-    // var anchor = "<a href=# onclick=deleteDocument('" + document.key + "');>X</a>";
-    // function deleteDocument(documentId) {
-    //     database.ref().child(documentId).set(null);
-    //     alert("Train successfully deleted!");
-    //     location.reload();
-    // }
-//  --------------------------------------------------------------------------------
+ 
 function initMap() {
 
 	var brandywine = {

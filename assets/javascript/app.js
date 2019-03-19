@@ -85,8 +85,10 @@ $("#submit-user").on("click", function () {
 
 $("#sign-in-form").keyup(function(event) { //===added keyup so enter sumbits form
     event.preventDefault();
+     $("#smallModalMessage").hide();
     if (event.keyCode === 13) {
         $("#user-signin").click();
+        $("#smallModalMessage").text("You just signed in");
     }
 });
 
@@ -258,10 +260,15 @@ $(".directions").on('click', function () {
 $("close").on('click', function () {
     $(".modal-message").hide();
 })
+
+
+
 $("#favoriteClick").on('click', function () {
+    firebase.auth().onAuthStateChanged(function (user) { 
+    if (user){
      
-    $(".modal-message").html("Added to Favorites");
-    $(".modal-message").show();
+        $("#messageModal").modal('show');
+        $("#smallModalMessage").text("Added to favorites");
     event.preventDefault();
     var trailLon = $(this).attr("data_lon");
     var trailLat = $(this).attr("data_lat");
@@ -296,7 +303,17 @@ $("#favoriteClick").on('click', function () {
         trailStars: trailStars
     });
     createFavoritesButtons();
+} else {
+    // $("#smallModalMessage").hide();
+    $("#messageModal").modal('show');
+    $("#smallModalMessage").text("Please sign in to save favorites");
+ 
+     
+}
 })
+})
+
+
 $(".user-display").hide();
 
 $("#your-trails").on("click", function () {
@@ -308,6 +325,8 @@ var weatherApiUrl = "https://api.openweathermap.org/data/2.5/weather";
 var apiKey = "16dd6985df4229356a7e622ae5dace0a";
 getLatLong();
 function getWeatherData() {
+    
+   
     $.ajax({
         url: weatherApiUrl,
         type: 'GET',
@@ -323,7 +342,8 @@ function getWeatherData() {
             $('.temp').html(parseInt(temperature) + "&#8457;");
         },
         error: function (err) {
-            alert('Something went wrong, Please try again.');
+            // $("#messaageModal").modal('show');
+             alert('Something went wrong, Please try again.');
             console.log(err);
         }
     });

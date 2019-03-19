@@ -77,6 +77,12 @@ margin-bottom: .5rem;
   content: "";
  
 }
+#smallModalMessage{
+  text-align: center;
+  font-weight: bold;
+  height: 100px;
+  width: 300px;
+}
 
 body {
   height: auto;

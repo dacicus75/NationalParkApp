@@ -55,6 +55,7 @@ function showPosition(position) {
 //}
 
 $("#sign-up-form").keyup(function(event) {  //===added keyup so enter sumbits form
+    event.preventDefault();
     if (event.keyCode === 13) {
         $("#submit-user").click();
     }
@@ -83,6 +84,7 @@ $("#submit-user").on("click", function () {
 })
 
 $("#sign-in-form").keyup(function(event) { //===added keyup so enter sumbits form
+    event.preventDefault();
     if (event.keyCode === 13) {
         $("#user-signin").click();
     }

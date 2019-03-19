@@ -85,7 +85,7 @@ $("#submit-user").on("click", function () {
 
 $("#sign-in-form").keyup(function(event) { //===added keyup so enter sumbits form
     event.preventDefault();
-    // $("#smallModalMessage").remove();
+     $("#smallModalMessage").hide();
     if (event.keyCode === 13) {
         $("#user-signin").click();
         $("#smallModalMessage").text("You just signed in");

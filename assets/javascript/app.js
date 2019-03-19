@@ -12,7 +12,7 @@ var config = {
 firebase.initializeApp(config);
 const storageService = firebase.storage();
 const storageRef = storageService.ref();
-var selectedTrail = firebase.database().ref("selectedTrail");
+// var selectedTrail = firebase.database().ref("selectedTrail");
 var database = firebase.database();
 // var queryURL = "https://www.hikingproject.com/data/get-" + (parameters) +"&key=200430087-cc29846e97dd0dc3575ba8096977c1be"
 // Obtain user location
@@ -264,8 +264,7 @@ $("close").on('click', function () {
 
 
 $("#favoriteClick").on('click', function () {
-    firebase.auth().onAuthStateChanged(function (user) { 
-    if (user){
+   
      
         $("#messageModal").modal('show');
         $("#smallModalMessage").text("Added to favorites");
@@ -279,17 +278,17 @@ $("#favoriteClick").on('click', function () {
     var trailStars = $(this).attr("data_stars");
     // var data = $(this).attr("#favorite");
     console.log(trailImage);
-    var selectedTrail;
-    selectedTrail = {
-        trail: trailName,
-        image: trailImage,
-        summary: trailSummary,
-        location: trailLocation,
-        rating: trailStars
-    };
-    database.ref().push({
-        selectedTrail: selectedTrail
-    });
+    // var selectedTrail;
+    // selectedTrail = {
+    //     trail: trailName,
+    //     image: trailImage,
+    //     summary: trailSummary,
+    //     location: trailLocation,
+    //     rating: trailStars
+    // };
+    // database.ref().push({
+    //     selectedTrail: selectedTrail
+    // });
     console.log(selectedTrail);
     //add a new document key for each line of data added and pushes that line to a set of data
     //doesnt overwrite the data that is there
@@ -303,14 +302,7 @@ $("#favoriteClick").on('click', function () {
         trailStars: trailStars
     });
     createFavoritesButtons();
-} else {
-    // $("#smallModalMessage").hide();
-    $("#messageModal").modal('show');
-    $("#smallModalMessage").text("Please sign in to save favorites");
  
-     
-}
-})
 })
 
 

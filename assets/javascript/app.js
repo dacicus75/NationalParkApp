@@ -138,6 +138,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         console.log("user signed in");
         $("#user-name-display").text(user.email);
         $("#your-profile").show();
+        console.log(user.email)
         //$("#favorites-added").append(user.favorites);=====maybe this can load a favorites object from user document? if each user has a favorites object===========
     } else {
         console.log('no user info');

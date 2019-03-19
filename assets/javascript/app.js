@@ -266,6 +266,9 @@ $("#favoriteClick").on('click', function () {
         location: trailLocation,
         rating: trailStars
     };
+    database.ref().push({
+        selectedTrail: selectedTrail
+    });
     console.log(selectedTrail);
     //add a new document key for each line of data added and pushes that line to a set of data
     //doesnt overwrite the data that is there
@@ -323,6 +326,7 @@ function getLatLong() {
             $('.country').html(data.state);
             weatherApiUrl += "?lat=" + lat + "&lon=" + long + "&APPID=" + apiKey + "&units=imperial";
             getWeatherData();
+            console.log(data);
         },
         error: function (err) {
             alert('Something went wrong, Please try again.');

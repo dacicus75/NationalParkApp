@@ -246,7 +246,6 @@ $("close").on('click', function () {
 })
 $("#favoriteClick").on('click', function () {
      
-
     $(".modal-message").html("Added to Favorites");
     $(".modal-message").show();
     event.preventDefault();

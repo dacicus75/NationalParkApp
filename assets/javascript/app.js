@@ -122,6 +122,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         console.log("user signed in");
         $("#user-name-display").text(user.email);
         $("#your-profile").show();
+        //$("#favorites-added").append(user.favorites);=====maybe this can load a favorites object from user document? if each user has a favorites object===========
     } else {
         console.log('no user info');
     }
@@ -271,7 +272,7 @@ $("#favoriteClick").on('click', function () {
     database.ref().push({
         trailName: trailName,
         trailImage: trailImage,
-        trailSummary: trailSummary,
+        trailSummary: trailSummary,//========maybe this could be anobject to hold the data in?? ============================================
         trailLocation: trailLocation,
         trailLon: trailLon,
         trailLat: trailLat,
@@ -415,7 +416,7 @@ function createFavoritesButtons() {
 
 }
 //test
-$(document).on("touchstart", "#findTrail", getLocation);//trying to get apple products to work
+$(document).on("click", "#findTrail", getLocation);//trying to get apple products to work
     //test
     // }
     // function displayParkModal() {

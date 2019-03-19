@@ -159,6 +159,7 @@ nav {
 }
 #location img {
   margin: .5rem;
+  height: 100%;
 }
 
  .weather { 
@@ -282,7 +283,7 @@ footer::before {
     margin-top:.75rem; 
     grid-column: 3/4;
   }
-  
+
   #hikerImage {
     display:block;
     margin: 1rem auto 5rem;
@@ -299,7 +300,4 @@ footer::before {
   #signed-in {
     grid-column: 1fr;
   }
-}
-#location {
-	height: 100%;
 }

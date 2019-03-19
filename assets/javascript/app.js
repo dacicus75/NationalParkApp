@@ -54,6 +54,12 @@ function showPosition(position) {
 
 //}
 
+$("#sign-up-form").keyup(function(event) {  //===added keyup so enter sumbits form
+    if (event.keyCode === 13) {
+        $("#submit-user").click();
+    }
+});
+
 $("#submit-user").on("click", function () {
     event.preventDefault();
     var name = $("#user-name").val().trim();
@@ -75,6 +81,12 @@ $("#submit-user").on("click", function () {
     $("#user-email").val("");
     $("#user-password").val("");
 })
+
+$("#sign-in-form").keyup(function(event) { //===added keyup so enter sumbits form
+    if (event.keyCode === 13) {
+        $("#user-signin").click();
+    }
+});
 
 $("#user-signin").on("click", function () {
     event.preventDefault();

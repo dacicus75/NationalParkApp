@@ -12,7 +12,7 @@ var config = {
 firebase.initializeApp(config);
 const storageService = firebase.storage();
 const storageRef = storageService.ref();
-
+var selectedTrail = firebase.database().ref("selectedTrail");
 var database = firebase.database();
 // var queryURL = "https://www.hikingproject.com/data/get-" + (parameters) +"&key=200430087-cc29846e97dd0dc3575ba8096977c1be"
 // Obtain user location
@@ -88,7 +88,7 @@ $("#sign-in-form").keyup(function(event) { //===added keyup so enter sumbits for
      $("#smallModalMessage").hide();
     if (event.keyCode === 13) {
         $("#user-signin").click();
-        $("#smallModalMessage").text("You just signed in");
+        // $("#smallModalMessage").text("You just signed in");
     }
 });
 
@@ -453,31 +453,6 @@ function createFavoritesButtons() {
 }
 //test
 $(document).on("click", "#findTrail", getLocation);//trying to get apple products to work
-    //test
-    // }
-    // function displayParkModal() {
-    //     $("p").on("click", function () {
-    //         var hikeName = $(this).attr("data_name");
-    //         console.loge(hikeName);
-    //         var hikeSummary = $(this).attr("data_summary");
-    //         console.loge(hikeSummary);
-    //         var hikeImage = $(this).attr("data_image");
-    //         console.loge(hikeImage);
-    //         var hikeLocation = $(this).attr("data_location");
-    //         console.loge(hikeLocation)
-    //         var hikeStars = $(this).attr("data_stars");
-    //         console.loge(hikeStars);
-    //         $("#ModalLabel").html(hikeName);
-    //         $(".modal-image").html(hikeImage);
-    //         $(".modal-body").html(hikeSummary);
-    //         $(".modal-location").html(hikeLocation);
-    //         $(".modal-stars").html(hikeStars);
-
-    //     });
-
-// }
-// });
-
 // -------------------------------------------------------------------------------------------
 // to delete hike favorite
     // var anchor = "<a href=# onclick=deleteDocument('" + document.key + "');>X</a>";

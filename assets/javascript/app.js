@@ -530,3 +530,12 @@ function initMap() {
 		})(marker, i));
 	}
 }
+
+$(".profile-title").click(function () { //====expand and collapse your profile section
+
+    $header = $(this);
+    $content = $header.next();
+    $content.slideToggle(500, function () {
+        
+        });
+    });

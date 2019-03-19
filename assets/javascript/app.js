@@ -149,7 +149,7 @@ $('body').on('click', '[data-target="#sign-out-modal"]', function () {
 //  --------------------------------------------------------------------------------
 
 
-// if you click visit, this div is created and overwrites the content
+// if you click find trails, this div is created and overwrites the content
 function displayParks() {
 
     $(".page-quotes").remove();
@@ -281,7 +281,7 @@ $("#favoriteClick").on('click', function () {
     });
     createFavoritesButtons();
 })
-//$(".user-display").hide();
+$(".user-display").hide();
 
 $("#your-trails").on("click", function () {
     $("#trail-info").show();

@@ -244,16 +244,8 @@ $("close").on('click', function () {
     $(".modal-message").hide();
 })
 $("#favoriteClick").on('click', function () {
-    //commented this out, its causing an error --Chris 
-    // var selectedTrail;
-    // selectedTrail = {
-    //     trail: trailName,
-    //     image: trailImage,
-    //     summary: trailSummary,
-    //     location: trailLocation,
-    //     rating: trailStars
-    // };
-    // console.log(selectedTrail);
+     
+
     $(".modal-message").html("Added to Favorites");
     $(".modal-message").show();
     event.preventDefault();
@@ -266,6 +258,15 @@ $("#favoriteClick").on('click', function () {
     var trailStars = $(this).attr("data_stars");
     // var data = $(this).attr("#favorite");
     console.log(trailImage);
+    var selectedTrail;
+    selectedTrail = {
+        trail: trailName,
+        image: trailImage,
+        summary: trailSummary,
+        location: trailLocation,
+        rating: trailStars
+    };
+    console.log(selectedTrail);
     //add a new document key for each line of data added and pushes that line to a set of data
     //doesnt overwrite the data that is there
     database.ref().push({
@@ -334,9 +335,7 @@ function getLatLong() {
 function createFavoritesButtons() {
     $(".favoriteTrails").remove();
     database.ref().on("child_added", function (document) {
-        // getting the correct info from firebase
-        //but the modal that is created has the wrong info in it
-        //not sure why
+        
         var trailName = document.val().trailName;
         var trailImage = document.val().trailImage;
         var trailSummary = document.val().trailSummary;

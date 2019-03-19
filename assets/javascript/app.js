@@ -278,7 +278,7 @@ $("#favoriteClick").on('click', function () {
     var trailLocation = $(this).attr("data_location");
     var trailStars = $(this).attr("data_stars");
     // var data = $(this).attr("#favorite");
-    console.log(trailImage);
+    // console.log(trailImage);
     // var selectedTrail;
     // selectedTrail = {
     //     trail: trailName,
@@ -290,7 +290,7 @@ $("#favoriteClick").on('click', function () {
     // database.ref().push({
     //     selectedTrail: selectedTrail
     // });
-    console.log(selectedTrail);
+    // console.log(selectedTrail);
     //add a new document key for each line of data added and pushes that line to a set of data
     //doesnt overwrite the data that is there
     database.ref().push({

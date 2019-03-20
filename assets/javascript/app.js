@@ -334,13 +334,16 @@ function getLatLong() {
         type: 'GET',
         dataType: 'json',
         success: function (data) {
-            var lat = data.latitude;
-            var long = data.longitude;
+            lat = data.latitude;
+            long = data.longitude;
             $('.city').html(data.city);
             $('.country').html(data.state);
             weatherApiUrl += "?lat=" + lat + "&lon=" + long + "&APPID=" + apiKey + "&units=imperial";
             getWeatherData();
             console.log(data);
+            name = data.name;
+
+            initMap(lat, long, name);
         },
         error: function (err) {
             alert('Something went wrong, Please try again.');
@@ -467,66 +470,40 @@ $(document).on("click", "#findTrail", getLocation);//trying to get apple product
     //     location.reload();
     // }
 //  --------------------------------------------------------------------------------
-function initMap() {
+// $("#trails").on("click",function()
+// { 
+//     var trailLon = $(this).attr("data-lon");
+//     console.log(trailLon);
+//     var trailLat = $(this).attr("data-lat");
+//     var trailLocation = $(this).attr("data_location");
+//     console.log("fav trail long" +trailLon);
+//     console.log("fav trail lat" +trailLat);
+//     console.log("fav trail Location" +data_location);
 
-	var brandywine = {
-		info: '<strong>Brandywine Falls Loop</strong><br>\
-					<br>\
-					<a href="https://goo.gl/maps/qTv8h3RFDWS2">Get Directions</a>',
-		lat: 41.2767,
-		long: -81.5400
-	};
+//     initMap (trailLon, trailLat, trailLocation);
+// });
+function initMap(lat, long, name) {
+    
 
-	var ledges = {
-		info: '<strong>Ledges to Pine Grove Loop</strong><br>\
-					<br>\
-					<a href="https://goo.gl/maps/TjUqDHKKMK62">Get Directions</a>',
-		lat: 41.2240,
-		long: -81.5106
-	};
-
-	var blue = {
-		info: '<strong>Blue Hen Falls Trail</strong><br>\
-					<br>\
-					<a href="https://goo.gl/maps/38JRdgtW3nk">Get Directions</a>',
-		lat: 41.2570,
-		long: -81.5726
-	};
-
-	// var buckeye = {
-	// 	info: '<strong>Buckeye Trail</strong><br>\
-	// 				<br>\ 
-	// 				<a href="https://goo.gl/maps/9aqaK74Ksbr">Get Directions</a>',
-	// 	lat: 41.3803,
-	// 	long: -81.5341
-	// };
-
-	var locations = [
-      [brandywine.info, brandywine.lat, brandywine.long, 0],
-      [ledges.info, ledges.lat, ledges.long, 1],
-			[blue.info, blue.lat, blue.long, 2],
-			// [buckeye.info, buckeye.lat, buckeye.long,3]
-    ];
-
-	var map = new google.maps.Map(document.getElementById('location'), {
+		var map = new google.maps.Map(document.getElementById("location"), {
 		zoom: 8,
-		center: new google.maps.LatLng(41.5043, -81.6084),
-		mapTypeId: google.maps.MapTypeId.ROADMAP
+		center: new google.maps.LatLng(lat, long, name),
+		
 	});
 
 	var infowindow = new google.maps.InfoWindow({});
 
 	var marker, i;
 
-	for (i = 0; i < locations.length; i++) {
+	for (i = 0; i < name.length; i++) {
 		marker = new google.maps.Marker({
-			position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+			position: new google.maps.LatLng(lat, long, name),
 			map: map
 		});
 
 		google.maps.event.addListener(marker, 'click', (function (marker, i) {
 			return function () {
-				infowindow.setContent(locations[i][0]);
+				infowindow.setContent(name);
 				infowindow.open(map, marker);
 			}
 		})(marker, i));

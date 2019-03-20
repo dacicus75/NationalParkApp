@@ -488,19 +488,19 @@ function initMap(lat, long, name) {
 
 	var marker, i;
 
-	for (i = 0; i < name.length; i++) {
+	// for (i = 0; i < name.length; i++) {
 		marker = new google.maps.Marker({
 			position: new google.maps.LatLng(lat, long, name),
 			map: map
 		});
 
-		google.maps.event.addListener(marker, 'click', (function (marker, i) {
-			return function () {
-				infowindow.setContent(name);
-				infowindow.open(map, marker);
-			}
-		})(marker, i));
-	}
+	// 	google.maps.event.addListener(marker, 'click', (function (marker, i) {
+	// 		return function () {
+	// 			infowindow.setContent(name);
+	// 			infowindow.open(map, marker);
+	// 		}
+	// 	})(marker, i));
+	// }
 }
 
 $(".profile-title").click(function () { //====expand and collapse your profile section

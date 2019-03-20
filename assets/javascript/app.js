@@ -356,7 +356,12 @@ function getLatLong() {
 function createFavoritesButtons() {
     $(".favoriteTrails").remove();
     database.ref().on("child_added", function (document) {
-        
+//  var  favoriteTrailArr = [];  
+
+
+// $a=array(selectedTrail.trail);
+// print_r(array_unique($a));
+       
         var trailName = document.val().selectedTrail.trail;
         var trailImage = document.val().selectedTrail.image;
         var trailSummary = document.val().selectedTrail.summary;
@@ -364,7 +369,8 @@ function createFavoritesButtons() {
         var trailLon = document.val().selectedTrail.trailLon;
         var trailLat = document.val().selectedTrail.trailLat;
         var trailStars = document.val().selectedTrail.rating;
-
+ 
+        
 
         var trailFavoriteDiv = $("<div>");
         var p = $("<p>").html(trailName + "<br>");

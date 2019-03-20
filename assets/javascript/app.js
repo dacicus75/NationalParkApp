@@ -36,23 +36,7 @@ function showPosition(position) {
     lon = position.coords.longitude;
     displayParks();
 }
-// Grab to do list from user account
-//function getToDos() {
-//    userEmail = $("#email").val().trim();
-//    var queryURL = "https://www.hikingproject.com/data/get-to-dos?email=" + userEmail +"&key=200430087-cc29846e97dd0dc3575ba8096977c1be";
-
-//    $.ajax({
-//        url: queryURL,
-//        method: 'get'
-//    }) .then(function(response){
-//        var toDos = response.toDos;
-//        for(var i = 0; i < response.toDos.length; i++){
-//           form.append("<p>");
-//            $("p").text(toDos[i]);
-//        }
-//    })
-
-//}
+ 
 
 $("#sign-up-form").keyup(function(event) {  //===added keyup so enter sumbits form
     event.preventDefault();
@@ -325,8 +309,8 @@ function getWeatherData() {
             $('.temp').html(parseInt(temperature) + "&#8457;");
         },
         error: function (err) {
-            // $("#messaageModal").modal('show');
-             alert('Something went wrong, Please try again.');
+            $("#messageModal").modal('show');
+            
             console.log(err);
         }
     });
@@ -349,7 +333,8 @@ function getLatLong() {
             initMap(lat, long, name);
         },
         error: function (err) {
-            alert('Something went wrong, Please try again.');
+            $("#messageModal").modal('show');
+            
             console.log(err);
         }
     });
@@ -359,7 +344,8 @@ function getLatLong() {
 function createFavoritesButtons() {
     $(".favoriteTrails").remove();
     database.ref().on("child_added", function (document) {
-        
+
+
         var trailName = document.val().selectedTrail.trail;
         var trailImage = document.val().selectedTrail.image;
         var trailSummary = document.val().selectedTrail.summary;
@@ -367,7 +353,6 @@ function createFavoritesButtons() {
         var trailLon = document.val().selectedTrail.trailLon;
         var trailLat = document.val().selectedTrail.trailLat;
         var trailStars = document.val().selectedTrail.rating;
-
 
         var trailFavoriteDiv = $("<div>");
         var p = $("<p>").html(trailName + "<br>");
@@ -427,33 +412,8 @@ function createFavoritesButtons() {
     });
 
 }
-//test
+ 
 $(document).on("click", "#findTrail", getLocation);//trying to get apple products to work
-    //test
-    // }
-    // function displayParkModal() {
-    //     $("p").on("click", function () {
-    //         var hikeName = $(this).attr("data_name");
-    //         console.loge(hikeName);
-    //         var hikeSummary = $(this).attr("data_summary");
-    //         console.loge(hikeSummary);
-    //         var hikeImage = $(this).attr("data_image");
-    //         console.loge(hikeImage);
-    //         var hikeLocation = $(this).attr("data_location");
-    //         console.loge(hikeLocation)
-    //         var hikeStars = $(this).attr("data_stars");
-    //         console.loge(hikeStars);
-    //         $("#ModalLabel").html(hikeName);
-    //         $(".modal-image").html(hikeImage);
-    //         $(".modal-body").html(hikeSummary);
-    //         $(".modal-location").html(hikeLocation);
-    //         $(".modal-stars").html(hikeStars);
-
-    //     });
-
-// }
-// });
-
 // -------------------------------------------------------------------------------------------
 // to delete hike favorite
     // var anchor = "<a href=# onclick=deleteDocument('" + document.key + "');>X</a>";
@@ -463,18 +423,7 @@ $(document).on("click", "#findTrail", getLocation);//trying to get apple product
     //     location.reload();
     // }
 //  --------------------------------------------------------------------------------
-// $("#trails").on("click",function()
-// { 
-//     var trailLon = $(this).attr("data-lon");
-//     console.log(trailLon);
-//     var trailLat = $(this).attr("data-lat");
-//     var trailLocation = $(this).attr("data_location");
-//     console.log("fav trail long" +trailLon);
-//     console.log("fav trail lat" +trailLat);
-//     console.log("fav trail Location" +data_location);
-
-//     initMap (trailLon, trailLat, trailLocation);
-// });
+ 
 function initMap(lat, long, name) {
     
 

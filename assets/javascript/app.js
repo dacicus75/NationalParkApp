@@ -325,8 +325,8 @@ function getWeatherData() {
             $('.temp').html(parseInt(temperature) + "&#8457;");
         },
         error: function (err) {
-            // $("#messaageModal").modal('show');
-             alert('Something went wrong, Please try again.');
+            $("#messageModal").modal('show');
+            
             console.log(err);
         }
     });
@@ -349,7 +349,8 @@ function getLatLong() {
             initMap(lat, long, name);
         },
         error: function (err) {
-            alert('Something went wrong, Please try again.');
+            $("#messageModal").modal('show');
+            
             console.log(err);
         }
     });

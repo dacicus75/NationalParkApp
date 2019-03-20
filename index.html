@@ -51,7 +51,7 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav"> 
+                    <div class="navbar-nav">
                         <!-- onclick=getLocation(); -->
                         <a class="nav-item nav-link" href="#" id="findTrail">Find Trails</a>
                         <a class="nav-item nav-link" href="#" data-toggle="modal" data-target="#sign-in-modal">Sign
@@ -99,7 +99,8 @@
                                 <button type="button" class="btn btn-primary directions"
                                     id="directions">Directions</button>
 
-                                <button type="button" class="btn btn-primary favorite" id="favoriteClick">Favorite</button>
+                                <button type="button" class="btn btn-primary favorite"
+                                    id="favoriteClick">Favorite</button>
                                 <!-- onclick=createFavoritesButtons(); -->
 
                                 <button type="button" class="btn btn-secondary" id="close"
@@ -123,7 +124,7 @@
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <div class="modal-image"id= "favoritesImage">
+                                <div class="modal-image" id="favoritesImage">
                                     <!-- dynamic images porepend here -->
                                 </div>
                                 <div class="modal-body" id="favoritesSummary">
@@ -203,7 +204,7 @@
                 <!-- box for map or we can remove -->
 
                 <div id="location">
-                    <h6>auto loaded content? possilbe turn on location service with map image</h6>
+        
 
                 </div>
 
@@ -321,17 +322,29 @@
                         <!-- add favorites to this section using app.js 
                             then the #view-fav-btn targets this section to collapse or expand it prebuilt with bootstrap-->
                     </div>
+                    
 
                 </div>
             </div>
 
         </div>
+        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Small modal</button> -->
 
+        <div class="modal fade bd-example-modal-sm" tabindex="-1" id="messageModal" role="dialog"
+            aria-labelledby="mySmallModalLabel" aria-hidden="true">
+
+            <div class="modal-dialog modal-sm">
+
+                <div class="modal-content" id="smallModalMessage">
+                    
+                </div>
+            </div>
+        </div>
 
 
         <footer class="footer">Hit the Trails &copy2019</footer>
-        <script async defer 
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABWLQPp179b00MuhP3--PtMQq4I-3m5A8&callback=initMap"></script>
+        <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABWLQPp179b00MuhP3--PtMQq4I-3m5A8&callback=initMap"></script>
         <script src="assets/javascript/app.js"></script>
 </body>
 

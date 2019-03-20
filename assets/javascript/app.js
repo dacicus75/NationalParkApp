@@ -12,7 +12,7 @@ var config = {
 firebase.initializeApp(config);
 const storageService = firebase.storage();
 const storageRef = storageService.ref();
-
+// var selectedTrail = firebase.database().ref("selectedTrail");
 var database = firebase.database();
 // var queryURL = "https://www.hikingproject.com/data/get-" + (parameters) +"&key=200430087-cc29846e97dd0dc3575ba8096977c1be"
 // Obtain user location
@@ -85,8 +85,10 @@ $("#submit-user").on("click", function () {
 
 $("#sign-in-form").keyup(function(event) { //===added keyup so enter sumbits form
     event.preventDefault();
+     $("#smallModalMessage").hide();
     if (event.keyCode === 13) {
         $("#user-signin").click();
+        // $("#smallModalMessage").text("You just signed in");
     }
 });
 
@@ -136,6 +138,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         console.log("user signed in");
         $("#user-name-display").text(user.email);
         $("#your-profile").show();
+        console.log(user.email)
         //$("#favorites-added").append(user.favorites);=====maybe this can load a favorites object from user document? if each user has a favorites object===========
     } else {
         console.log('no user info');
@@ -258,10 +261,14 @@ $(".directions").on('click', function () {
 $("close").on('click', function () {
     $(".modal-message").hide();
 })
+
+
+
 $("#favoriteClick").on('click', function () {
+   
      
-    $(".modal-message").html("Added to Favorites");
-    $(".modal-message").show();
+        $("#messageModal").modal('show');
+        $("#smallModalMessage").text("Added to favorites");
     event.preventDefault();
     var trailLon = $(this).attr("data_lon");
     var trailLat = $(this).attr("data_lat");
@@ -278,25 +285,18 @@ $("#favoriteClick").on('click', function () {
         image: trailImage,
         summary: trailSummary,
         location: trailLocation,
-        rating: trailStars
+        rating: trailStars,
+        trailLon: trailLon,
+        trailLat: trailLat
     };
     database.ref().push({
         selectedTrail: selectedTrail
     });
-    console.log(selectedTrail);
-    //add a new document key for each line of data added and pushes that line to a set of data
-    //doesnt overwrite the data that is there
-    database.ref().push({
-        trailName: trailName,
-        trailImage: trailImage,
-        trailSummary: trailSummary,//========maybe this could be anobject to hold the data in?? ============================================
-        trailLocation: trailLocation,
-        trailLon: trailLon,
-        trailLat: trailLat,
-        trailStars: trailStars
-    });
-    createFavoritesButtons();
+  
+ 
 })
+createFavoritesButtons();
+
 $(".user-display").hide();
 
 $("#your-trails").on("click", function () {
@@ -308,6 +308,8 @@ var weatherApiUrl = "https://api.openweathermap.org/data/2.5/weather";
 var apiKey = "16dd6985df4229356a7e622ae5dace0a";
 getLatLong();
 function getWeatherData() {
+    
+   
     $.ajax({
         url: weatherApiUrl,
         type: 'GET',
@@ -323,7 +325,8 @@ function getWeatherData() {
             $('.temp').html(parseInt(temperature) + "&#8457;");
         },
         error: function (err) {
-            alert('Something went wrong, Please try again.');
+            // $("#messaageModal").modal('show');
+             alert('Something went wrong, Please try again.');
             console.log(err);
         }
     });
@@ -357,13 +360,13 @@ function createFavoritesButtons() {
     $(".favoriteTrails").remove();
     database.ref().on("child_added", function (document) {
         
-        var trailName = document.val().trailName;
-        var trailImage = document.val().trailImage;
-        var trailSummary = document.val().trailSummary;
-        var trailLocation = document.val().trailLocation;
-        var trailLon = document.val().trailLon;
-        var trailLat = document.val().trailLat;
-        var trailStars = document.val().trailStars;
+        var trailName = document.val().selectedTrail.trail;
+        var trailImage = document.val().selectedTrail.image;
+        var trailSummary = document.val().selectedTrail.summary;
+        var trailLocation = document.val().selectedTrail.location;
+        var trailLon = document.val().selectedTrail.trailLon;
+        var trailLat = document.val().selectedTrail.trailLat;
+        var trailStars = document.val().selectedTrail.rating;
 
 
         var trailFavoriteDiv = $("<div>");
@@ -386,16 +389,7 @@ function createFavoritesButtons() {
         });
         trailFavoriteDiv.append(p);
         $("#favorites-added").append(trailFavoriteDiv);
-        //   $("#favoritesModalLabel").html(trailName);
-        //   $("#favoritesSummary").html(trailSummary);
-        //   $(".modal-image").prepend(trailImage);
-        //   $(".modal-location").html("Location: " + hikeLocation);
-        //   $(".modal-stars").html("Trail rating: " + hikeStars + " stars");
-
-        //   $(".hikePic").remove();
-        //   $(".modal-message").hide();
-
-
+        
         $(".favoriteTrails").on('click', function () {
             var trailLon = $(this).attr("data_lon");
             var trailLat = $(this).attr("data_lat");
@@ -405,7 +399,7 @@ function createFavoritesButtons() {
             var trailLocation = $(this).attr("data_location");
             var trailStars = $(this).attr("data_stars");
 
-            // $("#favoritesImage").html(trailImage);
+    
             var favoriteImage = $("<img>");
             favoriteImage.attr({
                 "src": trailImage,
@@ -420,10 +414,9 @@ function createFavoritesButtons() {
 
 
             $("#favoritesModalLabel").html(trailName);
-            // $("#favoritesSummary").html(trailSummary);
+           
             $(".favHikePic").remove();
-            // $(".trailImage").remove();
-            // $("#favoritesImage").prepend(favoriteImage);
+            
             $(".modal-message").hide();
             $("#favoritesImage").html(favoriteImage);
             $("#favoritesSummary").html(trailSummary);
@@ -512,9 +505,9 @@ function initMap(lat, long, name) {
 
 $(".profile-title").click(function () { //====expand and collapse your profile section
 
-    $header = $(this);
-    $content = $header.next();
-    $content.slideToggle(500, function () {
+    header = $(this);
+    content = header.next();
+    content.slideToggle(500, function () {
         
         });
     });

@@ -92,6 +92,8 @@ $("#user-signin").on("click", function () {
         }
         $("#signin-email").val(email);
         console.log(errorCode + "," + errorMessage);
+        $("#smallModalMessage").text(errorCode + "," + errorMessage);
+    
 
     });
     $("#signin-email").val("");
@@ -106,6 +108,7 @@ firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
     .catch(function (error) {
         var errorCode = error.code;
         var errorMessage = error.message;
+        $("#smallModalMessage").text(errorCode + "," + errorMessage);
     })
 
 firebase.auth().onAuthStateChanged(function (user) {

@@ -1,7 +1,7 @@
 # NationalParkApp
 ## Project Description
 ### Hit the Trails app is a search tool that allows the user to find hiking trails near their location.  Provides a list of nearby trails with location, description, pictures, and ratings. Users have the ability to sing up/ sign in and save their favorite trail.  App also displays current weather and gives driving directions on a map.
-![HittheTrails Prototype](.assets/images/hikingtrail.jpg "HittheTrailsPrototype")
+
 
 ## Technology
 

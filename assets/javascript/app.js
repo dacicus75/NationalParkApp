@@ -1,7 +1,6 @@
 
-//  --------------------------------------------------------------------------------
+// Project 1 by David Lawrence, Daniel Ardelean, Keith Hemsoth and Chris paul
 
-// Initialize Firebase
 var config = {
     apiKey: "AIzaSyCZuRbpdVP2raZyzf4Uj75WqD4A02Qex9c",
     authDomain: "nationalparksapp.firebaseapp.com",
@@ -13,12 +12,8 @@ var config = {
 firebase.initializeApp(config);
 const storageService = firebase.storage();
 const storageRef = storageService.ref();
-// var selectedTrail = firebase.database().ref("selectedTrail");
 var database = firebase.database();
-// var queryURL = "https://www.hikingproject.com/data/get-" + (parameters) +"&key=200430087-cc29846e97dd0dc3575ba8096977c1be"
-// Obtain user location
-// We may want to use watchPosition() to keep track of user movements
-// Will need button to bind event 
+
 var lat;
 var lon;
 var userEmail;
@@ -37,7 +32,6 @@ function showPosition(position) {
     lon = position.coords.longitude;
     displayParks();
 }
-
 
 $("#sign-up-form").keyup(function (event) {  //===added keyup so enter sumbits form
     event.preventDefault();
@@ -71,10 +65,10 @@ $("#submit-user").on("click", function () {
 
 $("#sign-in-form").keyup(function (event) { //===added keyup so enter sumbits form
     event.preventDefault();
-    $("#smallModalMessage").hide();
+    // $("#smallModalMessage").hide();
     if (event.keyCode === 13) {
         $("#user-signin").click();
-        // $("#smallModalMessage").text("You just signed in");
+        $("#smallModalMessage").text("You just signed in");
     }
 });
 
@@ -98,14 +92,14 @@ $("#user-signin").on("click", function () {
         }
         $("#signin-email").val(email);
         console.log(errorCode + "," + errorMessage);
+        $("#smallModalMessage").text(errorCode + "," + errorMessage);
+    
 
     });
     $("#signin-email").val("");
     $("#signin-password").val("");
 
 })
-
-// Keep user signed in
 
 firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
     .then(function () {
@@ -114,6 +108,7 @@ firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
     .catch(function (error) {
         var errorCode = error.code;
         var errorMessage = error.message;
+        $("#smallModalMessage").text(errorCode + "," + errorMessage);
     })
 
 firebase.auth().onAuthStateChanged(function (user) {
@@ -145,16 +140,6 @@ $('body').on('click', '[data-target="#sign-out-modal"]', function () {
     $("#your-profile").hide();
 })
 
-// User Sign Out
-//firebase.auth().signOut().then(function() {
-// Sign-out successful.
-//  })
-
-
-//  --------------------------------------------------------------------------------
-
-
-// if you click find trails, this div is created and overwrites the content
 function displayParks() {
 
     $(".page-quotes").remove();
@@ -174,7 +159,7 @@ function displayParks() {
                 var parkDiv = $("<div>");
                 var p = $("<p>").html(response.trails[i].name + "<br>");
                 p.attr({
-                    // type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+
                     "type": "button",
                     "data-lat": response.trails[i].latitude,
                     "data-lon": response.trails[i].longitude,
@@ -188,7 +173,7 @@ function displayParks() {
                     "class": "trails"
                 });
                 parkDiv.prepend(p);
-                // $("#displayContent").prepend(parkImage);
+
                 $("#contentHeader").html("<h1> Trails near you </h1>");
                 $("#displayContent").append(parkDiv);
             }
@@ -238,6 +223,7 @@ function displayParks() {
         }
         );
 }
+
 $(".directions").on('click', function () {
     var trailLat = $(this).attr("data_lat");
     console.log(this);
@@ -246,14 +232,12 @@ $(".directions").on('click', function () {
     console.log(trailLon);
     window.open("https://www.google.com/maps?q=" + trailLat + "," + trailLon);
 })
+
 $("close").on('click', function () {
     $(".modal-message").hide();
 })
 
-
-
 $("#favoriteClick").on('click', function () {
-
 
     $("#messageModal").modal('show');
     $("#smallModalMessage").text("Added to favorites");
@@ -329,7 +313,8 @@ function getLatLong() {
             long = data.longitude;
             $('.city').html(data.city);
             $('.country').html(data.state);
-            weatherApiUrl += "?lat=" + lat + "&lon=" + long + "&APPID=" + apiKey + "&units=imperial";
+            weatherApiUrl += "?lat=" + lat + "&lon=" + long + "&APPID=" + apiKey
+                + "&units=imperial";
             getWeatherData();
             console.log(data);
             name = data.name;
@@ -347,9 +332,7 @@ $("#your-profile").hide();
 
 function createFavoritesButtons() {
     $(".favoriteTrails").remove();
-    // var favoriteTrailArr = [];
     database.ref().on("child_added", function (document) {
-
 
         var trailName = document.val().selectedTrail.trail;
         var trailImage = document.val().selectedTrail.image;
@@ -362,7 +345,7 @@ function createFavoritesButtons() {
 
         var trailFavoriteDiv = $("<div>");
         var p = $("<p>").html(trailName + "<br>");
-   
+
         p.attr({
 
             "type": "button",
@@ -379,10 +362,10 @@ function createFavoritesButtons() {
         });
         trailFavoriteDiv.append(p);
         $("#favorites-added").append(trailFavoriteDiv);
-        var anchor = "<a href=# id='removeFavorite' onclick=deleteDocument('" + document.key + "');>Remove a trail</a>";
+        var anchor = "<a href=# id='removeFavorite' onclick=deleteDocument('" +
+            document.key + "');>Remove a trail</a>";
         $("#favorites-added").append(anchor);
-      
-        // var p = $("<p>").html(anchor);
+ 
         $(".favoriteTrails").on('click', function () {
             var trailLon = $(this).attr("data_lon");
             var trailLat = $(this).attr("data_lat");
@@ -391,7 +374,6 @@ function createFavoritesButtons() {
             var trailSummary = $(this).attr("data_summary");
             var trailLocation = $(this).attr("data_location");
             var trailStars = $(this).attr("data_stars");
-
 
             var favoriteImage = $("<img>");
             favoriteImage.attr({
@@ -405,11 +387,8 @@ function createFavoritesButtons() {
                 "class": 'btn btn-primary directions'
             });
 
-
             $("#favoritesModalLabel").html(trailName);
-
             $(".favHikePic").remove();
-
             $(".modal-message").hide();
             $("#favoritesImage").html(favoriteImage);
             $("#favoritesSummary").html(trailSummary);
@@ -420,41 +399,29 @@ function createFavoritesButtons() {
     });
 
 }
+
 function deleteDocument(documentId) {
     database.ref().child(documentId).set(null);
-   
     $("#smallModalMessage").text("Trail successfully deleted!");
     $("#messageModal").modal('show');
-    // alert("Trail successfully deleted!");
     location.reload();
 }
 
 // $(document).on("click", "#findTrail", getLocation);trying to get apple products to work
 
-
-
-
-
 function initMap(lat, long, name) {
-
-
     var map = new google.maps.Map(document.getElementById("location"), {
         zoom: 12,
         center: new google.maps.LatLng(lat, long, name),
         mapTypeId: 'terrain'
     });
-
-
     var infowindow = new google.maps.InfoWindow({});
-
     var marker, i;
-
     // for (i = 0; i < name.length; i++) {
     marker = new google.maps.Marker({
         position: new google.maps.LatLng(lat, long, name),
         map: map
     });
-
     // 	google.maps.event.addListener(marker, 'click', (function (marker, i) {
     // 		return function () {
     // 			infowindow.setContent(name);
@@ -465,11 +432,9 @@ function initMap(lat, long, name) {
 }
 
 $(".profile-title").click(function () { //====expand and collapse your profile section
-
     header = $(this);
     content = header.next();
-    content.slideToggle(500, function () {
-        
+    content.slideToggle(500, function () {  
         });
     });
 $("#view-fav-btn").click(function () { //====expand and collapse favorites section

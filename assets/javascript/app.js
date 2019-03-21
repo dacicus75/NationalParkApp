@@ -36,25 +36,9 @@ function showPosition(position) {
     lon = position.coords.longitude;
     displayParks();
 }
-// Grab to do list from user account
-//function getToDos() {
-//    userEmail = $("#email").val().trim();
-//    var queryURL = "https://www.hikingproject.com/data/get-to-dos?email=" + userEmail +"&key=200430087-cc29846e97dd0dc3575ba8096977c1be";
 
-//    $.ajax({
-//        url: queryURL,
-//        method: 'get'
-//    }) .then(function(response){
-//        var toDos = response.toDos;
-//        for(var i = 0; i < response.toDos.length; i++){
-//           form.append("<p>");
-//            $("p").text(toDos[i]);
-//        }
-//    })
 
-//}
-
-$("#sign-up-form").keyup(function(event) {  //===added keyup so enter sumbits form
+$("#sign-up-form").keyup(function (event) {  //===added keyup so enter sumbits form
     event.preventDefault();
     if (event.keyCode === 13) {
         $("#submit-user").click();
@@ -81,11 +65,12 @@ $("#submit-user").on("click", function () {
     $("#user-name").val("");
     $("#user-email").val("");
     $("#user-password").val("");
+    $("#user-name-display").text(email);
 })
 
-$("#sign-in-form").keyup(function(event) { //===added keyup so enter sumbits form
+$("#sign-in-form").keyup(function (event) { //===added keyup so enter sumbits form
     event.preventDefault();
-     $("#smallModalMessage").hide();
+    $("#smallModalMessage").hide();
     if (event.keyCode === 13) {
         $("#user-signin").click();
         // $("#smallModalMessage").text("You just signed in");
@@ -136,6 +121,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         $('[data-target="#sign-up-modal"]').remove();
         $('.navbar-nav').append("<a class='nav-item nav-link' href='#' data-toggle='modal' data-target='#sign-out-modal'>Sign Out</a>")
         console.log("user signed in");
+
         $("#user-name-display").text(user.email);
         $(".user-display").css("display", "block");
         $("#your-profile").show();
@@ -266,10 +252,10 @@ $("close").on('click', function () {
 
 
 $("#favoriteClick").on('click', function () {
-   
-     
-        $("#messageModal").modal('show');
-        $("#smallModalMessage").text("Added to favorites");
+
+
+    $("#messageModal").modal('show');
+    $("#smallModalMessage").text("Added to favorites");
     event.preventDefault();
     var trailLon = $(this).attr("data_lon");
     var trailLat = $(this).attr("data_lat");
@@ -293,8 +279,8 @@ $("#favoriteClick").on('click', function () {
     database.ref().push({
         selectedTrail: selectedTrail
     });
-  
- 
+
+
 })
 createFavoritesButtons();
 
@@ -309,8 +295,8 @@ var weatherApiUrl = "https://api.openweathermap.org/data/2.5/weather";
 var apiKey = "16dd6985df4229356a7e622ae5dace0a";
 getLatLong();
 function getWeatherData() {
-    
-   
+
+
     $.ajax({
         url: weatherApiUrl,
         type: 'GET',
@@ -326,8 +312,8 @@ function getWeatherData() {
             $('.temp').html(parseInt(temperature) + "&#8457;");
         },
         error: function (err) {
-            // $("#messaageModal").modal('show');
-             alert('Something went wrong, Please try again.');
+            $("#messageModal").modal('show');
+
             console.log(err);
         }
     });
@@ -338,26 +324,32 @@ function getLatLong() {
         type: 'GET',
         dataType: 'json',
         success: function (data) {
-            var lat = data.latitude;
-            var long = data.longitude;
+            lat = data.latitude;
+            long = data.longitude;
             $('.city').html(data.city);
             $('.country').html(data.state);
             weatherApiUrl += "?lat=" + lat + "&lon=" + long + "&APPID=" + apiKey + "&units=imperial";
             getWeatherData();
             console.log(data);
+            name = data.name;
+
+            initMap(lat, long, name);
         },
         error: function (err) {
-            alert('Something went wrong, Please try again.');
+            $("#messageModal").modal('show');
+
             console.log(err);
         }
     });
 }
- $("#your-profile").hide();
+$("#your-profile").hide();
 
 function createFavoritesButtons() {
     $(".favoriteTrails").remove();
+    // var favoriteTrailArr = [];
     database.ref().on("child_added", function (document) {
-        
+
+
         var trailName = document.val().selectedTrail.trail;
         var trailImage = document.val().selectedTrail.image;
         var trailSummary = document.val().selectedTrail.summary;
@@ -370,9 +362,8 @@ function createFavoritesButtons() {
         var trailFavoriteDiv = $("<div>");
         var p = $("<p>").html(trailName + "<br>");
    
-        // var p = $("<p>").html(trailLocation + "<br>");
         p.attr({
-            // type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+
             "type": "button",
             "data-toggle": "modal",
             "data-target": "#favoritesModal",
@@ -387,7 +378,10 @@ function createFavoritesButtons() {
         });
         trailFavoriteDiv.append(p);
         $("#favorites-added").append(trailFavoriteDiv);
-        
+        var anchor = "<a href=# id='removeFavorite' onclick=deleteDocument('" + document.key + "');>Remove a trail</a>";
+        $("#favorites-added").append(anchor);
+      
+        // var p = $("<p>").html(anchor);
         $(".favoriteTrails").on('click', function () {
             var trailLon = $(this).attr("data_lon");
             var trailLat = $(this).attr("data_lat");
@@ -397,11 +391,11 @@ function createFavoritesButtons() {
             var trailLocation = $(this).attr("data_location");
             var trailStars = $(this).attr("data_stars");
 
-    
+
             var favoriteImage = $("<img>");
             favoriteImage.attr({
                 "src": trailImage,
-                 "class": 'favHikePic'
+                "class": 'favHikePic'
             });
             var directionsClick = $(".directions");
             directionsClick.attr({
@@ -412,86 +406,61 @@ function createFavoritesButtons() {
 
 
             $("#favoritesModalLabel").html(trailName);
-           
+
             $(".favHikePic").remove();
-            
+
             $(".modal-message").hide();
             $("#favoritesImage").html(favoriteImage);
             $("#favoritesSummary").html(trailSummary);
             $("#favoritesLocation").html("Location: " + trailLocation);
             $("#favoritesStars").html("Trail rating: " + trailStars + " stars");
-          
+
         })
     });
 
 }
-//test
+function deleteDocument(documentId) {
+    database.ref().child(documentId).set(null);
+   
+    $("#smallModalMessage").text("Trail successfully deleted!");
+    $("#messageModal").modal('show');
+    // alert("Trail successfully deleted!");
+    location.reload();
+}
+
 $(document).on("click", "#findTrail", getLocation);//trying to get apple products to work
- 
-function initMap() {
 
-	var brandywine = {
-		info: '<strong>Brandywine Falls Loop</strong><br>\
-					<br>\
-					<a href="https://goo.gl/maps/qTv8h3RFDWS2">Get Directions</a>',
-		lat: 41.2767,
-		long: -81.5400
-	};
 
-	var ledges = {
-		info: '<strong>Ledges to Pine Grove Loop</strong><br>\
-					<br>\
-					<a href="https://goo.gl/maps/TjUqDHKKMK62">Get Directions</a>',
-		lat: 41.2240,
-		long: -81.5106
-	};
 
-	var blue = {
-		info: '<strong>Blue Hen Falls Trail</strong><br>\
-					<br>\
-					<a href="https://goo.gl/maps/38JRdgtW3nk">Get Directions</a>',
-		lat: 41.2570,
-		long: -81.5726
-	};
 
-	// var buckeye = {
-	// 	info: '<strong>Buckeye Trail</strong><br>\
-	// 				<br>\ 
-	// 				<a href="https://goo.gl/maps/9aqaK74Ksbr">Get Directions</a>',
-	// 	lat: 41.3803,
-	// 	long: -81.5341
-	// };
 
-	var locations = [
-      [brandywine.info, brandywine.lat, brandywine.long, 0],
-      [ledges.info, ledges.lat, ledges.long, 1],
-			[blue.info, blue.lat, blue.long, 2],
-			// [buckeye.info, buckeye.lat, buckeye.long,3]
-    ];
+function initMap(lat, long, name) {
 
-	var map = new google.maps.Map(document.getElementById('location'), {
-		zoom: 8,
-		center: new google.maps.LatLng(41.5043, -81.6084),
-		mapTypeId: google.maps.MapTypeId.ROADMAP
-	});
 
-	var infowindow = new google.maps.InfoWindow({});
+    var map = new google.maps.Map(document.getElementById("location"), {
+        zoom: 12,
+        center: new google.maps.LatLng(lat, long, name),
+        mapTypeId: 'terrain'
+    });
 
-	var marker, i;
 
-	for (i = 0; i < locations.length; i++) {
-		marker = new google.maps.Marker({
-			position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-			map: map
-		});
+    var infowindow = new google.maps.InfoWindow({});
 
-		google.maps.event.addListener(marker, 'click', (function (marker, i) {
-			return function () {
-				infowindow.setContent(locations[i][0]);
-				infowindow.open(map, marker);
-			}
-		})(marker, i));
-	}
+    var marker, i;
+
+    // for (i = 0; i < name.length; i++) {
+    marker = new google.maps.Marker({
+        position: new google.maps.LatLng(lat, long, name),
+        map: map
+    });
+
+    // 	google.maps.event.addListener(marker, 'click', (function (marker, i) {
+    // 		return function () {
+    // 			infowindow.setContent(name);
+    // 			infowindow.open(map, marker);
+    // 		}
+    // 	})(marker, i));
+    // }
 }
 
 $(".profile-title").click(function () { //====expand and collapse your profile section
@@ -499,8 +468,14 @@ $(".profile-title").click(function () { //====expand and collapse your profile s
     header = $(this);
     content = header.next();
     content.slideToggle(500, function () {
+<<<<<<< HEAD
         
         });
     });
 
     // $("#user-display").css("display", "block");
+=======
+
+    });
+});
+>>>>>>> 63df28013398b472f8e1e89244fb219c4b33b20a

@@ -429,7 +429,7 @@ function deleteDocument(documentId) {
     location.reload();
 }
 
-$(document).on("click", "#findTrail", getLocation);//trying to get apple products to work
+// $(document).on("click", "#findTrail", getLocation);trying to get apple products to work
 
 
 
@@ -465,6 +465,14 @@ function initMap(lat, long, name) {
 }
 
 $(".profile-title").click(function () { //====expand and collapse your profile section
+
+    header = $(this);
+    content = header.next();
+    content.slideToggle(500, function () {
+        
+        });
+    });
+$("#view-fav-btn").click(function () { //====expand and collapse favorites section
 
     header = $(this);
     content = header.next();

@@ -65,10 +65,10 @@ $("#submit-user").on("click", function () {
 
 $("#sign-in-form").keyup(function (event) { //===added keyup so enter sumbits form
     event.preventDefault();
-    $("#smallModalMessage").hide();
+    // $("#smallModalMessage").hide();
     if (event.keyCode === 13) {
         $("#user-signin").click();
-        // $("#smallModalMessage").text("You just signed in");
+        $("#smallModalMessage").text("You just signed in");
     }
 });
 
@@ -404,7 +404,6 @@ function deleteDocument(documentId) {
     database.ref().child(documentId).set(null);
     $("#smallModalMessage").text("Trail successfully deleted!");
     $("#messageModal").modal('show');
-    // alert("Trail successfully deleted!");
     location.reload();
 }
 

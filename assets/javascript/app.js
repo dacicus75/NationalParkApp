@@ -1,3 +1,4 @@
+
 //  --------------------------------------------------------------------------------
 
 // Initialize Firebase
@@ -468,14 +469,7 @@ $(".profile-title").click(function () { //====expand and collapse your profile s
     header = $(this);
     content = header.next();
     content.slideToggle(500, function () {
-<<<<<<< HEAD
         
         });
     });
 
-    // $("#user-display").css("display", "block");
-=======
-
-    });
-});
->>>>>>> 63df28013398b472f8e1e89244fb219c4b33b20a

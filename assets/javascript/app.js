@@ -148,10 +148,6 @@ $('body').on('click', '[data-target="#sign-out-modal"]', function () {
 // Sign-out successful.
 //  })
 
-
-//  --------------------------------------------------------------------------------
-
-
 // if you click find trails, this div is created and overwrites the content
 function displayParks() {
 
@@ -172,7 +168,7 @@ function displayParks() {
                 var parkDiv = $("<div>");
                 var p = $("<p>").html(response.trails[i].name + "<br>");
                 p.attr({
-                    // type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+
                     "type": "button",
                     "data-lat": response.trails[i].latitude,
                     "data-lon": response.trails[i].longitude,
@@ -186,7 +182,7 @@ function displayParks() {
                     "class": "trails"
                 });
                 parkDiv.prepend(p);
-                // $("#displayContent").prepend(parkImage);
+
                 $("#contentHeader").html("<h1> Trails near you </h1>");
                 $("#displayContent").append(parkDiv);
             }
@@ -327,7 +323,8 @@ function getLatLong() {
             long = data.longitude;
             $('.city').html(data.city);
             $('.country').html(data.state);
-            weatherApiUrl += "?lat=" + lat + "&lon=" + long + "&APPID=" + apiKey + "&units=imperial";
+            weatherApiUrl += "?lat=" + lat + "&lon=" + long + "&APPID=" + apiKey
+                + "&units=imperial";
             getWeatherData();
             console.log(data);
             name = data.name;
@@ -360,7 +357,7 @@ function createFavoritesButtons() {
 
         var trailFavoriteDiv = $("<div>");
         var p = $("<p>").html(trailName + "<br>");
-   
+
         p.attr({
 
             "type": "button",
@@ -377,9 +374,10 @@ function createFavoritesButtons() {
         });
         trailFavoriteDiv.append(p);
         $("#favorites-added").append(trailFavoriteDiv);
-        var anchor = "<a href=# id='removeFavorite' onclick=deleteDocument('" + document.key + "');>Remove a trail</a>";
+        var anchor = "<a href=# id='removeFavorite' onclick=deleteDocument('" +
+            document.key + "');>Remove a trail</a>";
         $("#favorites-added").append(anchor);
-      
+
         // var p = $("<p>").html(anchor);
         $(".favoriteTrails").on('click', function () {
             var trailLon = $(this).attr("data_lon");
@@ -420,7 +418,7 @@ function createFavoritesButtons() {
 }
 function deleteDocument(documentId) {
     database.ref().child(documentId).set(null);
-   
+
     $("#smallModalMessage").text("Trail successfully deleted!");
     $("#messageModal").modal('show');
     // alert("Trail successfully deleted!");

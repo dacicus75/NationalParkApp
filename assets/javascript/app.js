@@ -445,33 +445,6 @@ $(document).on("click", "#findTrail", getLocation);//trying to get apple product
 //  --------------------------------------------------------------------------------
 
 function initMap(lat, long, name) {
-<<<<<<< HEAD
-
-
-    var map = new google.maps.Map(document.getElementById("location"), {
-        zoom: 8,
-        center: new google.maps.LatLng(lat, long, name),
-
-    });
-
-    var infowindow = new google.maps.InfoWindow({});
-
-    var marker, i;
-
-    for (i = 0; i < name.length; i++) {
-        marker = new google.maps.Marker({
-            position: new google.maps.LatLng(lat, long, name),
-            map: map
-        });
-
-        google.maps.event.addListener(marker, 'click', (function (marker, i) {
-            return function () {
-                infowindow.setContent(name);
-                infowindow.open(map, marker);
-            }
-        })(marker, i));
-    }
-=======
     
 
 		var map = new google.maps.Map(document.getElementById("location"), {
@@ -498,7 +471,6 @@ function initMap(lat, long, name) {
 	// 		}
 	// 	})(marker, i));
 	// }
->>>>>>> adae0d3532bce1049159ffed05c22e0801749427
 }
 
 $(".profile-title").click(function () { //====expand and collapse your profile section

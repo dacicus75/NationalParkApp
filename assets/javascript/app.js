@@ -101,7 +101,7 @@ $("#user-signin").on("click", function () {
         password: password
     };
     console.log(userSignIn);
-    $("#user-name-display").text(userSignIn.name);
+    $("#user-name-display").text(userSignIn.email);
     $("#user-name-display").show();
     $("#your-trails").show();
     firebase.auth().signInWithEmailAndPassword(email, password).catch(function (error) {
@@ -137,6 +137,7 @@ firebase.auth().onAuthStateChanged(function (user) {
         $('.navbar-nav').append("<a class='nav-item nav-link' href='#' data-toggle='modal' data-target='#sign-out-modal'>Sign Out</a>")
         console.log("user signed in");
         $("#user-name-display").text(user.email);
+        $(".user-display").css("display", "block");
         $("#your-profile").show();
         console.log(user.email)
         //$("#favorites-added").append(user.favorites);=====maybe this can load a favorites object from user document? if each user has a favorites object===========
@@ -501,3 +502,5 @@ $(".profile-title").click(function () { //====expand and collapse your profile s
         
         });
     });
+
+    // $("#user-display").css("display", "block");

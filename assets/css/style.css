@@ -55,6 +55,9 @@ div{
   border: 1px solid black; 
 
 }
+#removeFavorite{
+  color: gray;
+}
 
 .appContent {
 background-color: rgba(0, 0, 0, 0.8);

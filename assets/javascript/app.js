@@ -345,7 +345,7 @@ $("#your-profile").hide();
 
 function createFavoritesButtons() {
     $(".favoriteTrails").remove();
-    var favoriteTrailArr = [];
+    // var favoriteTrailArr = [];
     database.ref().on("child_added", function (document) {
 
 
@@ -357,29 +357,12 @@ function createFavoritesButtons() {
         var trailLat = document.val().selectedTrail.trailLat;
         var trailStars = document.val().selectedTrail.rating;
 
-        favoriteTrailArr.push(document.val().selectedTrail.trail);
-       
-        reduced = Object.keys(favoriteTrailArr.reduce((p,c) => (p[c] = true,p),{}));
-    console.log(reduced);
-        // var actualArr = ['Apple', 'Apple', 'Banana', 'Mango', 'Strawberry', 'Banana'];
-
-        console.log('Actual Array: ' + favoriteTrailArr);
-
-        // var filteredArr = favoriteTrailArr.filter(function (item, index) {
-        //     if (favoriteTrailArr.indexOf(item) == index)
-        //         return item;
-        // });
-
-        // console.log('Filtered Array: ' + filteredArr);
-        // console.log(favoriteTrailArr);
-        // console.log(favoriteTrailArr.length);
 
         var trailFavoriteDiv = $("<div>");
         var p = $("<p>").html(trailName + "<br>");
-
-        // var p = $("<p>").html(trailLocation + "<br>");
+   
         p.attr({
-            // type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+
             "type": "button",
             "data-toggle": "modal",
             "data-target": "#favoritesModal",
@@ -394,7 +377,10 @@ function createFavoritesButtons() {
         });
         trailFavoriteDiv.append(p);
         $("#favorites-added").append(trailFavoriteDiv);
-
+        var anchor = "<a href=# id='removeFavorite' onclick=deleteDocument('" + document.key + "');>Remove a trail</a>";
+        $("#favorites-added").append(anchor);
+      
+        // var p = $("<p>").html(anchor);
         $(".favoriteTrails").on('click', function () {
             var trailLon = $(this).attr("data_lon");
             var trailLat = $(this).attr("data_lat");
@@ -432,45 +418,48 @@ function createFavoritesButtons() {
     });
 
 }
+function deleteDocument(documentId) {
+    database.ref().child(documentId).set(null);
+   
+    $("#smallModalMessage").text("Trail successfully deleted!");
+    $("#messageModal").modal('show');
+    // alert("Trail successfully deleted!");
+    location.reload();
+}
 
 $(document).on("click", "#findTrail", getLocation);//trying to get apple products to work
-// -------------------------------------------------------------------------------------------
-// to delete hike favorite
-// var anchor = "<a href=# onclick=deleteDocument('" + document.key + "');>X</a>";
-// function deleteDocument(documentId) {
-//     database.ref().child(documentId).set(null);
-//     alert("Train successfully deleted!");
-//     location.reload();
-// }
-//  --------------------------------------------------------------------------------
+
+
+
+
 
 function initMap(lat, long, name) {
-    
 
-		var map = new google.maps.Map(document.getElementById("location"), {
-		zoom: 12,
+
+    var map = new google.maps.Map(document.getElementById("location"), {
+        zoom: 12,
         center: new google.maps.LatLng(lat, long, name),
         mapTypeId: 'terrain'
-        });
-        
+    });
 
-	var infowindow = new google.maps.InfoWindow({});
 
-	var marker, i;
+    var infowindow = new google.maps.InfoWindow({});
 
-	// for (i = 0; i < name.length; i++) {
-		marker = new google.maps.Marker({
-			position: new google.maps.LatLng(lat, long, name),
-			map: map
-		});
+    var marker, i;
 
-	// 	google.maps.event.addListener(marker, 'click', (function (marker, i) {
-	// 		return function () {
-	// 			infowindow.setContent(name);
-	// 			infowindow.open(map, marker);
-	// 		}
-	// 	})(marker, i));
-	// }
+    // for (i = 0; i < name.length; i++) {
+    marker = new google.maps.Marker({
+        position: new google.maps.LatLng(lat, long, name),
+        map: map
+    });
+
+    // 	google.maps.event.addListener(marker, 'click', (function (marker, i) {
+    // 		return function () {
+    // 			infowindow.setContent(name);
+    // 			infowindow.open(map, marker);
+    // 		}
+    // 	})(marker, i));
+    // }
 }
 
 $(".profile-title").click(function () { //====expand and collapse your profile section

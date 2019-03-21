@@ -428,10 +428,11 @@ function initMap(lat, long, name) {
     
 
 		var map = new google.maps.Map(document.getElementById("location"), {
-		zoom: 8,
-		center: new google.maps.LatLng(lat, long, name),
-		
-	});
+		zoom: 12,
+        center: new google.maps.LatLng(lat, long, name),
+        mapTypeId: 'terrain'
+        });
+        
 
 	var infowindow = new google.maps.InfoWindow({});
 
